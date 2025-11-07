@@ -1,4 +1,4 @@
-/* src/styles/App.css (FINAL v12 - Fixes 4+2 Grid, Stats, Fonts) */
+/* src/styles/App.css (FINAL v15 - Mobile-Friendly) */
 
 /* 1. Global Styles & CSS Variables */
 :root {
@@ -886,18 +886,25 @@ strong {
   }
 }
 
+/* --- MOBILE STYLES (Phones) --- */
 @media (max-width: 768px) {
   h1 { font-size: 2.5rem; }
   h2 { font-size: 1.75rem; }
+  
+  /* Stack and center hero banner */
   .hero-banner {
-    grid-template-columns: 1fr; /* Stack hero on mobile */
+    grid-template-columns: 1fr;
     text-align: center;
+    padding: 2rem 1.5rem;
   }
   .hero-banner-logo img {
     max-width: 200px;
   }
+  .hero-banner-content h1 {
+    font-size: 3rem; /* Smaller title */
+  }
   .hero-banner-content .btn-group {
-    justify-content: center;
+    justify-content: center; /* Center buttons */
   }
   
   .page-section {
@@ -921,9 +928,18 @@ strong {
   .timeline-item.right::after {
     left: 20px;
   }
+  
+  /* Hide unreadable image and print button on phones */
+  .stats-content-left img {
+    display: none;
+  }
+  .print-export-container {
+    display: none;
+  }
 }
 
 @media (max-width: 600px) {
+  /* Stack all grids */
   .team-grid-4col { grid-template-columns: 1fr; }
   .team-grid-2col { grid-template-columns: 1fr; }
   .team-grid-3col { grid-template-columns: 1fr; }
