@@ -1,4 +1,4 @@
-/* src/styles/App.css (FINAL v15 - Fixes Mobile Typo) */
+/* src/styles/App.css (FINAL v13 - Typo Fixed) */
 
 /* 1. Global Styles & CSS Variables */
 :root {
@@ -886,7 +886,7 @@ strong {
   }
 }
 
-/* --- MOBILE STYLES (Phones) --- */
+/* --- FIX: This is the correct mobile style block --- */
 @media (max-width: 768px) {
   h1 { font-size: 2.5rem; }
   h2 { font-size: 1.75rem; }
