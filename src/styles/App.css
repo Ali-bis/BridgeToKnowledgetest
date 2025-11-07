@@ -1,4 +1,4 @@
-/* src/styles/App.css (FINAL v12 - Fixes 4+2 Grid, Stats, Fonts) */
+/* src/styles/App.css (FINAL v15 - Mobile-Friendly) */
 
 /* 1. Global Styles & CSS Variables */
 :root {
@@ -886,7 +886,7 @@ strong {
   }
 }
 
-/* --- FIX: This is the correct mobile style block --- */
+/* --- THIS IS THE MOBILE FIX --- */
 @media (max-width: 768px) {
   h1 { font-size: 2.5rem; }
   h2 { font-size: 1.75rem; }
