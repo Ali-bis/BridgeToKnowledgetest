@@ -123,11 +123,9 @@ strong {
 }
 
 /* 3. Layout & Containers */
-/* 3. Layout & Containers */
 .container {
   max-width: 1100px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   padding: 2.5rem 1.5rem;
 }
 
@@ -156,7 +154,6 @@ strong {
   font-size: 1rem;
   text-align: center;
 }
-/* --- FIX: Button Colors --- */
 .btn-primary {
   background-color: var(--accent-color); /* Mustard */
   color: var(--primary-color);
@@ -341,7 +338,6 @@ strong {
 
 /* 7. Components */
 
-/* Placeholder Banner */
 /* Info Box */
 .info-box {
   background-color: #fffaf0; /* Light cream */
@@ -355,6 +351,14 @@ strong {
 }
 .info-box strong {
   color: var(--primary-color);
+}
+
+/* Print Export Button */
+.print-export-container {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
 }
 .print-export-btn {
   background-color: var(--primary-color);
@@ -397,7 +401,7 @@ strong {
 
 /* 8. Page-Specific */
 
-/* --- NEW: Hero Banner --- */
+/* Hero Banner */
 .hero-banner {
   display: grid;
   grid-template-columns: 1fr 2fr; /* Logo 1/3, Text 2/3 */
@@ -442,10 +446,10 @@ strong {
   font-family: var(--font-body);
   max-width: 60ch;
 }
-.hero { display: none; } /* Hides the old, broken hero */
+.hero { display: none; } /* Hides the old hero */
 
 
-/* --- FIX: Stats Section Elongation --- */
+/* Stats Section */
 .stats-section-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -454,7 +458,7 @@ strong {
   background-color: transparent;
   box-shadow: none;
   border: none;
-  align-items: start; /* This stops the boxes from stretching */
+  align-items: start;
 }
 .stats-content-left {
   background-color: var(--bg-color);
@@ -510,20 +514,19 @@ strong {
   display: block;
 }
 
-/* --- FIX: Team Grid Layout --- */
+/* Team Grid Layout */
 .team-grid {
   display: grid;
   gap: 1.5rem;
-  align-items: stretch; /* Makes all cards in a row the same height */
+  align-items: stretch;
 }
 .team-grid-4col {
   grid-template-columns: repeat(4, 1fr);
 }
 .team-grid-2col {
-  margin-top: 1.5rem; /* Space between the rows */
-  grid-template-columns: 1fr 3fr; /* Ayush gets 1 part, info box gets 3 */
+  margin-top: 1.5rem;
+  grid-template-columns: 1fr 3fr;
 }
-/* 3-column grid for advisors */
 .team-grid-3col {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -538,7 +541,7 @@ strong {
   transition: var(--transition);
   display: flex;
   flex-direction: column;
-  height: 100%; /* Make card fill the grid cell */
+  height: 100%;
 }
 .team-member:hover {
   transform: translateY(-5px);
@@ -579,7 +582,7 @@ strong {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%; /* Make card fill the grid cell */
+  height: 100%;
 }
 .team-description-box h3 {
   margin-top: 0;
