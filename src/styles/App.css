@@ -1,4 +1,4 @@
-/* src/styles/App.css (FINAL v15 - Mobile-Friendly) */
+/* src/styles/App.css (FINAL v16 - Mobile Header Fix) */
 
 /* 1. Global Styles & CSS Variables */
 :root {
@@ -888,6 +888,21 @@ strong {
 
 /* --- THIS IS THE MOBILE FIX --- */
 @media (max-width: 768px) {
+  /* --- NEW: Mobile Header Fix --- */
+  .header {
+    padding: 0.75rem 0; /* Make header shorter */
+  }
+  .logo img {
+    height: 35px; /* Make logo smaller */
+    margin-right: 0.75rem;
+  }
+  .logo-text h1 {
+    font-size: 1.2rem; /* Make title smaller */
+  }
+  .logo-text span {
+    font-size: 0.7rem; /* Make subtitle smaller */
+  }
+
   h1 { font-size: 2.5rem; }
   h2 { font-size: 1.75rem; }
   
