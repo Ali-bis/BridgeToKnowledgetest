@@ -1,0 +1,163 @@
+/* src/styles/Print.css */
+
+@media print {
+  /* Hide non-essential elements */
+  .header,
+  .footer,
+  .print-export-container,
+  .btn,
+  .btn-group,
+  .hero-cta,
+  .mobile-nav-toggle,
+  .skip-link,
+  .contact-form,
+  .placeholder-banner {
+    display: none !important;
+  }
+
+  /* Reset body styling for print */
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    color: #000;
+    background-color: #fff;
+    line-height: 1.5;
+    font-size: 12pt;
+  }
+
+  /* Ensure main content is visible */
+  #main-content {
+    min-height: auto;
+  }
+
+  /* Container and page setup */
+  .container {
+    max-width: 100%;
+    margin: 0;
+    padding: 1cm;
+  }
+  
+  /* Use A4 page size and margins */
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  /* Typography for print */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arial', sans-serif;
+    color: #000 !important;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    page-break-after: avoid;
+  }
+  h1 { font-size: 22pt; }
+  h2 { font-size: 18pt; border-bottom: 2px solid #000; padding-bottom: 4px; }
+  h3 { font-size: 14pt; color: #333 !important; }
+
+  p {
+    widows: 3;
+    orphans: 3;
+  }
+
+  /* Make links visible in print */
+  a {
+    color: #000 !important;
+    text-decoration: underline !important;
+  }
+  /* Show URL for external links */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    font-style: italic;
+  }
+  /* Don't show URL for internal page links */
+  a[href^="#"]::after,
+  a[href^="/"]::after {
+    content: "";
+  }
+  
+  /* Tables */
+  .bake-sale-table {
+    width: 100%;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    font-size: 10pt;
+    page-break-inside: avoid;
+  }
+  .bake-sale-table th, .bake-sale-table td {
+    border: 1px solid #000;
+    padding: 0.5rem;
+  }
+  .bake-sale-table thead {
+    background-color: #eee !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  /* Images */
+  .gallery-grid {
+    display: block;
+  }
+  .gallery-item, .hero img {
+    page-break-inside: avoid;
+    max-width: 80% !important; /* Make images smaller */
+    margin: 1rem auto;
+    display: block;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  .gallery-item img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  /* Timeline */
+  .timeline {
+    max-width: 100%;
+    margin: 0;
+  }
+  .timeline::after {
+    display: none;
+  }
+  .timeline-item,
+  .timeline-item.left,
+  .timeline-item.right {
+    width: 100%;
+    padding: 10px 0;
+    left: 0;
+    position: relative;
+    page-break-inside: avoid;
+  }
+  .timeline-item::after {
+    display: none;
+  }
+  .timeline-content {
+    background-color: #f9f9f9 !important;
+    border: 1px solid #ccc;
+    box-shadow: none;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+  
+  /* Sections */
+  .page-section {
+    border: none;
+    padding: 0;
+    page-break-before: always;
+  }
+  .page-section:first-child {
+    page-break-before: auto;
+  }
+  
+  blockquote, .research-source, .action-card {
+    background-color: #f9f9f9 !important;
+    border: 1px solid #ccc;
+    border-left: 4px solid #aaa;
+    padding: 1rem;
+    box-shadow: none;
+    page-break-inside: avoid;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}

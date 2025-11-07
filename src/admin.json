@@ -1,0 +1,76 @@
+{
+  "projectTitle": "Access to Quality Education in Mumbai",
+  "projectSubtitle": "GP Summit Project 2025",
+  "missionStatement": "Investigating and acting upon the disparity in the quality and accessibility of education for different backgrounds in Mumbai.",
+  "fundraiserUrl": "https://www.ketto.org/placeholder-link",
+  "fundraiserPlatform": "Ketto",
+  "socialMedia": {
+    "instagram": "https://www.instagram.com/bridge_to_knowledge_/",
+    "instagramHandle": "@bridge_to_knowledge_"
+  },
+  "ngoPartner": "TBD - In consultation with Ms. Deepti",
+  "team": [
+    {
+      "name": "Ali Malbari",
+      "role": "Primary Research (Private Schools), Bake Sale Logistics (Tang)",
+      "image": "/images/Ali.jpg"
+    },
+    {
+      "name": "Sumer Kothari",
+      "role": "Primary Research (BMC Schools), Social Media Lead, Bake Sale Logistics (Cookies)",
+      "image": "/images/Sumer.jpg"
+    },
+    {
+      "name": "Raghav Jatia",
+      "role": "Primary Research (BMC Schools), Bake Sale Proposal & Logistics (Popsicles)",
+      "image": "/images/Raghav.jpg"
+    },
+    {
+      "name": "Shai Variava",
+      "role": "Primary Research (BMC Schools), Social Media, Bake Sale Logistics (Brownies)",
+      "image": "/images/Shai.jpg"
+    },
+    {
+      "name": "Ayush Rao",
+      "role": "Primary Research (Private Schools), Bake Sale Logistics (Pizza)",
+      "image": "/images/Ayush.jpg"
+    }
+  ],
+  "advisors": [
+    {
+      "name": "Miss Samrajni",
+      "role": "GP Summit Project Advisor"
+    },
+    {
+      "name": "Ms. Deepti",
+      "role": "NGO & BMC School Liaison"
+    },
+    {
+      "name": "Miss Azmin",
+      "role": "Head of Student Life (Bake Sale Approval)"
+    }
+  ],
+  "gallery": [
+    {
+      "id": 1,
+      "src": "images/placeholder-gallery-1.png",
+      "caption": "Photo of school facilities [Placeholder].",
+      "category": "Public",
+      "permission": false
+    },
+    {
+      "id": 2,
+      "src": "images/placeholder-gallery-2.png",
+      "caption": "Students at our digital literacy workshop [Placeholder].",
+      "category": "Action",
+      "permission": false
+    },
+    {
+      "id": 3,
+      "src": "images/placeholder-team.png",
+      "caption": "The project team [Placeholder].",
+      "category": "Team",
+      "permission": true
+    }
+  ]
+}
