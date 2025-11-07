@@ -1,4 +1,4 @@
-/* src/styles/App.css (FINAL v15 - Mobile-Friendly) */
+/* src/styles/App.css (FINAL v15 - Fixes Mobile Typo) */
 
 /* 1. Global Styles & CSS Variables */
 :root {
@@ -893,7 +893,7 @@ strong {
   
   /* Stack and center hero banner */
   .hero-banner {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack hero on mobile */
     text-align: center;
     padding: 2rem 1.5rem;
   }
