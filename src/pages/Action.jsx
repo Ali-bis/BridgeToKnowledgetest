@@ -1,3 +1,5 @@
+// src/pages/Action.jsx
+
 import React from 'react';
 import PlaceholderBanner from '../components/PlaceholderBanner';
 
@@ -29,19 +31,11 @@ function Action({ data }) {
         </div>
       </section>
 
-      <section className="page-section">
-        <h2>Part 2: Resource Drives</h2>
-        <div className="action-card">
-          <h3>Book Drive</h3>
-          <p>We are organizing a book drive within our school to collect educational and story books for all age groups.</p>
-          <PlaceholderBanner>
-            We are in the process of partnering with an NGO (recommended by Ms. Deepti) to distribute these books effectively. Partner name and drop-off instructions will be posted here.
-          </PlaceholderBanner>
-        </div>
-      </section>
+      {/* The "Part 2: Resource Drives" section (which contained the Book Drive) has been removed.
+      */}
       
       <section className="page-section">
-        <h2>Part 3: Fundraising</h2>
+        <h2>Part 2: Fundraising</h2>
         <p>Our primary research identified a critical lack of access to technology. Our fundraising efforts are designed to provide devices (tablets) to students at under-resourced schools.</p>
         
         <div className="action-card">
