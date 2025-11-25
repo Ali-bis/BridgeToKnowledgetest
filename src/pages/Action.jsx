@@ -2,6 +2,8 @@
 
 import React from 'react';
 import PlaceholderBanner from '../components/PlaceholderBanner';
+import Carousel from '../components/Carousel'; // Import the new component
+import adminData from '../admin.json';
 
 function Action({ data }) {
   return (
@@ -15,7 +17,12 @@ function Action({ data }) {
 
       <section className="page-section">
         <h2>Part 1: Digital Literacy Workshops</h2>
-        <div className="action-card">
+        
+        {/* --- NEW CAROUSEL SECTION --- */}
+        <Carousel images={adminData.volunteerPhotos} />
+        {/* --------------------------- */}
+
+        <div className="action-card" style={{marginTop: "2rem"}}>
           <h3>Objective</h3>
           <p>To teach essential digital skills to students in public (BMC) schools to help solve the problem of access to quality digital education.</p>
           <h3>Lesson Plan</h3>
@@ -26,13 +33,10 @@ function Action({ data }) {
             <li><strong>Basic E-Skills:</strong> Safe searching, email etiquette, and using online forms.</li>
           </ul>
           <PlaceholderBanner>
-            Photos and student feedback from the workshops will be added to the <a href="/gallery">Gallery</a> after they are completed.
+            More student feedback from the workshops will be added here after they are completed.
           </PlaceholderBanner>
         </div>
       </section>
-
-      {/* The "Part 2: Resource Drives" section (which contained the Book Drive) has been removed.
-      */}
       
       <section className="page-section">
         <h2>Part 2: Fundraising</h2>
