@@ -76,17 +76,17 @@
   "volunteerPhotos": [
     {
       "id": 1,
-      "src": "/images/placeholder-gallery-1.png",
+      "src": "/images/vol1.jpg",
       "caption": "Teaching Canva basics to students at the BMC school."
     },
     {
       "id": 2,
-      "src": "/images/placeholder-gallery-2.png",
+      "src": "/images/vol2.jpg",
       "caption": "Our team setting up the laptops for the digital workshop."
     },
     {
       "id": 3,
-      "src": "/images/placeholder-team.png",
+      "src": "/images/vol3.jpg",
       "caption": "Group photo after a successful session."
     }
   ]
