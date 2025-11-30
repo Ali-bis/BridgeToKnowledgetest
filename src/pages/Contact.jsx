@@ -8,9 +8,8 @@ const Contact = () => {
         <p>Connect with us, support the cause, or reach out to our mentors.</p>
       </div>
 
-      {/* CONTACT & SOCIALS */}
       <div className="page-section">
-        <h2>CONTACT & SOCIALS</h2>
+        <h2>Contact & Socials</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
           
           <div className="highlight-card">
@@ -39,21 +38,20 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* ADVISORS SECTION */}
       <div className="page-section">
-        <h2>ADVISORS & MENTORS</h2>
+        <h2>Advisors & Mentors</h2>
         <p style={{ marginBottom: '2rem' }}>
           This project would not have been possible without the guidance and support of our teachers and school advisors.
         </p>
         
-        <div className="team-grid-2col" style={{ gridTemplateColumns: '1fr 1fr 1fr' }}> {/* Forced 3 col for advisors */}
+        <div className="team-grid-4col" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
           <div className="team-member">
             <h4>Miss Samrajni</h4>
             <p style={{ color: 'var(--text-muted)' }}>GP Summit Project Advisor</p>
           </div>
           <div className="team-member">
             <h4>Ms. Deepti</h4>
-            <p style={{ color: 'var(--text-muted)' }}>NGO & Municipal School Liaison</p>
+            <p style={{ color: 'var(--text-muted)' }}>NGO & BMC School Liaison</p>
           </div>
           <div className="team-member">
             <h4>Miss Azmin</h4>
