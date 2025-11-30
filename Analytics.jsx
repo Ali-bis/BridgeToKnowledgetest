@@ -5,18 +5,17 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const Analytics = () => {
-  // Use a key to force re-render charts on theme change
   const [chartKey, setChartKey] = useState(0);
 
+  // Force chart re-render on theme change
   useEffect(() => {
-    // This listener isn't strictly necessary if App passes props, but this is a simple hack to force update
     const observer = new MutationObserver(() => setChartKey(prev => prev + 1));
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     return () => observer.disconnect();
   }, []);
 
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-  const textColor = isLight ? '#0f172a' : '#f8fafc'; // Black text for light mode, White for dark
+  const textColor = isLight ? '#0f172a' : '#f8fafc';
 
   const classSizeData = {
     labels: ['< 25 Students', '25-35 Students', '> 45 Students'],
@@ -40,7 +39,7 @@ const Analytics = () => {
 
   const commonOptions = {
     responsive: true,
-    plugins: { legend: { position: 'bottom', labels: { color: textColor } } },
+    plugins: { legend: { position: 'bottom', labels: { color: textColor, font: { family: 'Inter' } } } },
     scales: {
       y: { ticks: { color: textColor }, grid: { color: isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)' } },
       x: { ticks: { color: textColor }, grid: { display: false } },
@@ -56,7 +55,6 @@ const Analytics = () => {
         </p>
       </div>
 
-      {/* Info Boxes */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
         <div className="highlight-card" style={{borderColor: 'var(--primary)'}}>
           <h3 style={{color: 'var(--primary)'}}>The Private Standard</h3>
@@ -68,7 +66,6 @@ const Analytics = () => {
         </div>
       </div>
 
-      {/* Charts */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
         <div className="page-section" style={{textAlign: 'center'}}>
           <h3>Class Size</h3>
