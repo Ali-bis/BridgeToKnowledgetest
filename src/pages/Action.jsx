@@ -22,17 +22,26 @@ const Action = () => {
         </p>
       </div>
 
-      {/* WORKSHOPS */}
+      {/* PART 1: WORKSHOPS */}
       <div className="page-section">
         <h2 style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', marginBottom: '2rem' }}>
           Part 1: Digital Literacy Workshops
         </h2>
         
-        <div className="highlight-card" style={{border: '2px dashed var(--primary)', background: 'transparent'}}>
-           <p style={{ color: 'var(--text-muted)' }}>[Image Carousel: Students learning Canva & PPT]</p>
+        <div style={{ 
+          background: 'var(--bg-body)', 
+          border: '2px dashed var(--primary)', 
+          borderRadius: '12px', 
+          height: '300px', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center', 
+          marginBottom: '2rem'
+        }}>
+          <p style={{ color: 'var(--text-muted)' }}>[Image Carousel: Students learning Canva & PPT]</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
           <div>
             <h3 style={{ color: 'var(--primary)' }}>Objective</h3>
             <p>To teach essential digital skills to students in our Partnered Municipal School to help solve the problem of access to quality digital education.</p>
@@ -48,7 +57,7 @@ const Action = () => {
         </div>
       </div>
 
-      {/* FUNDRAISING */}
+      {/* PART 2: FUNDRAISING */}
       <div className="page-section">
         <h2 style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', marginBottom: '2rem' }}>
           Part 2: Fundraising
@@ -56,24 +65,25 @@ const Action = () => {
         
         <div className="highlight-card">
           <h3 style={{ marginTop: 0 }}>Online Fundraiser</h3>
-          <p>We are preparing to launch an online fundraiser. These funds will be used to purchase tablets.</p>
+          <p>We are preparing to launch an online fundraiser. These funds will be used to purchase Soundbars and Projectors for the classrooms.</p>
           <button className="btn btn-disabled" style={{ marginTop: '1rem' }} disabled>
             Fundraiser Coming Soon
           </button>
         </div>
 
         <div style={{ marginTop: '3rem' }}>
-          <h3>Why Tablets?</h3>
+          <h3>Why Audio-Visual Equipment?</h3>
+          <p>Our research showed that while students were eager to learn, the lack of AV tools made teaching digital concepts difficult. Soundbars and projectors allow for:</p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '1rem' }}>
             <div className="highlight-card" style={{ flex: 1, marginBottom: 0 }}>
-              <h4>Lenovo Tab</h4>
-              <p style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 'bold' }}>₹9.5k</p>
-              <span style={{ color: '#22c55e', fontWeight: 'bold' }}>53% Discount</span>
+              <h4>Smart Projector</h4>
+              <p style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 'bold' }}>Visual Learning</p>
+              <p style={{ fontSize: '0.9rem' }}>Allows the entire class to see demonstrations clearly.</p>
             </div>
             <div className="highlight-card" style={{ flex: 1, marginBottom: 0 }}>
-              <h4>HONOR Pad</h4>
-              <p style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 'bold' }}>₹10k</p>
-              <span style={{ color: '#22c55e', fontWeight: 'bold' }}>50% Discount</span>
+              <h4>Soundbar</h4>
+              <p style={{ fontSize: '1.2rem', color: 'var(--primary)', fontWeight: 'bold' }}>Clear Audio</p>
+              <p style={{ fontSize: '0.9rem' }}>Essential for language learning and video tutorials.</p>
             </div>
           </div>
         </div>
