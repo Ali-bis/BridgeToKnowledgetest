@@ -11,14 +11,15 @@ const Header = ({ theme, toggleTheme }) => {
         {/* Logo */}
         <div className="logo">
           <Link to="/">
-            <img src="/logo.png" alt="Logo" /> 
+            {/* FIXED PATH: /images/logo.png */}
+            <img src="/images/logo.png" alt="Logo" /> 
             <div className="logo-text">
               <h1>BRIDGE TO KNOWLEDGE</h1>
             </div>
           </Link>
         </div>
 
-        {/* Nav Links (Always Visible) */}
+        {/* Nav Links */}
         <div style={{display:'flex', alignItems:'center'}}>
           <nav className="nav-menu">
             <ul>
