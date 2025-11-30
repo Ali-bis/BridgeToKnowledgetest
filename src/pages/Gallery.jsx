@@ -1,39 +1,27 @@
 import React from 'react';
-import PlaceholderBanner from '../components/PlaceholderBanner';
 
-function Gallery({ data }) {
+const Gallery = () => {
   return (
     <div className="container">
-      <section className="page-section">
-        <h2>Evidence Gallery</h2>
-        <p>
-          This gallery contains primary evidence (photographs) collected during our school visits. All images are used with permission.
-        </p>
-        <PlaceholderBanner>
-          More photos from our school visits and digital literacy workshops will be uploaded here as they are completed.
-        </PlaceholderBanner>
+      <div className="hero-banner">
+        <h1>GALLERY</h1>
+        <p>Moments from our journey.</p>
+      </div>
 
-        <div className="gallery-grid" style={{marginTop: '2rem'}}>
-          {data.gallery.map(item => (
-            <figure key={item.id} className="gallery-item">
-              <img src={item.src} alt={item.caption} />
-              <figcaption>
-                <p>{item.caption}</p>
-                <span><strong>Category:</strong> {item.category}</span>
-                <span><strong>Permission:</strong> {item.permission ? 'Obtained' : 'Pending'}</span>
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-        
-        <div className="btn-group" style={{marginTop: '2rem'}}>
-           <a href="#" className="btn btn-secondary" onClick={(e) => e.preventDefault()}>
-             Download Evidence Pack (ZIP) [Coming Soon]
-           </a>
-        </div>
-      </section>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
+        {/* Placeholder Images - Replace src with your real images later */}
+        {[1, 2, 3, 4, 5, 6].map((item) => (
+          <div key={item} style={{ background: '#1e293b', padding: '10px', borderRadius: '12px' }}>
+            <img 
+              src={`https://via.placeholder.com/300?text=Image+${item}`} 
+              alt="Gallery" 
+              style={{ width: '100%', borderRadius: '8px', display: 'block' }} 
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default Gallery;

@@ -1,0 +1,83 @@
+/* src/index.css - MASTER DESIGN */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary: #38bdf8;
+  --bg-dark: #0f172a;
+  --card-bg: #1e293b;
+  --text-main: #f8fafc;
+  --nav-height: 70px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+.skip-link { display: none !important; }
+
+/* HEADER */
+.header {
+  height: var(--nav-height);
+  background: rgba(15, 23, 42, 0.98);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+.header-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-menu ul { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+.nav-menu a { color: #94a3b8; text-decoration: none; text-transform: uppercase; font-weight: 600; font-size: 0.85rem; white-space: nowrap; }
+.nav-menu a:hover { color: var(--primary); }
+
+/* LOGO FIX */
+.logo a { text-decoration: none; display: flex; align-items: center; }
+.logo img { height: 40px; width: auto; margin-right: 12px; } /* Ensures logo fits */
+.logo-text h1 { font-family: 'Bebas Neue'; font-size: 1.5rem; color: #fff; margin: 0; white-space: nowrap; }
+
+/* LAYOUT */
+.container { max-width: 1100px; margin: 0 auto; padding: 3rem 1.5rem; }
+.hero-banner { text-align: center; margin-bottom: 3rem; padding: 3rem; background: rgba(56,189,248,0.05); border-radius: 16px; border: 1px solid #38bdf8; }
+.page-section { background: var(--card-bg); padding: 2.5rem; border-radius: 12px; margin-bottom: 2rem; border: 1px solid #334155; }
+h1 { font-family: 'Bebas Neue'; font-size: 3.5rem; color: #fff; margin-bottom: 1rem; }
+
+/* TEAM GRID FIX (Makes them sit side-by-side) */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* TEAM IMAGE FIX (Forces small circles) */
+.team-icon {
+  width: 150px;       /* Fixed Width */
+  height: 150px;      /* Fixed Height */
+  border-radius: 50%; /* Perfect Circle */
+  object-fit: cover;  /* Prevents Stretching */
+  border: 3px solid var(--primary);
+  display: block;
+  margin: 0 auto 1rem auto;
+}
+.team-member { text-align: center; background: #162032; padding: 2rem; border-radius: 12px; }
+
+/* FOOTER */
+.footer { background: #020617; padding: 3rem 1.5rem; margin-top: auto; border-top: 1px solid #1e293b; }
+.footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
+.footer ul { list-style: none; padding: 0; }
+.footer a { color: #94a3b8; text-decoration: none; }
+.btn { background: var(--primary); color: #0f172a; padding: 0.8rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; border: none; cursor: pointer; }

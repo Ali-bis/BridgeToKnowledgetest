@@ -12,26 +12,122 @@ const timelineEvents = [
   { date: "Nov 27, 2025", title: "Final Action Deadline", description: "Deadline for all research, action, and project documentation to be completed for the summit.", side: "left" },
 ];
 
-function Timeline() {
+const Timeline = () => {
   return (
     <div className="container">
-      <section className="page-section">
-        <h2>Project Timeline</h2>
-        <p>This timeline outlines our project's key milestones, from initial ideation to final action, based on our project log sheet.</p>
-        <div className="timeline">
-          {timelineEvents.map(event => (
-            <div key={event.title} className={`timeline-item ${event.side}`}>
-              <div className="timeline-content">
-                <time>{event.date}</time>
-                <h3>{event.title}</h3>
-                <p>{event.description}</p>
-              </div>
+      {/* Hero Header */}
+      <div className="hero-banner">
+        <h1>PROJECT TIMELINE</h1>
+        <p>Key milestones from ideation to final action.</p>
+      </div>
+
+      {/* Timeline Structure */}
+      <div className="timeline-container">
+        {timelineEvents.map((event, index) => (
+          <div key={index} className={`timeline-item ${event.side}`}>
+            <div className="timeline-content">
+              <time>{event.date}</time>
+              <h3>{event.title}</h3>
+              <p>{event.description}</p>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
+        ))}
+      </div>
+
+      {/* SCOPED CSS FOR TIMELINE VISUALS */}
+      <style>{`
+        .timeline-container {
+          position: relative;
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 20px 0;
+        }
+        /* Vertical Blue Line */
+        .timeline-container::after {
+          content: '';
+          position: absolute;
+          width: 4px;
+          background-color: #38bdf8; /* Neon Blue */
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          margin-left: -2px;
+          box-shadow: 0 0 10px #38bdf8;
+        }
+        
+        .timeline-item {
+          padding: 10px 40px;
+          position: relative;
+          width: 50%;
+          box-sizing: border-box;
+        }
+        
+        /* Positioning Left/Right */
+        .left { left: 0; }
+        .right { left: 50%; }
+        
+        /* The Glowing Dots */
+        .timeline-item::after {
+          content: '';
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          right: -10px;
+          background-color: #0f172a;
+          border: 4px solid #ec4899; /* Neon Pink */
+          top: 20px;
+          border-radius: 50%;
+          z-index: 1;
+          box-shadow: 0 0 10px #ec4899;
+        }
+        .right::after {
+          left: -10px;
+        }
+        
+        /* The Content Card */
+        .timeline-content {
+          padding: 25px;
+          background-color: #1e293b;
+          border-radius: 12px;
+          border: 1px solid rgba(255,255,255,0.05);
+          box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+          transition: transform 0.3s ease;
+        }
+        .timeline-content:hover {
+          transform: translateY(-5px);
+          border-color: #38bdf8;
+        }
+        
+        .timeline-content time {
+          display: block;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 1.2rem;
+          color: #ec4899;
+          margin-bottom: 5px;
+          letter-spacing: 1px;
+        }
+        .timeline-content h3 {
+          margin-top: 0;
+          color: #fff;
+          font-size: 1.4rem;
+          margin-bottom: 10px;
+        }
+        .timeline-content p {
+          margin: 0;
+          color: #94a3b8;
+          font-size: 0.95rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+          .timeline-container::after { left: 31px; }
+          .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+          .timeline-item::after { left: 21px; }
+          .left, .right { left: 0; }
+        }
+      `}</style>
     </div>
   );
-}
+};
 
 export default Timeline;

@@ -1,46 +1,52 @@
-// src/components/Header.jsx
-
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-function Header({ data }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+const Header = () => {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const location = useLocation();
+  const isActive = (path) => location.pathname === path ? 'active' : '';
 
   return (
     <header className="header">
       <div className="header-container">
+        {/* Logo Section */}
         <div className="logo">
-          <NavLink to="/">
-            <img src="/images/logo.png" alt="GP Summit Logo" />
-            <div className="logo-text">
-              <h1>{data.projectTitle}</h1>
-              <span>{data.projectSubtitle}</span>
-            </div>
-          </NavLink>
+          <Link to="/" onClick={() => setIsMobileNavOpen(false)}>
+            {/* LOGO IMAGE */}
+            <img 
+              src="/logo.png" 
+              alt="Bridge To Knowledge" 
+            /> 
+            <div className="logo-text"><h1>BRIDGE TO KNOWLEDGE</h1></div>
+          </Link>
         </div>
-        <button 
-          className="mobile-nav-toggle" 
-          aria-label="Toggle navigation" 
-          aria-expanded={menuOpen}
-          onClick={toggleMenu}
-        >
-          &#9776;
-        </button>
-        <nav className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+
+        {/* Navigation */}
+        <nav className="nav-menu">
           <ul>
-            <li><NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink></li>
-            <li><NavLink to="/about" onClick={() => setMenuOpen(false)}>About</NavLink></li>
-            <li><NavLink to="/timeline" onClick={() => setMenuOpen(false)}>Timeline</NavLink></li>
-            <li><NavLink to="/research" onClick={() => setMenuOpen(false)}>Research</NavLink></li>
-            <li><NavLink to="/action" onClick={() => setMenuOpen(false)}>Action</NavLink></li>
-            <li><NavLink to="/gallery" onClick={() => setMenuOpen(false)}>Gallery</NavLink></li>
-            <li><NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact & Advisors</NavLink></li>
+            <li><Link to="/" className={isActive('/')}>Home</Link></li>
+            <li><Link to="/about" className={isActive('/about')}>About</Link></li>
+            <li><Link to="/timeline" className={isActive('/timeline')}>Timeline</Link></li>
+            <li><Link to="/action" className={isActive('/action')}>Action</Link></li>
+            <li><Link to="/research" className={isActive('/research')}>Research</Link></li>
+            <li><Link to="/gallery" className={isActive('/gallery')}>Gallery</Link></li>
+            <li><Link to="/contact" className={isActive('/contact')}>Contact</Link></li>
+            <li><Link to="/analytics" className={isActive('/analytics')}>Analytics</Link></li>
           </ul>
         </nav>
+
+        <button className="mobile-nav-toggle" onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}>☰</button>
       </div>
+      
+      {/* Mobile Menu */}
+      {isMobileNavOpen && (
+        <div style={{ position: 'absolute', top: '70px', left: 0, width: '100%', background: '#0f172a', padding: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem', zIndex: 9999 }}>
+           <Link to="/" style={{color:'white'}}>Home</Link>
+           {/* Add other mobile links here if needed */}
+        </div>
+      )}
     </header>
   );
-}
+};
 
 export default Header;
