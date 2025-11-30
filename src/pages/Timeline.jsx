@@ -15,16 +15,16 @@ const timelineEvents = [
 const Timeline = () => {
   return (
     <div className="container">
-      {/* Hero Header */}
       <div className="hero-banner">
         <h1>PROJECT TIMELINE</h1>
         <p>Key milestones from ideation to final action.</p>
       </div>
 
-      {/* Timeline Structure */}
       <div className="timeline-container">
+        <div className="timeline-line"></div>
         {timelineEvents.map((event, index) => (
           <div key={index} className={`timeline-item ${event.side}`}>
+            <div className="timeline-dot"></div>
             <div className="timeline-content">
               <time>{event.date}</time>
               <h3>{event.title}</h3>
@@ -34,96 +34,77 @@ const Timeline = () => {
         ))}
       </div>
 
-      {/* SCOPED CSS FOR TIMELINE VISUALS */}
+      {/* STRICT CSS FOR PERFECT CENTERING */}
       <style>{`
         .timeline-container {
           position: relative;
-          max-width: 900px;
+          max-width: 1000px;
           margin: 0 auto;
           padding: 20px 0;
         }
-        /* Vertical Blue Line */
-        .timeline-container::after {
-          content: '';
+        /* The Vertical Line */
+        .timeline-line {
           position: absolute;
           width: 4px;
-          background-color: var(--primary); 
+          background-color: var(--primary);
           top: 0;
           bottom: 0;
           left: 50%;
-          margin-left: -2px;
-          box-shadow: 0 0 10px var(--primary);
+          transform: translateX(-50%); /* MATHEMATICALLY CENTERED */
+          box-shadow: 0 0 15px var(--primary);
         }
         
         .timeline-item {
-          padding: 10px 40px;
+          padding: 20px 0;
           position: relative;
           width: 50%;
           box-sizing: border-box;
+          clear: both;
         }
         
-        /* Positioning Left/Right */
-        .left { left: 0; }
-        .right { left: 50%; }
+        .timeline-item.left { float: left; text-align: right; padding-right: 60px; }
+        .timeline-item.right { float: right; text-align: left; padding-left: 60px; }
         
-        /* The Glowing Dots */
-        .timeline-item::after {
-          content: '';
+        /* The Dot */
+        .timeline-dot {
           position: absolute;
-          width: 20px;
-          height: 20px;
-          right: -10px;
+          width: 24px;
+          height: 24px;
           background-color: var(--bg-body);
-          border: 4px solid var(--accent); 
-          top: 20px;
+          border: 4px solid var(--accent);
           border-radius: 50%;
-          z-index: 1;
-          box-shadow: 0 0 10px var(--accent);
+          top: 25px;
+          z-index: 10;
+          box-shadow: 0 0 15px var(--accent);
         }
-        .right::after {
-          left: -10px;
-        }
-        
-        /* The Content Card */
+        /* Dot positioning relative to the item edge */
+        .timeline-item.left .timeline-dot { right: -12px; } /* Half of 24px width */
+        .timeline-item.right .timeline-dot { left: -12px; }
+
         .timeline-content {
-          padding: 25px;
           background-color: var(--bg-card);
-          border-radius: 12px;
+          padding: 25px;
+          border-radius: 16px;
           border: 1px solid var(--border-color);
-          box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-          transition: transform 0.3s ease;
-        }
-        .timeline-content:hover {
-          transform: translateY(-5px);
-          border-color: var(--primary);
-        }
-        
-        .timeline-content time {
-          display: block;
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.2rem;
-          color: var(--accent);
-          margin-bottom: 5px;
-          letter-spacing: 1px;
-        }
-        .timeline-content h3 {
-          margin-top: 0;
-          color: var(--text-main);
-          font-size: 1.4rem;
-          margin-bottom: 10px;
-        }
-        .timeline-content p {
-          margin: 0;
-          color: var(--text-muted);
-          font-size: 0.95rem;
+          box-shadow: var(--shadow);
         }
 
-        /* Mobile Responsiveness */
+        .timeline-content time {
+          display: block;
+          font-family: 'Bebas Neue';
+          font-size: 1.4rem;
+          color: var(--accent);
+          margin-bottom: 10px;
+        }
+        .timeline-content h3 { margin: 0 0 10px 0; color: var(--text-main); }
+        .timeline-content p { margin: 0; color: var(--text-muted); }
+
+        /* MOBILE STACK */
         @media (max-width: 768px) {
-          .timeline-container::after { left: 31px; }
-          .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
-          .timeline-item::after { left: 21px; }
-          .left, .right { left: 0; }
+          .timeline-line { left: 30px; transform: none; }
+          .timeline-item { width: 100%; float: none; padding-left: 70px; padding-right: 0; text-align: left; }
+          .timeline-item.left .timeline-dot, 
+          .timeline-item.right .timeline-dot { left: 18px; right: auto; }
         }
       `}</style>
     </div>
