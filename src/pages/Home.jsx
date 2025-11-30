@@ -6,17 +6,17 @@ const Home = () => {
     <div className="container">
       
       <section className="hero-banner">
-        {/* Logo Added */}
-        <img src="/images/logo.png" alt="Logo" style={{width: '100px', marginBottom: '1rem'}} />
+        {/* LOGO ADDED */}
+        <img src="/images/logo.png" alt="Logo" style={{width: '120px', marginBottom: '1.5rem', display: 'inline-block'}} />
         
         <h1 style={{ fontSize: '5rem', marginBottom: '0.5rem' }}>BRIDGE TO KNOWLEDGE</h1>
         
-        {/* Centered Text */}
-        <h2 style={{ fontSize: '1.5rem', fontFamily: 'Inter', color: 'var(--primary)', fontWeight: '400', letterSpacing: '2px', border: 'none', margin: '0 auto 1.5rem auto', textAlign: 'center' }}>
+        {/* CENTERED TEXT */}
+        <h2 style={{ fontSize: '1.5rem', fontFamily: 'Inter', color: 'var(--primary)', fontWeight: '400', letterSpacing: '2px', border: 'none', margin: '0 auto 1.5rem auto', textAlign: 'center', display: 'block' }}>
           BIS Global Perspectives Summit Project
         </h2>
         
-        <p style={{ maxWidth: '600px', margin: '1.5rem auto', color: 'var(--text-muted)' }}>
+        <p style={{ maxWidth: '600px', margin: '0 auto 2rem auto', color: 'var(--text-muted)' }}>
           Investigating and acting upon the disparity in the <strong>quality</strong> and <strong>accessibility</strong> of education for different backgrounds in Mumbai.
         </p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
