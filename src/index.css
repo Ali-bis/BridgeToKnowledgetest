@@ -4,30 +4,31 @@
   /* --- DARK THEME (Default) --- */
   --primary: #38bdf8;       /* Neon Blue */
   --accent: #ec4899;        /* Neon Pink */
-  --bg-body: #0f172a;       /* Deep Slate */
-  --bg-card: #1e293b;       /* Lighter Slate */
-  --text-main: #f8fafc;     /* White */
-  --text-muted: #94a3b8;    /* Light Grey */
+  --bg-body: #0f172a;       /* Deep Slate Background */
+  --bg-card: #1e293b;       /* Lighter Slate Card */
+  --text-main: #f8fafc;     /* White Text */
+  --text-muted: #94a3b8;    /* Grey Text */
   --border-color: rgba(255, 255, 255, 0.1);
   --shadow: 0 10px 30px rgba(0,0,0,0.3);
   --hero-tint: rgba(56, 189, 248, 0.05);
   
+  /* --- LAYOUT VARS --- */
   --nav-height: 70px;
-  --border-radius: 12px;
+  --border-radius: 16px; /* Increased for modern look */
   --transition: all 0.3s ease;
 }
 
-/* --- LIGHT THEME (High Contrast Fix) --- */
+/* --- LIGHT THEME (High Contrast Mode) --- */
 [data-theme='light'] {
-  --primary: #0066cc;       /* Deep Azure (Darker for readability) */
-  --accent: #d63384;        /* Darker Pink */
-  --bg-body: #dbeafe;       /* Very Light Blue (Contrast against white cards) */
-  --bg-card: #ffffff;       /* Pure White */
-  --text-main: #0f172a;     /* Deep Navy (High Contrast) */
-  --text-muted: #475569;    /* Dark Grey (Readable) */
+  --primary: #0056b3;       /* Deep Royal Blue (Better contrast on white) */
+  --accent: #d63384;        /* Deep Pink */
+  --bg-body: #e2e8f0;       /* Light Grey-Blue Background */
+  --bg-card: #ffffff;       /* Pure White Card */
+  --text-main: #0f172a;     /* Deep Navy Text */
+  --text-muted: #475569;    /* Slate Grey Text */
   --border-color: #cbd5e1;  
-  --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --hero-tint: rgba(255, 255, 255, 0.6);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --hero-tint: rgba(255, 255, 255, 0.7);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -56,7 +57,7 @@ ul { list-style: none; }
 .btn {
   display: inline-block;
   background: var(--primary);
-  color: #fff; /* Always white text for buttons */
+  color: #fff; /* Button text always white */
   padding: 0.8rem 2rem;
   border-radius: 50px;
   font-weight: 700;
@@ -64,8 +65,7 @@ ul { list-style: none; }
   cursor: pointer;
   transition: var(--transition);
 }
-[data-theme='light'] .btn { color: #fff; } /* Ensure white text in light mode */
-[data-theme='dark'] .btn { color: #0f172a; } /* Dark text on neon blue in dark mode */
+[data-theme='dark'] .btn { color: #0f172a; } /* Dark text on neon button in dark mode */
 
 .btn:hover { transform: translateY(-2px); opacity: 0.9; }
 
@@ -73,7 +73,7 @@ ul { list-style: none; }
 .btn-secondary:hover { background: var(--primary); color: var(--bg-body); }
 [data-theme='light'] .btn-secondary:hover { color: #fff; }
 
-.btn-disabled { background: var(--text-muted); cursor: not-allowed; opacity: 0.7; color: var(--bg-body); }
+.btn-disabled { background: var(--text-muted); cursor: not-allowed; opacity: 0.7; color: #fff; }
 
 /* HERO SECTION */
 .hero-banner {
@@ -87,6 +87,25 @@ ul { list-style: none; }
   backdrop-filter: blur(5px);
 }
 
+/* CARDS (Used everywhere) */
+.page-section, .team-member, .highlight-card, .team-description-box {
+  background: var(--bg-card); /* This ensures they turn WHITE in light mode */
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Special Highlight Card (for contrast inside sections) */
+.highlight-card {
+  background: var(--bg-body); /* Contrast against the card it sits in */
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+
 /* STATS SECTION */
 .stats-section-container {
   display: grid;
@@ -96,23 +115,9 @@ ul { list-style: none; }
   margin-bottom: 4rem;
 }
 
-.stats-content-left {
-  background: var(--bg-card);
-  padding: 2.5rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
-}
-.stats-content-left img {
-  width: 100%;
-  border-radius: 8px;
-  margin-top: 1.5rem;
-  border: 1px solid var(--border-color);
-}
-
 .stats-bar-right {
   background: var(--primary);
-  color: #fff; /* Always white text on the blue bar */
+  color: #fff;
   padding: 2.5rem;
   border-radius: var(--border-radius);
   display: flex;
@@ -132,35 +137,9 @@ ul { list-style: none; }
   font-family: 'Bebas Neue';
   display: block;
   line-height: 1;
-  color: #fff; /* Force white */
+  color: #fff;
 }
-[data-theme='light'] .stat-item-number { color: #fff; } /* Override default dark text */
 .stat-item-label { font-weight: 600; font-size: 1rem; opacity: 0.9; }
-
-/* PAGE SECTIONS & CARDS */
-.page-section {
-  background: var(--bg-card);
-  padding: 2.5rem;
-  border-radius: var(--border-radius);
-  margin-bottom: 2rem;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
-}
-
-/* Highlight Card (For Fundraiser/Important Info) */
-.highlight-card {
-  background: var(--bg-body); /* Contrast against the card */
-  padding: 2rem;
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
-  margin-bottom: 2rem;
-  text-align: center;
-}
-/* In Light Mode, highlight card needs to be slightly darker/distinct from white card */
-[data-theme='light'] .highlight-card {
-  background: #f1f5f9; /* Light Grey-Blue */
-  border-color: #cbd5e1;
-}
 
 /* TEAM GRID */
 .team-grid-4col {
@@ -173,15 +152,6 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1.5rem;
-}
-.team-member {
-  text-align: center;
-  background: var(--bg-card); /* White in Light Mode = CONTRAST FIX */
-  padding: 2rem;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--border-color);
-  transition: var(--transition);
-  box-shadow: var(--shadow);
 }
 .team-member:hover { border-color: var(--primary); transform: translateY(-5px); }
 
@@ -198,14 +168,10 @@ ul { list-style: none; }
 
 /* MISSION INFO BOX */
 .team-description-box {
-  background: var(--bg-card);
-  border: 2px solid var(--primary); /* Stronger border */
-  padding: 2.5rem;
-  border-radius: var(--border-radius);
+  border: 2px solid var(--primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: var(--shadow);
 }
 .team-description-box h3 { color: var(--accent); margin-top: 0; }
 .team-hashtag {
@@ -216,7 +182,7 @@ ul { list-style: none; }
   letter-spacing: 1px;
 }
 
-/* --- PERFECT TIMELINE CSS --- */
+/* --- PERFECT CENTERED TIMELINE --- */
 .timeline-container {
   position: relative;
   max-width: 900px;
@@ -232,8 +198,8 @@ ul { list-style: none; }
   background-color: var(--primary);
   top: 0;
   bottom: 0;
-  left: 50%; /* Perfect Center */
-  transform: translateX(-50%); /* Shift back by half width */
+  left: 50%;
+  margin-left: -2px; /* Perfectly centers the 4px line */
   box-shadow: 0 0 10px var(--primary);
 }
 
@@ -264,13 +230,13 @@ ul { list-style: none; }
 }
 
 /* Dot Positioning */
-.timeline-item.left::after { right: -10px; } /* Half of 20px width */
-.timeline-item.right::after { left: -10px; } /* Half of 20px width */
+.timeline-item.left::after { right: -12px; } /* 20px width / 2 = 10 + 2px border offset */
+.timeline-item.right::after { left: -12px; }
 
 /* Timeline Cards */
 .timeline-content {
   padding: 25px;
-  background-color: var(--bg-card);
+  background-color: var(--bg-card); /* Will turn WHITE in light mode */
   border-radius: 12px;
   border: 1px solid var(--border-color);
   transition: var(--transition);
@@ -286,7 +252,7 @@ ul { list-style: none; }
   margin-bottom: 0.5rem;
 }
 
-/* HEADER */
+/* HEADER & NAVIGATION */
 .header {
   height: var(--nav-height);
   background: var(--bg-card);
@@ -304,8 +270,12 @@ ul { list-style: none; }
   justify-content: space-between;
   align-items: center;
 }
-.nav-menu ul { display: flex; gap: 2rem; margin: 0; padding: 0; }
 
+/* HIDE DROPDOWN/HAMBURGER ON DESKTOP */
+.mobile-nav-toggle { display: none; }
+.nav-menu { display: block; }
+
+.nav-menu ul { display: flex; gap: 2rem; margin: 0; padding: 0; }
 .nav-menu a {
   color: var(--text-muted);
   text-transform: uppercase;
@@ -315,7 +285,6 @@ ul { list-style: none; }
   padding-bottom: 5px;
   transition: color 0.3s;
 }
-
 /* Hover Underline */
 .nav-menu a::after {
   content: '';
@@ -323,7 +292,7 @@ ul { list-style: none; }
   bottom: 0;
   left: 0;
   width: 0;
-  height: 3px;
+  height: 2px;
   background-color: var(--primary);
   transition: width 0.3s ease;
 }
@@ -339,6 +308,11 @@ ul { list-style: none; }
   cursor: pointer;
   margin-left: 1rem;
   font-size: 1.2rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* FOOTER */
@@ -351,18 +325,15 @@ ul { list-style: none; }
 }
 
 /* RESPONSIVE */
-@media (max-width: 900px) {
-  .stats-section-container, .team-grid-2col, .team-grid-4col {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 768px) {
+  .mobile-nav-toggle { display: block; background: none; border: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; }
+  .nav-menu { display: none; } /* Hidden on mobile unless opened via JS (not handled here but basic hiding works) */
   
-  /* Timeline Responsive */
-  .timeline-container::after { left: 30px; transform: none; }
+  .stats-section-container, .team-grid-2col, .team-grid-4col { grid-template-columns: 1fr; }
+  
+  /* Timeline Responsive Stack */
+  .timeline-container::after { left: 30px; margin-left: 0; }
   .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; text-align: left; }
   .timeline-item.left, .timeline-item.right { left: 0; }
   .timeline-item.left::after, .timeline-item.right::after { left: 20px; right: auto; }
-  
-  .header-container { padding: 0 1rem; }
-  .nav-menu { display: none; }
-  h1 { font-size: 2.5rem; }
 }
