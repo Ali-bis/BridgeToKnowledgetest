@@ -47,12 +47,12 @@ const Timeline = () => {
           content: '';
           position: absolute;
           width: 4px;
-          background-color: #38bdf8; /* Neon Blue */
+          background-color: var(--primary); 
           top: 0;
           bottom: 0;
           left: 50%;
           margin-left: -2px;
-          box-shadow: 0 0 10px #38bdf8;
+          box-shadow: 0 0 10px var(--primary);
         }
         
         .timeline-item {
@@ -73,12 +73,12 @@ const Timeline = () => {
           width: 20px;
           height: 20px;
           right: -10px;
-          background-color: #0f172a;
-          border: 4px solid #ec4899; /* Neon Pink */
+          background-color: var(--bg-body);
+          border: 4px solid var(--accent); 
           top: 20px;
           border-radius: 50%;
           z-index: 1;
-          box-shadow: 0 0 10px #ec4899;
+          box-shadow: 0 0 10px var(--accent);
         }
         .right::after {
           left: -10px;
@@ -87,34 +87,34 @@ const Timeline = () => {
         /* The Content Card */
         .timeline-content {
           padding: 25px;
-          background-color: #1e293b;
+          background-color: var(--bg-card);
           border-radius: 12px;
-          border: 1px solid rgba(255,255,255,0.05);
+          border: 1px solid var(--border-color);
           box-shadow: 0 4px 15px rgba(0,0,0,0.3);
           transition: transform 0.3s ease;
         }
         .timeline-content:hover {
           transform: translateY(-5px);
-          border-color: #38bdf8;
+          border-color: var(--primary);
         }
         
         .timeline-content time {
           display: block;
           font-family: 'Bebas Neue', sans-serif;
           font-size: 1.2rem;
-          color: #ec4899;
+          color: var(--accent);
           margin-bottom: 5px;
           letter-spacing: 1px;
         }
         .timeline-content h3 {
           margin-top: 0;
-          color: #fff;
+          color: var(--text-main);
           font-size: 1.4rem;
           margin-bottom: 10px;
         }
         .timeline-content p {
           margin: 0;
-          color: #94a3b8;
+          color: var(--text-muted);
           font-size: 0.95rem;
         }
 
