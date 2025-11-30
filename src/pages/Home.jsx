@@ -6,12 +6,12 @@ const Home = () => {
     <div className="container">
       
       <section className="hero-banner">
-        {/* LOGO ADDED */}
+        {/* Logo */}
         <img src="/images/logo.png" alt="Logo" style={{width: '120px', marginBottom: '1.5rem', display: 'inline-block'}} />
         
         <h1 style={{ fontSize: '5rem', marginBottom: '0.5rem' }}>BRIDGE TO KNOWLEDGE</h1>
         
-        {/* CENTERED TEXT */}
+        {/* Centered Text */}
         <h2 style={{ fontSize: '1.5rem', fontFamily: 'Inter', color: 'var(--primary)', fontWeight: '400', letterSpacing: '2px', border: 'none', margin: '0 auto 1.5rem auto', textAlign: 'center', display: 'block' }}>
           BIS Global Perspectives Summit Project
         </h2>
@@ -23,9 +23,11 @@ const Home = () => {
           <button className="btn btn-disabled" disabled>
             Fundraiser Coming Soon
           </button>
-          <Link to="/about" className="btn btn-secondary">
-            Meet the Team
-          </Link>
+          
+          {/* CHANGED: Instagram Link */}
+          <a href="https://www.instagram.com/bridge_to_knowledge_/" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+            Follow on Instagram
+          </a>
         </div>
       </section>
 
