@@ -9,7 +9,7 @@ import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import Research from './pages/Research';
 import Timeline from './pages/Timeline';
-import Analytics from './components/Analytics';
+import Analytics from './pages/Analytics';
 
 // Components
 import Header from './components/Header';
@@ -17,14 +17,12 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-  // Theme State
   const [theme, setTheme] = useState('dark');
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  // Apply theme to body
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
@@ -32,7 +30,6 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      {/* Pass theme props to Header */}
       <Header theme={theme} toggleTheme={toggleTheme} />
       
       <div className="main-content">
