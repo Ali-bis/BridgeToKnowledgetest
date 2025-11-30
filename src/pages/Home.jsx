@@ -6,10 +6,16 @@ const Home = () => {
     <div className="container">
       
       <section className="hero-banner">
+        {/* Logo Added */}
+        <img src="/images/logo.png" alt="Logo" style={{width: '100px', marginBottom: '1rem'}} />
+        
         <h1 style={{ fontSize: '5rem', marginBottom: '0.5rem' }}>BRIDGE TO KNOWLEDGE</h1>
-        <h2 style={{ fontSize: '1.5rem', fontFamily: 'Inter', color: 'var(--primary)', fontWeight: '400', letterSpacing: '2px', border: 'none', margin: 0 }}>
+        
+        {/* Centered Text */}
+        <h2 style={{ fontSize: '1.5rem', fontFamily: 'Inter', color: 'var(--primary)', fontWeight: '400', letterSpacing: '2px', border: 'none', margin: '0 auto 1.5rem auto', textAlign: 'center' }}>
           BIS Global Perspectives Summit Project
         </h2>
+        
         <p style={{ maxWidth: '600px', margin: '1.5rem auto', color: 'var(--text-muted)' }}>
           Investigating and acting upon the disparity in the <strong>quality</strong> and <strong>accessibility</strong> of education for different backgrounds in Mumbai.
         </p>
@@ -25,7 +31,7 @@ const Home = () => {
 
       <section className="stats-section-container">
         <div className="stats-content-left">
-          <h2 style={{fontSize: '2rem'}}>THE PROBLEM</h2>
+          <h2 style={{fontSize: '2rem', textAlign: 'left'}}>THE PROBLEM</h2>
           <p>
             Our research confirmed that "access" to school isn't the only problem. The real issue is a deep gap in the <strong>quality</strong> of education and a growing <strong>digital divide</strong>.
           </p>
