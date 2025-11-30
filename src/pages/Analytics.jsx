@@ -5,7 +5,6 @@ import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Toolti
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const Analytics = () => {
-  // Force re-render when theme changes
   const [chartKey, setChartKey] = useState(0);
 
   useEffect(() => {
@@ -17,44 +16,22 @@ const Analytics = () => {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   const textColor = isLight ? '#0f172a' : '#f8fafc';
 
-  // CHART OPTIONS: EVENTS = [] DISABLES INTERACTION
-  const staticChartOptions = {
-    events: [], // <--- THIS DISABLES HOVER AND CLICK
+  // STRICTLY DISABLE INTERACTIONS
+  const staticOptions = {
+    events: [], // Disables all hover/click events
     plugins: {
       legend: {
         position: 'bottom',
         labels: { color: textColor, font: { family: 'Inter' } },
       },
-      tooltip: { enabled: false } // Disable tooltips too if you want purely static
+      tooltip: { enabled: false }
     },
-    animation: { duration: 0 } // Instant load, no animation needed
+    animation: { duration: 0 }
   };
 
-  const classSizeData = {
-    labels: ['< 25 Students', '25-35 Students', '> 45 Students'],
-    datasets: [{
-      data: [70, 20, 10], 
-      // Changed 3rd color to Light Grey so it is visible against dark bg
-      backgroundColor: ['#38bdf8', '#0ea5e9', '#94a3b8'], 
-      borderColor: isLight ? '#ffffff' : '#1e293b',
-      borderWidth: 2,
-    }],
-  };
-
-  const resourceData = {
-    // NAME FIXED
-    labels: ['Private Schools', 'Partnered Municipal School'],
-    datasets: [{
-      label: 'Digital Access (%)',
-      data: [90, 10], 
-      backgroundColor: ['#ec4899', '#334155'], 
-      borderRadius: 6,
-    }],
-  };
-
-  // Merge options for Bar chart (needs scales)
+  // Bar Chart Options (Needs Scales)
   const barOptions = {
-    ...staticChartOptions,
+    ...staticOptions,
     scales: {
       y: { 
         ticks: { color: textColor }, 
@@ -65,6 +42,28 @@ const Analytics = () => {
         grid: { display: false } 
       },
     }
+  };
+
+  const classSizeData = {
+    labels: ['< 25 Students', '25-35 Students', '> 45 Students'],
+    datasets: [{
+      data: [70, 20, 10], 
+      // Fixed: Changed Black to Grey (#64748b) for visibility
+      backgroundColor: ['#38bdf8', '#0ea5e9', '#64748b'], 
+      borderColor: isLight ? '#ffffff' : '#1e293b',
+      borderWidth: 2,
+    }],
+  };
+
+  const resourceData = {
+    // Fixed: NAME CHANGED
+    labels: ['Private Schools', 'Partnered Municipal School'],
+    datasets: [{
+      label: 'Digital Access (%)',
+      data: [90, 10], 
+      backgroundColor: ['#ec4899', '#334155'], 
+      borderRadius: 6,
+    }],
   };
 
   return (
@@ -83,7 +82,7 @@ const Analytics = () => {
         </div>
         <div className="highlight-card" style={{borderColor: 'var(--accent)', textAlign: 'left'}}>
           <h3 style={{ color: 'var(--accent)' }}>The Public Reality</h3>
-          {/* NAME FIXED */}
+          {/* Fixed: NAME CHANGED */}
           <p><strong>Observation:</strong> The Partnered Municipal School faces a 90% deficit in personal tech access compared to private counterparts.</p>
         </div>
       </div>
@@ -92,7 +91,7 @@ const Analytics = () => {
         <div className="page-section" style={{textAlign: 'center'}}>
           <h3>Class Size</h3>
           <div style={{ height: '300px', display: 'flex', justifyContent: 'center' }}>
-            <Doughnut key={chartKey} data={classSizeData} options={staticChartOptions} />
+            <Doughnut key={chartKey} data={classSizeData} options={staticOptions} />
           </div>
         </div>
         <div className="page-section" style={{textAlign: 'center'}}>
