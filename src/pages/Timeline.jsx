@@ -21,8 +21,12 @@ const Timeline = () => {
       </div>
 
       <div className="timeline-container">
+        {/* The Vertical Center Line */}
+        <div className="center-line"></div>
+        
         {timelineEvents.map((event, index) => (
-          <div key={index} className={`timeline-item ${event.side}`}>
+          <div key={index} className={`timeline-row ${index % 2 === 0 ? 'left' : 'right'}`}>
+            <div className="timeline-dot"></div>
             <div className="timeline-content">
               <time>{event.date}</time>
               <h3>{event.title}</h3>
@@ -35,88 +39,128 @@ const Timeline = () => {
       <style>{`
         .timeline-container {
           position: relative;
-          max-width: 900px;
+          max-width: 1000px;
           margin: 0 auto;
-          padding: 20px 0;
+          padding: 40px 0;
+          display: flex;
+          flex-direction: column;
         }
-        /* FIXED CENTER LINE */
-        .timeline-container::after {
-          content: '';
+
+        /* The Fixed Center Line */
+        .center-line {
           position: absolute;
           width: 4px;
           background-color: var(--primary);
           top: 0;
           bottom: 0;
           left: 50%;
-          margin-left: -2px; /* MATHEMATICALLY CENTERED */
-          box-shadow: 0 0 10px var(--primary);
+          transform: translateX(-50%);
+          z-index: 1;
+          box-shadow: 0 0 15px var(--primary);
         }
-        
-        .timeline-item {
-          padding: 10px 40px;
+
+        /* Row Container (Holds the content and aligns it) */
+        .timeline-row {
+          display: flex;
+          width: 100%;
           position: relative;
-          width: 50%;
-          box-sizing: border-box;
+          margin-bottom: 40px;
         }
-        
-        .left { left: 0; text-align: right; }
-        .right { left: 50%; text-align: left; }
-        
-        /* THE DOTS */
-        .timeline-item::after {
-          content: '';
+
+        /* Left Side Alignment */
+        .timeline-row.left {
+          justify-content: flex-start;
+          padding-right: 50%; /* Push content to left half */
+        }
+        .timeline-row.left .timeline-content {
+          margin-left: auto; /* Push box towards center */
+          margin-right: 40px; /* Gap from line */
+          text-align: right;
+        }
+        /* Right Side Alignment */
+        .timeline-row.right {
+          justify-content: flex-end;
+          padding-left: 50%; /* Push content to right half */
+        }
+        .timeline-row.right .timeline-content {
+          margin-left: 40px; /* Gap from line */
+          margin-right: auto; /* Push box towards center */
+          text-align: left;
+        }
+
+        /* The Dot (Absolute Centered) */
+        .timeline-dot {
           position: absolute;
+          left: 50%;
           width: 20px;
           height: 20px;
           background-color: var(--bg-body);
           border: 4px solid var(--accent);
-          top: 20px;
           border-radius: 50%;
+          transform: translateX(-50%);
           z-index: 2;
+          top: 20px; /* Aligns with top of card */
           box-shadow: 0 0 10px var(--accent);
         }
-        /* Dot Alignment */
-        .left::after { right: -10px; } /* Half of 20px width */
-        .right::after { left: -10px; }
-        
+
+        /* Content Box */
         .timeline-content {
-          padding: 25px;
           background-color: var(--bg-card);
-          border-radius: 12px;
+          padding: 25px;
+          border-radius: 16px;
           border: 1px solid var(--border-color);
           box-shadow: var(--shadow);
+          width: 90%; /* Takes up most of the half-width */
+          position: relative;
           transition: transform 0.3s ease;
         }
         .timeline-content:hover {
           transform: translateY(-5px);
           border-color: var(--primary);
         }
-        
+
         .timeline-content time {
           display: block;
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 1.2rem;
+          font-family: 'Bebas Neue';
+          font-size: 1.4rem;
           color: var(--accent);
-          margin-bottom: 5px;
-          letter-spacing: 1px;
+          margin-bottom: 10px;
         }
         .timeline-content h3 {
-          margin-top: 0;
+          margin: 0 0 10px 0;
           color: var(--text-main);
-          font-size: 1.4rem;
-          margin-bottom: 10px;
+          font-size: 1.5rem;
         }
         .timeline-content p {
           margin: 0;
           color: var(--text-muted);
-          font-size: 0.95rem;
+          font-size: 1rem;
         }
 
+        /* Mobile: Stack Everything */
         @media (max-width: 768px) {
-          .timeline-container::after { left: 31px; margin-left: 0; }
-          .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
-          .timeline-item::after { left: 21px; right: auto; }
-          .left, .right { left: 0; }
+          .center-line {
+            left: 30px; /* Move line to left */
+            transform: none;
+          }
+          
+          .timeline-row {
+            width: 100%;
+            padding: 0 !important; /* Reset 50% paddings */
+            justify-content: flex-start !important;
+            padding-left: 60px !important; /* Space for line */
+          }
+          
+          .timeline-dot {
+            left: 30px; /* Align dot with new line pos */
+            transform: translateX(-50%);
+          }
+          
+          .timeline-content {
+            width: 100%;
+            margin: 0 !important;
+            text-align: left !important;
+          }
         }
       `}</style>
     </div>
