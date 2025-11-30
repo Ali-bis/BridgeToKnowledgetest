@@ -8,18 +8,18 @@ const Header = ({ theme, toggleTheme }) => {
   return (
     <header className="header">
       <div className="header-container">
-        {/* Logo */}
+        {/* Logo Section */}
         <div className="logo">
           <Link to="/">
-            {/* FIXED PATH: /images/logo.png */}
-            <img src="/images/logo.png" alt="Logo" /> 
+            {/* Ensure this file exists in public/images/logo.png */}
+            <img src="/images/logo.png" alt="Bridge To Knowledge Logo" /> 
             <div className="logo-text">
               <h1>BRIDGE TO KNOWLEDGE</h1>
             </div>
           </Link>
         </div>
 
-        {/* Nav Links */}
+        {/* Navigation - Always Visible */}
         <div style={{display:'flex', alignItems:'center'}}>
           <nav className="nav-menu">
             <ul>
