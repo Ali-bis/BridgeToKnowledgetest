@@ -4,27 +4,64 @@ const Contact = () => {
   return (
     <div className="container">
       <div className="hero-banner">
-        <h1>GET IN TOUCH</h1>
-        <p>Have questions or want to contribute? Reach out to us.</p>
+        <h1>GET INVOLVED</h1>
+        <p>Connect with us, support the cause, or reach out to our mentors.</p>
       </div>
 
-      <div className="page-section" style={{ maxWidth: '600px', margin: '0 auto' }}>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <div style={{ marginBottom: '1rem' }}>
-            <label style={{ display: 'block', color: 'white', marginBottom: '0.5rem' }}>Name</label>
-            <input type="text" style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: 'none' }} placeholder="Your Name" />
+      {/* CONTACT & SOCIALS */}
+      <div className="page-section">
+        <h2>CONTACT & SOCIALS</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
+          
+          <div className="highlight-card">
+            <h3>Follow Our Journey</h3>
+            <p>We are documenting our process and sharing facts on Instagram.</p>
+            <a href="https://www.instagram.com/bridge_to_knowledge_/" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+              @bridge_to_knowledge_
+            </a>
           </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <label style={{ display: 'block', color: 'white', marginBottom: '0.5rem' }}>Email</label>
-            <input type="email" style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: 'none' }} placeholder="Your Email" />
+
+          <div className="highlight-card">
+            <h3>Support Us</h3>
+            <p>The most direct way to help is by donating to our campaign.</p>
+            <button className="btn btn-disabled" disabled>
+              Fundraiser Coming Soon
+            </button>
           </div>
-          <div style={{ marginBottom: '1rem' }}>
-            <label style={{ display: 'block', color: 'white', marginBottom: '0.5rem' }}>Message</label>
-            <textarea rows="5" style={{ width: '100%', padding: '0.8rem', borderRadius: '8px', border: 'none' }} placeholder="How can we help?"></textarea>
+
+          <div className="highlight-card">
+            <h3>School Contact</h3>
+            <p>For official inquiries, please contact our project advisor.</p>
+            <p style={{ marginTop: '1rem', fontWeight: 'bold' }}>Miss Samrajni</p>
+            <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>GP Summit Project Advisor</span>
           </div>
-          <button className="btn" style={{ width: '100%' }}>Send Message</button>
-        </form>
+
+        </div>
       </div>
+
+      {/* ADVISORS SECTION */}
+      <div className="page-section">
+        <h2>ADVISORS & MENTORS</h2>
+        <p style={{ marginBottom: '2rem' }}>
+          This project would not have been possible without the guidance and support of our teachers and school advisors.
+        </p>
+        
+        <div className="team-grid-2col" style={{ gridTemplateColumns: '1fr 1fr 1fr' }}> {/* Forced 3 col for advisors */}
+          <div className="team-member">
+            <h4>Miss Samrajni</h4>
+            <p style={{ color: 'var(--text-muted)' }}>GP Summit Project Advisor</p>
+          </div>
+          <div className="team-member">
+            <h4>Ms. Deepti</h4>
+            <p style={{ color: 'var(--text-muted)' }}>NGO & Municipal School Liaison</p>
+          </div>
+          <div className="team-member">
+            <h4>Miss Azmin</h4>
+            <p style={{ color: 'var(--text-muted)' }}>Head of Student Life</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };
