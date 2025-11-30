@@ -18,7 +18,7 @@ const About = () => {
         <p style={{ color: 'var(--accent)' }}>The students behind the initiative.</p>
       </div>
 
-      {/* TOP ROW (First 4 Members) */}
+      {/* TOP ROW */}
       <div className="team-grid-4col">
         {team.slice(0, 4).map((member, index) => (
           <div key={index} className="team-member">
@@ -29,7 +29,7 @@ const About = () => {
         ))}
       </div>
 
-      {/* BOTTOM ROW (Ayush + Info Box) */}
+      {/* BOTTOM ROW */}
       <div className="team-grid-2col">
         {/* Ayush */}
         <div className="team-member">
@@ -49,10 +49,9 @@ const About = () => {
         </div>
       </div>
 
-      <div className="page-section" style={{ marginTop: '3rem', textAlign: 'center' }}>
-        <p style={{ color: 'var(--text-muted)', fontStyle: 'italic' }}>
-          *All research involving human subjects was conducted following strict ethical guidelines.
-        </p>
+      {/* Fixed Ethics Note */}
+      <div className="subtle-disclaimer">
+        *All research involving human subjects was conducted following strict ethical guidelines.
       </div>
 
     </div>
