@@ -16,12 +16,11 @@ const Analytics = () => {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   const textColor = isLight ? '#0f172a' : '#f8fafc';
 
-  // Disable clicking legend to hide elements
   const noClickLegend = {
     legend: {
       position: 'bottom',
       labels: { color: textColor, font: { family: 'Inter' } },
-      onClick: (e) => e.stopPropagation(), // Stops the default "hide" behavior
+      onClick: (e) => e.stopPropagation(),
     }
   };
 
@@ -29,13 +28,13 @@ const Analytics = () => {
     labels: ['< 25 Students', '25-35 Students', '> 45 Students'],
     datasets: [{
       data: [70, 20, 10], 
-      // Changed 3rd color to Light Grey (#94a3b8) so it is visible in dark mode
-      backgroundColor: ['#38bdf8', '#0ea5e9', '#94a3b8'], 
+      backgroundColor: ['#38bdf8', '#0ea5e9', '#94a3b8'], // Grey for visibility
       borderColor: isLight ? '#ffffff' : '#1e293b',
       borderWidth: 2,
     }],
   };
 
+  // FIXED LABELS: No Love Grove
   const resourceData = {
     labels: ['Private Schools', 'Partnered Municipal School'],
     datasets: [{
@@ -55,7 +54,6 @@ const Analytics = () => {
         </p>
       </div>
 
-      {/* Info Cards - Left Aligned Text */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
         <div className="highlight-card" style={{borderColor: 'var(--primary)', textAlign: 'left'}}>
           <h3 style={{color: 'var(--primary)'}}>The Private Standard</h3>
@@ -63,11 +61,11 @@ const Analytics = () => {
         </div>
         <div className="highlight-card" style={{borderColor: 'var(--accent)', textAlign: 'left'}}>
           <h3 style={{ color: 'var(--accent)' }}>The Public Reality</h3>
-          <p><strong>Observation:</strong> Our Partnered Municipal School faces a 90% deficit in personal tech access compared to private counterparts.</p>
+          {/* FIXED TEXT: No Love Grove */}
+          <p><strong>Observation:</strong> The Partnered Municipal School faces a 90% deficit in personal tech access compared to private counterparts.</p>
         </div>
       </div>
 
-      {/* Charts */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
         <div className="page-section" style={{textAlign: 'center'}}>
           <h3>Class Size</h3>
