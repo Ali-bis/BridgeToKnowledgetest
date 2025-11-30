@@ -7,7 +7,6 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend,
 const Analytics = () => {
   const [chartKey, setChartKey] = useState(0);
 
-  // Force chart re-render on theme change
   useEffect(() => {
     const observer = new MutationObserver(() => setChartKey(prev => prev + 1));
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
@@ -21,7 +20,8 @@ const Analytics = () => {
     labels: ['< 25 Students', '25-35 Students', '> 45 Students'],
     datasets: [{
       data: [70, 20, 10], 
-      backgroundColor: ['#38bdf8', '#0ea5e9', '#1e293b'], 
+      // Changed 3rd color to Grey (#64748b) for visibility
+      backgroundColor: ['#38bdf8', '#0ea5e9', '#64748b'], 
       borderColor: isLight ? '#ffffff' : '#0f172a',
       borderWidth: 2,
     }],
