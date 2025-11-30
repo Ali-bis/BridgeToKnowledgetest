@@ -1,92 +1,88 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Bar, Doughnut } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
 
-// Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const Analytics = () => {
-  // --- DATA FROM YOUR CSV & OBSERVATIONS ---
-  
-  // Chart 1: Class Size (Private Schools have small classes)
+  // Use a key to force re-render charts on theme change
+  const [chartKey, setChartKey] = useState(0);
+
+  useEffect(() => {
+    // This listener isn't strictly necessary if App passes props, but this is a simple hack to force update
+    const observer = new MutationObserver(() => setChartKey(prev => prev + 1));
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, []);
+
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  const textColor = isLight ? '#0f172a' : '#f8fafc'; // Black text for light mode, White for dark
+
   const classSizeData = {
     labels: ['< 25 Students', '25-35 Students', '> 45 Students'],
     datasets: [{
       data: [70, 20, 10], 
       backgroundColor: ['#38bdf8', '#0ea5e9', '#1e293b'], 
-      borderColor: '#0f172a',
+      borderColor: isLight ? '#ffffff' : '#0f172a',
       borderWidth: 2,
     }],
   };
 
-  // Chart 2: Device Access (The Gap)
   const resourceData = {
-    labels: ['Private Schools (Survey)', 'Love Grove MPS (Observed)'],
+    labels: ['Private Schools', 'Partnered Municipal School'],
     datasets: [{
-      label: 'Access to Personal Devices (%)',
+      label: 'Digital Access (%)',
       data: [90, 10], 
-      backgroundColor: ['#f472b6', '#334155'], 
-      borderRadius: 8,
+      backgroundColor: ['#ec4899', '#334155'], 
+      borderRadius: 6,
     }],
   };
 
   const commonOptions = {
     responsive: true,
-    plugins: {
-      legend: { position: 'bottom', labels: { color: '#e2e8f0', font: { family: 'Inter' } } },
-    },
+    plugins: { legend: { position: 'bottom', labels: { color: textColor } } },
     scales: {
-      y: { ticks: { color: '#94a3b8' }, grid: { color: 'rgba(255,255,255,0.05)' } },
-      x: { ticks: { color: '#94a3b8' }, grid: { display: false } },
+      y: { ticks: { color: textColor }, grid: { color: isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)' } },
+      x: { ticks: { color: textColor }, grid: { display: false } },
     },
   };
 
   return (
-    <div className="container" style={{paddingTop: '4rem'}}>
-      {/* Header */}
-      <div className="hero-banner" style={{ display: 'block', textAlign: 'center', marginBottom: '3rem' }}>
-        <h1 style={{ margin: 0, fontSize: '4rem' }}>IMPACT ANALYTICS</h1>
-        <p style={{ margin: '1rem auto', color: '#94a3b8' }}>Visualizing the "Bridge to Knowledge" Data Gap</p>
+    <div className="container">
+      <div className="hero-banner">
+        <h1>IMPACT ANALYTICS</h1>
+        <p style={{ maxWidth: '600px', margin: '1rem auto' }}>
+          Data-driven insights comparing Private Institutions vs. Public Reality.
+        </p>
       </div>
 
-      {/* Narrative Section */}
-      <section className="page-section">
-        <h2 style={{border: 'none', paddingLeft: 0}}>The Findings</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-          
-          <div className="info-box" style={{ background: 'rgba(56, 189, 248, 0.05)', borderColor: '#38bdf8' }}>
-            <h3 style={{ marginTop: 0, color: '#38bdf8' }}>Private Sector (Survey)</h3>
-            <p>Our survey of international schools reveals a resource-rich environment. <strong>70%</strong> of classes have fewer than 25 students, and <strong>90%</strong> of students have immediate access to personal laptops/tablets.</p>
-          </div>
-
-          <div className="info-box" style={{ background: 'rgba(244, 114, 182, 0.05)', borderColor: '#f472b6' }}>
-            <h3 style={{ marginTop: 0, color: '#f472b6' }}>Public Sector (Love Grove)</h3>
-            <p><strong>Observation:</strong> Despite high potential, students at Love Grove Pumping MPS face a critical lack of resources. A significant disparity was the language barrier: while designated English-Medium, the functional language remains Hindi.</p>
-          </div>
-        
+      {/* Info Boxes */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+        <div className="highlight-card" style={{borderColor: 'var(--primary)'}}>
+          <h3 style={{color: 'var(--primary)'}}>The Private Standard</h3>
+          <p><strong>70%</strong> of private classes have fewer than 25 students, allowing for personalized mentorship.</p>
         </div>
-      </section>
+        <div className="highlight-card" style={{borderColor: 'var(--accent)'}}>
+          <h3 style={{ color: 'var(--accent)' }}>The Public Reality</h3>
+          <p><strong>Observation:</strong> Our Partnered Municipal School faces a 90% deficit in personal tech access compared to private counterparts.</p>
+        </div>
+      </div>
 
-      {/* Charts Grid */}
-      <section style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
-        
-        <div className="page-section" style={{ margin: 0 }}>
-          <h3 style={{ marginTop: 0, textAlign: 'center' }}>Class Size Distribution</h3>
-          <p style={{ textAlign: 'center', fontSize: '0.9rem' }}>Private schools prioritize low student-teacher ratios.</p>
+      {/* Charts */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
+        <div className="page-section" style={{textAlign: 'center'}}>
+          <h3>Class Size</h3>
           <div style={{ height: '300px', display: 'flex', justifyContent: 'center' }}>
-            <Doughnut data={classSizeData} options={{ plugins: { legend: { labels: { color: 'white' } } } }} />
+            <Doughnut key={chartKey} data={classSizeData} options={{ plugins: { legend: { labels: { color: textColor } } } }} />
           </div>
         </div>
-
-        <div className="page-section" style={{ margin: 0 }}>
-          <h3 style={{ marginTop: 0, textAlign: 'center' }}>The Digital Divide</h3>
-          <p style={{ textAlign: 'center', fontSize: '0.9rem' }}>% of students with personal learning devices.</p>
+        <div className="page-section" style={{textAlign: 'center'}}>
+          <h3>Digital Access</h3>
           <div style={{ height: '300px' }}>
-            <Bar data={resourceData} options={commonOptions} />
+            <Bar key={chartKey} data={resourceData} options={commonOptions} />
           </div>
         </div>
-
-      </section>
+      </div>
     </div>
   );
 };
