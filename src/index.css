@@ -12,23 +12,22 @@
   --shadow: 0 10px 30px rgba(0,0,0,0.3);
   --hero-tint: rgba(56, 189, 248, 0.05);
   
-  /* --- LAYOUT VARS --- */
   --nav-height: 70px;
   --border-radius: 12px;
   --transition: all 0.3s ease;
 }
 
-/* --- LIGHT THEME OVERRIDES --- */
+/* --- LIGHT THEME (High Contrast Fix) --- */
 [data-theme='light'] {
-  --primary: #0072C6;       /* Azure Blue */
-  --accent: #f0a500;        /* Warm Mustard */
-  --bg-body: #c3dee8;       /* Soft Blue Grey */
+  --primary: #0066cc;       /* Deep Azure (Darker for readability) */
+  --accent: #d63384;        /* Darker Pink */
+  --bg-body: #dbeafe;       /* Very Light Blue (Contrast against white cards) */
   --bg-card: #ffffff;       /* Pure White */
-  --text-main: #212529;     /* Near Black */
-  --text-muted: #5a7c94;    /* Azure Grey */
-  --border-color: #d1dce1;  
+  --text-main: #0f172a;     /* Deep Navy (High Contrast) */
+  --text-muted: #475569;    /* Dark Grey (Readable) */
+  --border-color: #cbd5e1;  
   --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --hero-tint: rgba(255, 255, 255, 0.5);
+  --hero-tint: rgba(255, 255, 255, 0.6);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -57,8 +56,7 @@ ul { list-style: none; }
 .btn {
   display: inline-block;
   background: var(--primary);
-  /* Force dark text on buttons in Dark Mode for contrast, White text in Light Mode */
-  color: #0f172a; 
+  color: #fff; /* Always white text for buttons */
   padding: 0.8rem 2rem;
   border-radius: 50px;
   font-weight: 700;
@@ -66,12 +64,14 @@ ul { list-style: none; }
   cursor: pointer;
   transition: var(--transition);
 }
-[data-theme='light'] .btn { color: #fff; }
+[data-theme='light'] .btn { color: #fff; } /* Ensure white text in light mode */
+[data-theme='dark'] .btn { color: #0f172a; } /* Dark text on neon blue in dark mode */
 
 .btn:hover { transform: translateY(-2px); opacity: 0.9; }
 
 .btn-secondary { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
 .btn-secondary:hover { background: var(--primary); color: var(--bg-body); }
+[data-theme='light'] .btn-secondary:hover { color: #fff; }
 
 .btn-disabled { background: var(--text-muted); cursor: not-allowed; opacity: 0.7; color: var(--bg-body); }
 
@@ -84,9 +84,10 @@ ul { list-style: none; }
   border-radius: 24px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow);
+  backdrop-filter: blur(5px);
 }
 
-/* --- STATS SECTION (Restored Layout) --- */
+/* STATS SECTION */
 .stats-section-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -111,7 +112,7 @@ ul { list-style: none; }
 
 .stats-bar-right {
   background: var(--primary);
-  color: var(--bg-body);
+  color: #fff; /* Always white text on the blue bar */
   padding: 2.5rem;
   border-radius: var(--border-radius);
   display: flex;
@@ -119,11 +120,10 @@ ul { list-style: none; }
   justify-content: center;
   box-shadow: var(--shadow);
 }
-[data-theme='light'] .stats-bar-right { color: #fff; }
 
 .stat-item {
   margin-bottom: 2rem;
-  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
   padding-bottom: 1.5rem;
 }
 .stat-item:last-child { border-bottom: none; margin-bottom: 0; }
@@ -132,11 +132,37 @@ ul { list-style: none; }
   font-family: 'Bebas Neue';
   display: block;
   line-height: 1;
-  color: #fff;
+  color: #fff; /* Force white */
 }
-.stat-item-label { font-weight: 600; font-size: 1rem; }
+[data-theme='light'] .stat-item-number { color: #fff; } /* Override default dark text */
+.stat-item-label { font-weight: 600; font-size: 1rem; opacity: 0.9; }
 
-/* --- TEAM GRID --- */
+/* PAGE SECTIONS & CARDS */
+.page-section {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+/* Highlight Card (For Fundraiser/Important Info) */
+.highlight-card {
+  background: var(--bg-body); /* Contrast against the card */
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+/* In Light Mode, highlight card needs to be slightly darker/distinct from white card */
+[data-theme='light'] .highlight-card {
+  background: #f1f5f9; /* Light Grey-Blue */
+  border-color: #cbd5e1;
+}
+
+/* TEAM GRID */
 .team-grid-4col {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -150,11 +176,12 @@ ul { list-style: none; }
 }
 .team-member {
   text-align: center;
-  background: var(--bg-body);
+  background: var(--bg-card); /* White in Light Mode = CONTRAST FIX */
   padding: 2rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   transition: var(--transition);
+  box-shadow: var(--shadow);
 }
 .team-member:hover { border-color: var(--primary); transform: translateY(-5px); }
 
@@ -166,18 +193,19 @@ ul { list-style: none; }
   border: 3px solid var(--primary);
   margin: 0 auto 1rem auto;
   padding: 3px;
-  background: var(--bg-card);
+  background: var(--bg-body);
 }
 
-/* --- INFO BOX --- */
+/* MISSION INFO BOX */
 .team-description-box {
   background: var(--bg-card);
-  border: 1px solid var(--accent);
+  border: 2px solid var(--primary); /* Stronger border */
   padding: 2.5rem;
   border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-shadow: var(--shadow);
 }
 .team-description-box h3 { color: var(--accent); margin-top: 0; }
 .team-hashtag {
@@ -188,17 +216,77 @@ ul { list-style: none; }
   letter-spacing: 1px;
 }
 
-/* PAGE SECTIONS */
-.page-section {
-  background: var(--bg-card);
-  padding: 2.5rem;
-  border-radius: var(--border-radius);
-  margin-bottom: 2rem;
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow);
+/* --- PERFECT TIMELINE CSS --- */
+.timeline-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 0;
 }
 
-/* --- HEADER & NAVIGATION --- */
+/* The Vertical Line */
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: var(--primary);
+  top: 0;
+  bottom: 0;
+  left: 50%; /* Perfect Center */
+  transform: translateX(-50%); /* Shift back by half width */
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+/* Left items */
+.timeline-item.left { left: 0; text-align: right; padding-right: 60px; }
+/* Right items */
+.timeline-item.right { left: 50%; text-align: left; padding-left: 60px; }
+
+/* The Dots */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: var(--bg-body);
+  border: 4px solid var(--accent);
+  border-radius: 50%;
+  top: 24px;
+  z-index: 2;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* Dot Positioning */
+.timeline-item.left::after { right: -10px; } /* Half of 20px width */
+.timeline-item.right::after { left: -10px; } /* Half of 20px width */
+
+/* Timeline Cards */
+.timeline-content {
+  padding: 25px;
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+.timeline-content:hover { transform: scale(1.02); border-color: var(--primary); }
+.timeline-content time {
+  display: block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+/* HEADER */
 .header {
   height: var(--nav-height);
   background: var(--bg-card);
@@ -223,40 +311,37 @@ ul { list-style: none; }
   text-transform: uppercase;
   font-weight: 600;
   font-size: 0.85rem;
-  position: relative; /* Needed for the underline */
+  position: relative;
   padding-bottom: 5px;
+  transition: color 0.3s;
 }
 
-/* THE SLIDING UNDERLINE EFFECT */
+/* Hover Underline */
 .nav-menu a::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
-  height: 2px;
+  height: 3px;
   background-color: var(--primary);
   transition: width 0.3s ease;
 }
 .nav-menu a:hover, .nav-menu a.active { color: var(--primary); }
-.nav-menu a:hover::after, .nav-menu a.active::after {
-  width: 100%;
-}
+.nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
 
-/* Theme Toggle Button */
 .theme-toggle {
-  background: none;
+  background: transparent;
   border: 1px solid var(--border-color);
   color: var(--text-main);
   padding: 0.5rem;
   border-radius: 50%;
   cursor: pointer;
   margin-left: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 1.2rem;
 }
 
+/* FOOTER */
 .footer {
   background: var(--bg-card);
   padding: 4rem 1.5rem 2rem;
@@ -270,6 +355,13 @@ ul { list-style: none; }
   .stats-section-container, .team-grid-2col, .team-grid-4col {
     grid-template-columns: 1fr;
   }
+  
+  /* Timeline Responsive */
+  .timeline-container::after { left: 30px; transform: none; }
+  .timeline-item { width: 100%; padding-left: 70px; padding-right: 0; text-align: left; }
+  .timeline-item.left, .timeline-item.right { left: 0; }
+  .timeline-item.left::after, .timeline-item.right::after { left: 20px; right: auto; }
+  
   .header-container { padding: 0 1rem; }
   .nav-menu { display: none; }
   h1 { font-size: 2.5rem; }
