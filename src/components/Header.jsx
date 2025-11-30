@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Header = ({ theme, toggleTheme }) => {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const location = useLocation();
   const isActive = (path) => location.pathname === path ? 'active' : '';
 
@@ -11,15 +10,15 @@ const Header = ({ theme, toggleTheme }) => {
       <div className="header-container">
         {/* Logo */}
         <div className="logo">
-          <Link to="/" onClick={() => setIsMobileNavOpen(false)} style={{display:'flex', alignItems:'center'}}>
-            <img src="/logo.png" alt="Logo" style={{height:'40px', marginRight:'10px'}} /> 
+          <Link to="/">
+            <img src="/logo.png" alt="Logo" /> 
             <div className="logo-text">
-              <h1 style={{fontSize:'1.5rem', margin:0}}>BRIDGE TO KNOWLEDGE</h1>
+              <h1>BRIDGE TO KNOWLEDGE</h1>
             </div>
           </Link>
         </div>
 
-        {/* Desktop Nav + Theme Toggle */}
+        {/* Nav Links (Always Visible) */}
         <div style={{display:'flex', alignItems:'center'}}>
           <nav className="nav-menu">
             <ul>
@@ -37,20 +36,8 @@ const Header = ({ theme, toggleTheme }) => {
           <button onClick={toggleTheme} className="theme-toggle" title="Switch Theme">
             {theme === 'dark' ? '☀️' : '🌙'}
           </button>
-
-          <button className="mobile-nav-toggle" style={{marginLeft:'1rem'}} onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}>☰</button>
         </div>
       </div>
-      
-      {/* Mobile Menu */}
-      {isMobileNavOpen && (
-        <div style={{ position: 'absolute', top: '70px', left: 0, width: '100%', background: 'var(--bg-card)', padding: '1rem', borderBottom: '1px solid var(--border-color)', display: 'flex', flexDirection: 'column', gap: '1rem', zIndex: 9999 }}>
-           <Link to="/" onClick={() => setIsMobileNavOpen(false)}>Home</Link>
-           <Link to="/about" onClick={() => setIsMobileNavOpen(false)}>About</Link>
-           <Link to="/action" onClick={() => setIsMobileNavOpen(false)}>Action</Link>
-           <Link to="/analytics" onClick={() => setIsMobileNavOpen(false)}>Analytics</Link>
-        </div>
-      )}
     </header>
   );
 };
