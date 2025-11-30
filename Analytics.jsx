@@ -16,13 +16,22 @@ const Analytics = () => {
   const isLight = document.documentElement.getAttribute('data-theme') === 'light';
   const textColor = isLight ? '#0f172a' : '#f8fafc';
 
+  // Disable clicking legend to hide elements
+  const noClickLegend = {
+    legend: {
+      position: 'bottom',
+      labels: { color: textColor, font: { family: 'Inter' } },
+      onClick: (e) => e.stopPropagation(), // Stops the default "hide" behavior
+    }
+  };
+
   const classSizeData = {
     labels: ['< 25 Students', '25-35 Students', '> 45 Students'],
     datasets: [{
       data: [70, 20, 10], 
-      // Changed 3rd color to Grey (#64748b) for visibility
-      backgroundColor: ['#38bdf8', '#0ea5e9', '#64748b'], 
-      borderColor: isLight ? '#ffffff' : '#0f172a',
+      // Changed 3rd color to Light Grey (#94a3b8) so it is visible in dark mode
+      backgroundColor: ['#38bdf8', '#0ea5e9', '#94a3b8'], 
+      borderColor: isLight ? '#ffffff' : '#1e293b',
       borderWidth: 2,
     }],
   };
@@ -37,15 +46,6 @@ const Analytics = () => {
     }],
   };
 
-  const commonOptions = {
-    responsive: true,
-    plugins: { legend: { position: 'bottom', labels: { color: textColor, font: { family: 'Inter' } } } },
-    scales: {
-      y: { ticks: { color: textColor }, grid: { color: isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)' } },
-      x: { ticks: { color: textColor }, grid: { display: false } },
-    },
-  };
-
   return (
     <div className="container">
       <div className="hero-banner">
@@ -55,28 +55,30 @@ const Analytics = () => {
         </p>
       </div>
 
+      {/* Info Cards - Left Aligned Text */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
-        <div className="highlight-card" style={{borderColor: 'var(--primary)'}}>
+        <div className="highlight-card" style={{borderColor: 'var(--primary)', textAlign: 'left'}}>
           <h3 style={{color: 'var(--primary)'}}>The Private Standard</h3>
           <p><strong>70%</strong> of private classes have fewer than 25 students, allowing for personalized mentorship.</p>
         </div>
-        <div className="highlight-card" style={{borderColor: 'var(--accent)'}}>
+        <div className="highlight-card" style={{borderColor: 'var(--accent)', textAlign: 'left'}}>
           <h3 style={{ color: 'var(--accent)' }}>The Public Reality</h3>
           <p><strong>Observation:</strong> Our Partnered Municipal School faces a 90% deficit in personal tech access compared to private counterparts.</p>
         </div>
       </div>
 
+      {/* Charts */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
         <div className="page-section" style={{textAlign: 'center'}}>
           <h3>Class Size</h3>
           <div style={{ height: '300px', display: 'flex', justifyContent: 'center' }}>
-            <Doughnut key={chartKey} data={classSizeData} options={{ plugins: { legend: { labels: { color: textColor } } } }} />
+            <Doughnut key={chartKey} data={classSizeData} options={{ plugins: noClickLegend }} />
           </div>
         </div>
         <div className="page-section" style={{textAlign: 'center'}}>
           <h3>Digital Access</h3>
           <div style={{ height: '300px' }}>
-            <Bar key={chartKey} data={resourceData} options={commonOptions} />
+            <Bar key={chartKey} data={resourceData} options={{ ...{plugins: noClickLegend}, scales: { y: { ticks: { color: textColor }, grid: { color: 'rgba(100,100,100,0.1)' } }, x: { ticks: { color: textColor }, grid: { display: false } } } }} />
           </div>
         </div>
       </div>
