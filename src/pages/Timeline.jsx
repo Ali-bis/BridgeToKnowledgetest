@@ -21,10 +21,8 @@ const Timeline = () => {
       </div>
 
       <div className="timeline-container">
-        <div className="timeline-line"></div>
         {timelineEvents.map((event, index) => (
           <div key={index} className={`timeline-item ${event.side}`}>
-            <div className="timeline-dot"></div>
             <div className="timeline-content">
               <time>{event.date}</time>
               <h3>{event.title}</h3>
@@ -34,77 +32,91 @@ const Timeline = () => {
         ))}
       </div>
 
-      {/* STRICT CSS FOR PERFECT CENTERING */}
       <style>{`
         .timeline-container {
           position: relative;
-          max-width: 1000px;
+          max-width: 900px;
           margin: 0 auto;
           padding: 20px 0;
         }
-        /* The Vertical Line */
-        .timeline-line {
+        /* FIXED CENTER LINE */
+        .timeline-container::after {
+          content: '';
           position: absolute;
           width: 4px;
           background-color: var(--primary);
           top: 0;
           bottom: 0;
           left: 50%;
-          transform: translateX(-50%); /* MATHEMATICALLY CENTERED */
-          box-shadow: 0 0 15px var(--primary);
+          margin-left: -2px; /* MATHEMATICALLY CENTERED */
+          box-shadow: 0 0 10px var(--primary);
         }
         
         .timeline-item {
-          padding: 20px 0;
+          padding: 10px 40px;
           position: relative;
           width: 50%;
           box-sizing: border-box;
-          clear: both;
         }
         
-        .timeline-item.left { float: left; text-align: right; padding-right: 60px; }
-        .timeline-item.right { float: right; text-align: left; padding-left: 60px; }
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; text-align: left; }
         
-        /* The Dot */
-        .timeline-dot {
+        /* THE DOTS */
+        .timeline-item::after {
+          content: '';
           position: absolute;
-          width: 24px;
-          height: 24px;
+          width: 20px;
+          height: 20px;
           background-color: var(--bg-body);
           border: 4px solid var(--accent);
+          top: 20px;
           border-radius: 50%;
-          top: 25px;
-          z-index: 10;
-          box-shadow: 0 0 15px var(--accent);
+          z-index: 2;
+          box-shadow: 0 0 10px var(--accent);
         }
-        /* Dot positioning relative to the item edge */
-        .timeline-item.left .timeline-dot { right: -12px; } /* Half of 24px width */
-        .timeline-item.right .timeline-dot { left: -12px; }
-
+        /* Dot Alignment */
+        .left::after { right: -10px; } /* Half of 20px width */
+        .right::after { left: -10px; }
+        
         .timeline-content {
-          background-color: var(--bg-card);
           padding: 25px;
-          border-radius: 16px;
+          background-color: var(--bg-card);
+          border-radius: 12px;
           border: 1px solid var(--border-color);
           box-shadow: var(--shadow);
+          transition: transform 0.3s ease;
         }
-
+        .timeline-content:hover {
+          transform: translateY(-5px);
+          border-color: var(--primary);
+        }
+        
         .timeline-content time {
           display: block;
-          font-family: 'Bebas Neue';
-          font-size: 1.4rem;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 1.2rem;
           color: var(--accent);
+          margin-bottom: 5px;
+          letter-spacing: 1px;
+        }
+        .timeline-content h3 {
+          margin-top: 0;
+          color: var(--text-main);
+          font-size: 1.4rem;
           margin-bottom: 10px;
         }
-        .timeline-content h3 { margin: 0 0 10px 0; color: var(--text-main); }
-        .timeline-content p { margin: 0; color: var(--text-muted); }
+        .timeline-content p {
+          margin: 0;
+          color: var(--text-muted);
+          font-size: 0.95rem;
+        }
 
-        /* MOBILE STACK */
         @media (max-width: 768px) {
-          .timeline-line { left: 30px; transform: none; }
-          .timeline-item { width: 100%; float: none; padding-left: 70px; padding-right: 0; text-align: left; }
-          .timeline-item.left .timeline-dot, 
-          .timeline-item.right .timeline-dot { left: 18px; right: auto; }
+          .timeline-container::after { left: 31px; margin-left: 0; }
+          .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left; }
+          .timeline-item::after { left: 21px; right: auto; }
+          .left, .right { left: 0; }
         }
       `}</style>
     </div>
