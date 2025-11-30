@@ -8,18 +8,15 @@ const Header = ({ theme, toggleTheme }) => {
   return (
     <header className="header">
       <div className="header-container">
-        {/* Logo Section */}
         <div className="logo">
-          <Link to="/">
-            {/* Ensure this file exists in public/images/logo.png */}
-            <img src="/images/logo.png" alt="Bridge To Knowledge Logo" /> 
+          <Link to="/" style={{display:'flex', alignItems:'center'}}>
+            <img src="/images/logo.png" alt="Logo" /> 
             <div className="logo-text">
               <h1>BRIDGE TO KNOWLEDGE</h1>
             </div>
           </Link>
         </div>
 
-        {/* Navigation - Always Visible */}
         <div style={{display:'flex', alignItems:'center'}}>
           <nav className="nav-menu">
             <ul>
@@ -30,10 +27,11 @@ const Header = ({ theme, toggleTheme }) => {
               <li><Link to="/research" className={isActive('/research')}>Research</Link></li>
               <li><Link to="/gallery" className={isActive('/gallery')}>Gallery</Link></li>
               <li><Link to="/analytics" className={isActive('/analytics')}>Analytics</Link></li>
+              {/* Ensure Contact is here */}
+              <li><Link to="/contact" className={isActive('/contact')}>Contact</Link></li>
             </ul>
           </nav>
 
-          {/* Theme Button */}
           <button onClick={toggleTheme} className="theme-toggle" title="Switch Theme">
             {theme === 'dark' ? '☀️' : '🌙'}
           </button>
