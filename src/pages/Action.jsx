@@ -22,26 +22,17 @@ const Action = () => {
         </p>
       </div>
 
-      {/* PART 1: WORKSHOPS */}
+      {/* WORKSHOPS */}
       <div className="page-section">
         <h2 style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', marginBottom: '2rem' }}>
           Part 1: Digital Literacy Workshops
         </h2>
         
-        <div style={{ 
-          background: 'var(--bg-body)', 
-          border: '2px dashed var(--primary)', 
-          borderRadius: '12px', 
-          height: '300px', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center', 
-          marginBottom: '2rem'
-        }}>
-          <p style={{ color: 'var(--text-muted)' }}>[Image Carousel: Students learning Canva & PPT]</p>
+        <div className="highlight-card" style={{border: '2px dashed var(--primary)', background: 'transparent'}}>
+           <p style={{ color: 'var(--text-muted)' }}>[Image Carousel: Students learning Canva & PPT]</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginTop: '2rem' }}>
           <div>
             <h3 style={{ color: 'var(--primary)' }}>Objective</h3>
             <p>To teach essential digital skills to students in our Partnered Municipal School to help solve the problem of access to quality digital education.</p>
@@ -57,7 +48,7 @@ const Action = () => {
         </div>
       </div>
 
-      {/* PART 2: FUNDRAISING */}
+      {/* FUNDRAISING */}
       <div className="page-section">
         <h2 style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem', marginBottom: '2rem' }}>
           Part 2: Fundraising
