@@ -1,12 +1,33 @@
 import React from 'react';
 
 const About = () => {
+  // UPDATED ROLES FROM YOUR REQUEST
   const team = [
-    { name: "Ali Malbari", role: "Primary Research (Private Schools)", img: "/images/Ali.jpg" },
-    { name: "Sumer Kothari", role: "Primary Research (BMC Schools)", img: "/images/Sumer.jpg" },
-    { name: "Raghav Jatia", role: "Primary Research (BMC Schools)", img: "/images/Raghav.jpg" },
-    { name: "Shai Variava", role: "Primary Research (BMC Schools)", img: "/images/Shai.jpg" },
-    { name: "Ayush Rao", role: "Primary Research (Private Schools)", img: "/images/Ayush.jpg" }
+    { 
+      name: "Ali Malbari", 
+      role: "Communications, Bake Sale Logistics, Poster Head, Website Head, Fundraiser Head, Research", 
+      img: "/images/Ali.jpg" 
+    },
+    { 
+      name: "Sumer Kothari", 
+      role: "Communications, Bake Sale Logistics, Social Media Head, Presentation Help, Curriculum Designer, Research", 
+      img: "/images/Sumer.jpg" 
+    },
+    { 
+      name: "Raghav Jatia", 
+      role: "Communications, Bake Sale Logistics, Poster Head, Presentation Head, Newspaper Head, Research", 
+      img: "/images/Raghav.jpg" 
+    },
+    { 
+      name: "Shai Variava", 
+      role: "Social Media Head, Bake Sale Logistics, PPT Head, Newspaper Head, Research", 
+      img: "/images/Shai.jpg" 
+    },
+    { 
+      name: "Ayush Rao", 
+      role: "Website Head, Fundraiser Help, Secondary & Primary Research", 
+      img: "/images/Ayush.jpg" 
+    }
   ];
 
   return (
@@ -45,10 +66,10 @@ const About = () => {
                 src={member.img} 
                 alt={member.name} 
                 className="team-icon" 
-                style={{ objectPosition: 'top' }} // Keeps faces in frame
+                style={{ objectPosition: 'top' }} 
               />
               <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', fontSize: '1.4rem' }}>{member.name}</h4>
-              <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>{member.role}</p>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>{member.role}</p>
             </div>
           ))}
         </div>
@@ -63,7 +84,7 @@ const About = () => {
               style={{ objectPosition: 'top' }} 
             />
             <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', fontSize: '1.4rem' }}>{team[4].name}</h4>
-            <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>{team[4].role}</p>
+            <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>{team[4].role}</p>
           </div>
 
           <div className="team-description-box">
