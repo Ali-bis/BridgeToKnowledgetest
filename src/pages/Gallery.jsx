@@ -1,6 +1,14 @@
 import React from 'react';
 
 const Gallery = () => {
+  // UPDATED: Removed 4.png, renamed others to "Student Visit"
+  const galleryImages = [
+    { src: "/images/1.png", caption: "Student Visit" },
+    { src: "/images/2.png", caption: "Student Visit" },
+    { src: "/images/3.png", caption: "Student Visit" },
+    { src: "/images/group.png", caption: "The Bridge to Knowledge Team" },
+  ];
+
   return (
     <div className="container">
       <div className="hero-banner">
@@ -8,15 +16,18 @@ const Gallery = () => {
         <p>Moments from our journey.</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
-        {/* Placeholder Images - Replace src with your real images later */}
-        {[1, 2, 3, 4, 5, 6].map((item) => (
-          <div key={item} style={{ background: '#1e293b', padding: '10px', borderRadius: '12px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+        {galleryImages.map((item, index) => (
+          <div key={index} className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
+            {/* 'objectFit: cover' ensures they all look uniform regardless of size */}
             <img 
-              src={`https://via.placeholder.com/300?text=Image+${item}`} 
-              alt="Gallery" 
-              style={{ width: '100%', borderRadius: '8px', display: 'block' }} 
+              src={item.src} 
+              alt={item.caption} 
+              style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }} 
             />
+            <div style={{ padding: '1rem', textAlign: 'center' }}>
+              <p style={{ margin: 0, color: 'var(--text-muted)' }}>{item.caption}</p>
+            </div>
           </div>
         ))}
       </div>
