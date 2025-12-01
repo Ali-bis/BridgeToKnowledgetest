@@ -1,15 +1,25 @@
 import React from 'react';
 
+// Data extracted strictly from the uploaded "Log Sheet & Docs.pdf"
 const timelineEvents = [
-  { date: "Oct 10, 2025", title: "Team Formation", description: "Our team was formed and we debated potential themes, shortlisting Education for All & Poverty and Inequality.", side: "left" },
-  { date: "Oct 16, 2025", title: "Topic Finalised", description: "We finalised our topic: 'Disparity in the Access to Quality of Education in Mumbai,' incorporating digital literacy as a key action.", side: "right" },
-  { date: "Oct 29, 2025", title: "Detailed Planning", description: "Held a Zoom call to plan our action: school visits, student interviews, and a book drive.", side: "left" },
-  { date: "Oct 31, 2025", title: "Plan Revision: Fundraiser", description: "Revised our plan to include a Ketto fundraiser and a school bake sale to raise funds for laptops/tablets.", side: "right" },
-  { date: "Nov 1, 2025", title: "Seeking Permissions", description: "Contacted teachers to get permission for school visits, social media campaigns, and NGO recommendations.", side: "left" },
-  { date: "Nov 3, 2025", title: "Bake Sale Proposal", description: "Submitted a formal proposal to the Head of Student Life for our bake sale. Attended meetings to finalise the action plan.", side: "right" },
-  { date: "Nov 11, 2025", title: "Bake Sale (Planned)", description: "Date finalised for the in-school bake sale to raise funds.", side: "left" },
-  { date: "TBD", title: "School Visits & Workshops", description: "Primary research visits to BMC and private schools, and digital literacy workshops (Canva, PPT) to be conducted.", side: "right" },
-  { date: "Nov 27, 2025", title: "Final Action Deadline", description: "Deadline for all research, action, and project documentation to be completed for the summit.", side: "left" },
+  { date: "Oct 10, 2025", title: "Team & Theme Formation", description: "Group formed (Ali, Sumer, Raghav, Shai, Ayush). Debated and chose themes: Poverty & Inequality and Education for All.", side: "left" },
+  { date: "Oct 14, 2025", title: "Refining Focus", description: "Zoom call to narrow down ideas. Decided to focus on Poverty & Inequality, Education, Health, and Digital Literacy.", side: "right" },
+  { date: "Oct 16, 2025", title: "Topic Finalised", description: "Finalised topic: 'Disparity in Access to Quality Education in Mumbai'. Decided to incorporate Digital Literacy workshops as our action.", side: "left" },
+  { date: "Oct 29-31, 2025", title: "Detailed Planning", description: "Planned analysis of private vs. public schools (visits, interviews). Decided on Digital Skills workshops and a Book Drive. Revised plan to include a Ketto Fundraiser and Bake Sale for laptops.", side: "right" },
+  { date: "Nov 1, 2025", title: "Seeking Permissions", description: "Contacted teachers for permission to leave school for research/workshops and to start the social media campaign.", side: "left" },
+  { date: "Nov 2, 2025", title: "Timeline & Roles", description: "Finalised in-depth plan and divided research roles. Bake sale date set for Nov 11th. Poster designed.", side: "right" },
+  { date: "Nov 3, 2025", title: "Partnership & Proposal", description: "Sent bake sale proposal to Head of Student Life. Met with Service Learning Head and selected 'Teach for India' as our partner organization.", side: "left" },
+  { date: "Nov 4-5, 2025", title: "Research & Presentation", description: "Completed first draft of secondary research. Finalised presentation modes: Website and Presentation.", side: "right" },
+  { date: "Nov 6-7, 2025", title: "Launch & Website", description: "Launched Social Media. Finalised Logo. Ali began website draft. Meeting with Teach for India rep to discuss goals (teaching Grade 4-5).", side: "left" },
+  { date: "Nov 8-9, 2025", title: "Promotion & Proposal", description: "Instagram posts published. Team call to finalise Teach for India proposal and social media strategy. Two short-form videos posted.", side: "right" },
+  { date: "Nov 11, 2025", title: "Bake Sale Success", description: "Held a successful bake sale raising ~18,000 Rupees. Spread awareness throughout the school.", side: "left" },
+  { date: "Nov 14, 2025", title: "Meeting Fellows", description: "Met Ms. Ikra & Ms. Akriti from Teach for India. Discussed workshop content (Newsletter) and school needs (Projectors/Speakers).", side: "right" },
+  { date: "Nov 16, 2025", title: "Research & Survey", description: "All members completed research. Survey sent out to understand the disparity between private and public education.", side: "left" },
+  { date: "Nov 17-18, 2025", title: "Lesson Planning", description: "Created lesson plan on 'Environment'. Identified skills: Article writing, Interviewing. Sumer made presentation; Ali made fact-sheet.", side: "right" },
+  { date: "Nov 19, 2025", title: "Workshop 1: Newsletter", description: "Visited Partnered Municipal School. Conducted first workshop on Newsletter writing and Environment (Pollution/Global Warming).", side: "left" },
+  { date: "Nov 24, 2025", title: "Workshop 2: Word Search", description: "Conducted second workshop focused on solving and creating word searches. Taught vocabulary and held a quiz.", side: "right" },
+  { date: "Nov 25, 2025", title: "Final Prep", description: "Sumer designed Comic-strip curriculum. Raghav created feedback and summary sheets for students.", side: "left" },
+  { date: "Nov 26, 2025", title: "Workshop 3: Creative", description: "Conducted third workshop on comic-strip writing. Collected feedback. Interviewed students about their education experience.", side: "right" },
 ];
 
 const Timeline = () => {
