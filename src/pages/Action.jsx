@@ -2,11 +2,10 @@ import React from 'react';
 import Carousel from '../components/Carousel';
 
 const Action = () => {
-  // UPDATED: Using the specific images you requested
   const actionImages = [
-    { src: "/images/1.png", caption: "Digital Literacy Workshop Session" },
-    { src: "/images/2.png", caption: "Student Interaction & Learning" },
-    { src: "/images/3.png", caption: "Teaching Essential Skills" }
+    { src: "/images/1.png", caption: "Workshop 1: Newsletter Writing" },
+    { src: "/images/2.png", caption: "Workshop 2: Word Search & Vocab" },
+    { src: "/images/3.png", caption: "Workshop 3: Comic Strip Creation" }
   ];
 
   return (
@@ -36,7 +35,7 @@ const Action = () => {
           PART 1: WORKSHOPS
         </h2>
         
-        {/* CAROUSEL WITH NEW IMAGES */}
+        {/* CAROUSEL (Now with fixed buttons) */}
         <div style={{ marginBottom: '2rem' }}>
           <Carousel images={actionImages} />
         </div>
@@ -44,14 +43,25 @@ const Action = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem', marginTop: '2rem' }}>
           <div className="highlight-card">
             <h3 style={{ color: 'var(--primary)', marginTop: 0 }}>Objective</h3>
-            <p>To teach essential digital skills to students in our Partnered Municipal School to help solve the problem of access to quality digital education.</p>
+            <p>To teach essential digital & creative skills to students in our Partnered Municipal School to help bridge the quality gap.</p>
           </div>
+          
+          {/* UPDATED LESSON PLAN FROM LOG SHEET */}
           <div className="highlight-card">
-            <h3 style={{ color: 'var(--primary)', marginTop: 0 }}>Lesson Plan</h3>
+            <h3 style={{ color: 'var(--primary)', marginTop: 0 }}>Curriculum Delivered</h3>
             <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
-              <li style={{ marginBottom: '0.5rem' }}><strong>Canva:</strong> Graphic design basics.</li>
-              <li style={{ marginBottom: '0.5rem' }}><strong>PowerPoint:</strong> Presentation skills.</li>
-              <li><strong>E-Skills:</strong> Safe searching & email.</li>
+              <li style={{ marginBottom: '0.8rem' }}>
+                <strong>Session 1: Newsletter Writing</strong><br/>
+                <span style={{fontSize:'0.9rem', color:'var(--text-muted)'}}>Focus on Environment/Pollution. Taught article structure and formatting.</span>
+              </li>
+              <li style={{ marginBottom: '0.8rem' }}>
+                <strong>Session 2: Vocabulary & Word Search</strong><br/>
+                <span style={{fontSize:'0.9rem', color:'var(--text-muted)'}}>Interactive puzzles to build English vocabulary. Conducted a quiz.</span>
+              </li>
+              <li>
+                <strong>Session 3: Creative Expression</strong><br/>
+                <span style={{fontSize:'0.9rem', color:'var(--text-muted)'}}>Comic-strip writing and drawing skills to foster creativity and storytelling.</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -63,12 +73,10 @@ const Action = () => {
           PART 2: FUNDRAISING
         </h2>
         
-        {/* FUNDRAISER CARD */}
         <div className="highlight-card" style={{ textAlign: 'center' }}>
           <h3 style={{ marginTop: 0 }}>Online Fundraiser</h3>
           <p>We are preparing to launch an online fundraiser. These funds will be used to purchase Soundbars and Projectors.</p>
           
-          {/* BUTTON VISIBLE */}
           <button 
             className="btn btn-disabled" 
             disabled 
@@ -78,7 +86,6 @@ const Action = () => {
           </button>
         </div>
 
-        {/* EQUIPMENT SECTION */}
         <div style={{ marginTop: '3rem' }}>
           <h3>Audio-Visual Equipment</h3>
           <p>We are shifting focus from personal tablets to classroom-wide impact tools.</p>
