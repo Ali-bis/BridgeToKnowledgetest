@@ -6,12 +6,11 @@ const Home = () => {
     <div className="container">
       
       <section className="hero-banner">
-        {/* Logo */}
-        <img src="/images/logo.png" alt="Logo" style={{width: '120px', marginBottom: '1.5rem', display: 'inline-block'}} />
+        {/* Logo with Responsive Class */}
+        <img src="/images/logo.png" alt="Logo" className="home-logo" />
         
-        <h1 style={{ fontSize: '5rem', marginBottom: '0.5rem' }}>BRIDGE TO KNOWLEDGE</h1>
+        <h1 style={{ marginBottom: '0.5rem' }}>BRIDGE TO KNOWLEDGE</h1>
         
-        {/* Centered Text */}
         <h2 style={{ fontSize: '1.5rem', fontFamily: 'Inter', color: 'var(--primary)', fontWeight: '400', letterSpacing: '2px', border: 'none', margin: '0 auto 1.5rem auto', textAlign: 'center', display: 'block' }}>
           BIS Global Perspectives Summit Project
         </h2>
@@ -24,7 +23,6 @@ const Home = () => {
             Fundraiser Coming Soon
           </button>
           
-          {/* Instagram Link */}
           <a href="https://www.instagram.com/bridge_to_knowledge_/" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
             Follow on Instagram
           </a>
@@ -33,20 +31,18 @@ const Home = () => {
 
       <section className="stats-section-container">
         <div className="stats-content-left">
-          <h2 style={{fontSize: '2rem', textAlign: 'left'}}>THE PROBLEM</h2>
+          <h2>THE PROBLEM</h2>
           <p>
             Our research confirmed that "access" to school isn't the only problem. The real issue is a deep gap in the <strong>quality</strong> of education and a growing <strong>digital divide</strong>.
           </p>
           <p style={{ marginTop: '1rem' }}>
             While Mumbai's literacy rate is high, many students in our Partnered Municipal School lack the digital skills and tools needed for modern employment. Our mission is to take direct action to help bridge this gap.
           </p>
-          
-          {/* FIXED IMAGE TAG */}
           <div style={{ width: '100%', height: '200px', marginTop: '1.5rem', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--border-color)' }}>
              <img 
                src="/images/group.png" 
                alt="Students in Workshop" 
-               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', border: 'none', marginTop: 0 }} 
              />
           </div>
         </div>
