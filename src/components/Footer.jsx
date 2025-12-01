@@ -8,28 +8,33 @@ const Footer = () => {
         {/* Column 1: Brand */}
         <div>
           <h4>Bridge To Knowledge</h4>
-          <p style={{ fontSize: '0.9rem', color: '#64748b' }}>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
             Bridging the gap between potential and opportunity in Mumbai's educational landscape.
           </p>
         </div>
 
-        {/* Column 2: Quick Links (No Underlines) */}
+        {/* Column 2: Navigation (Fixed Broken Links) */}
         <div>
           <h4>Navigate</h4>
-          <ul>
+          {/* Using a simple grid layout for links to save space */}
+          <ul style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem' }}>
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About Us</Link></li>
-            <li><Link to="/team">Our Team</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/timeline">Timeline</Link></li>
+            <li><Link to="/action">Action</Link></li>
+            <li><Link to="/research">Research</Link></li>
+            <li><Link to="/gallery">Gallery</Link></li>
             <li><Link to="/analytics">Analytics</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
 
-        {/* Column 3: Contact (Plain Text Look) */}
+        {/* Column 3: Contact */}
         <div>
           <h4>Contact</h4>
           <ul>
-            <li><a href="mailto:samrajni.dasgupta@bis.edu.in">samrajni.dasgupta@bis.edu.in</a></li>
-            <li style={{ color: '#94a3b8' }}>Mumbai, India</li>
+            <li><a href="mailto:info@bridgetoknowledge.org">info@bridgetoknowledge.org</a></li>
+            <li style={{ color: 'var(--text-muted)' }}>Mumbai, India</li>
           </ul>
         </div>
       </div>
