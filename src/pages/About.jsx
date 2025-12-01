@@ -11,14 +11,11 @@ const About = () => {
 
   return (
     <div className="container">
-      
-      {/* HERO */}
       <div className="hero-banner">
         <h1>ABOUT US</h1>
         <p style={{ color: 'var(--accent)' }}>The mission, the method, and the team.</p>
       </div>
 
-      {/* 1. PROJECT INFO (Added as requested) */}
       <div className="page-section">
         <h2>About the Project</h2>
         <p>
@@ -37,31 +34,38 @@ const About = () => {
         </ul>
       </div>
 
-      {/* 2. TEAM SECTION */}
       <div style={{ marginTop: '4rem' }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '2rem' }}>MEET THE TEAM</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: '3rem' }}>MEET THE TEAM</h2>
 
         {/* TOP ROW */}
         <div className="team-grid-4col">
           {team.slice(0, 4).map((member, index) => (
             <div key={index} className="team-member">
-              <img src={member.img} alt={member.name} className="team-icon" />
-              <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>{member.name}</h4>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{member.role}</p>
+              <img 
+                src={member.img} 
+                alt={member.name} 
+                className="team-icon" 
+                style={{ objectPosition: 'top' }} // Keeps faces in frame
+              />
+              <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', fontSize: '1.4rem' }}>{member.name}</h4>
+              <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>{member.role}</p>
             </div>
           ))}
         </div>
 
         {/* BOTTOM ROW */}
         <div className="team-grid-2col">
-          {/* Ayush */}
           <div className="team-member">
-            <img src={team[4].img} alt={team[4].name} className="team-icon" />
-            <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>{team[4].name}</h4>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{team[4].role}</p>
+            <img 
+              src={team[4].img} 
+              alt={team[4].name} 
+              className="team-icon" 
+              style={{ objectPosition: 'top' }} 
+            />
+            <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem', fontSize: '1.4rem' }}>{team[4].name}</h4>
+            <p style={{ fontSize: '1rem', color: 'var(--text-muted)' }}>{team[4].role}</p>
           </div>
 
-          {/* The Info Block */}
           <div className="team-description-box">
             <h3>MISSION STATEMENT</h3>
             <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>
@@ -73,11 +77,9 @@ const About = () => {
         </div>
       </div>
 
-      {/* Ethics Note */}
-      <div className="subtle-disclaimer">
+      <div className="subtle-disclaimer" style={{textAlign:'center', marginTop:'3rem', fontStyle:'italic', color:'var(--text-muted)'}}>
         *All research involving human subjects was conducted following strict ethical guidelines.
       </div>
-
     </div>
   );
 };
