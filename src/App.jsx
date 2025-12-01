@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Pages
 import Home from './pages/Home';
 import About from './pages/About';
 import Action from './pages/Action';
@@ -11,13 +10,13 @@ import Research from './pages/Research';
 import Timeline from './pages/Timeline';
 import Analytics from './pages/Analytics';
 
-// Components
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
-  const [theme, setTheme] = useState('dark');
+  // FIXED: Default is now 'light'
+  const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
