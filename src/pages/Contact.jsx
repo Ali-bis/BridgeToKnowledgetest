@@ -8,14 +8,22 @@ const Contact = () => {
         <p>Connect with us, support the cause, or reach out to our mentors.</p>
       </div>
 
+      {/* CONTACT & SOCIALS */}
       <div className="page-section">
-        <h2>Contact & Socials</h2>
+        <h2>CONTACT & SOCIALS</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
           
           <div className="highlight-card">
             <h3>Follow Our Journey</h3>
             <p>We are documenting our process and sharing facts on Instagram.</p>
-            <a href="https://www.instagram.com/bridge_to_knowledge_/" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+            {/* Added marginTop for spacing */}
+            <a 
+              href="https://www.instagram.com/bridge_to_knowledge_/" 
+              className="btn btn-secondary" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ marginTop: '2rem', display: 'inline-block' }}
+            >
               @bridge_to_knowledge_
             </a>
           </div>
@@ -23,7 +31,12 @@ const Contact = () => {
           <div className="highlight-card">
             <h3>Support Us</h3>
             <p>The most direct way to help is by donating to our campaign.</p>
-            <button className="btn btn-disabled" disabled>
+            {/* Added marginTop for spacing */}
+            <button 
+              className="btn btn-disabled" 
+              disabled 
+              style={{ marginTop: '2rem' }}
+            >
               Fundraiser Coming Soon
             </button>
           </div>
@@ -38,8 +51,9 @@ const Contact = () => {
         </div>
       </div>
 
+      {/* ADVISORS SECTION */}
       <div className="page-section">
-        <h2>Advisors & Mentors</h2>
+        <h2>ADVISORS & MENTORS</h2>
         <p style={{ marginBottom: '2rem' }}>
           This project would not have been possible without the guidance and support of our teachers and school advisors.
         </p>
