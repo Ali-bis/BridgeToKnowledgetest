@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Header = ({ theme, toggleTheme }) => {
-  const [isOpen, setIsOpen] = useState(false); // State for mobile menu
+  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const isActive = (path) => location.pathname === path ? 'active' : '';
-
-  // Close menu when a link is clicked
   const closeMenu = () => setIsOpen(false);
 
   return (
@@ -23,9 +21,11 @@ const Header = ({ theme, toggleTheme }) => {
           </Link>
         </div>
 
-        {/* DESKTOP Nav (Hidden on Mobile via CSS) */}
-        <div className="desktop-nav" style={{display: 'flex', alignItems: 'center'}}>
-           <nav className="nav-menu">
+        {/* RIGHT SIDE CONTROLS */}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          
+          {/* DESKTOP NAV */}
+          <nav className="nav-menu">
             <ul>
               <li><Link to="/" className={isActive('/')}>Home</Link></li>
               <li><Link to="/about" className={isActive('/about')}>About</Link></li>
@@ -38,11 +38,12 @@ const Header = ({ theme, toggleTheme }) => {
             </ul>
           </nav>
           
-          <button onClick={toggleTheme} className="theme-toggle" style={{marginLeft: '1rem'}}>
+          {/* THEME TOGGLE */}
+          <button onClick={toggleTheme} className="theme-toggle" title="Switch Theme">
             {theme === 'dark' ? '☀️' : '🌙'}
           </button>
 
-          {/* --- YOUR CUSTOM BURGER (Visible only on Mobile) --- */}
+          {/* HAMBURGER (Mobile Only) */}
           <label className="burger" htmlFor="burger-check">
             <input 
               type="checkbox" 
@@ -54,10 +55,11 @@ const Header = ({ theme, toggleTheme }) => {
             <span></span>
             <span></span>
           </label>
+
         </div>
       </div>
 
-      {/* MOBILE MENU DROPDOWN */}
+      {/* MOBILE MENU */}
       <div className={`mobile-menu-overlay ${isOpen ? 'open' : ''}`}>
         <Link to="/" onClick={closeMenu}>Home</Link>
         <Link to="/about" onClick={closeMenu}>About</Link>
