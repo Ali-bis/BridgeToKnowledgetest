@@ -5,8 +5,8 @@ const Home = () => {
   return (
     <div className="container">
       
+      {/* Hero Banner - Gap is controlled by CSS margin-bottom: 6rem */}
       <section className="hero-banner">
-        {/* Logo with Responsive Class */}
         <img src="/images/logo.png" alt="Logo" className="home-logo" />
         
         <h1 style={{ marginBottom: '0.5rem' }}>BRIDGE TO KNOWLEDGE</h1>
@@ -29,6 +29,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Stats Section */}
       <section className="stats-section-container">
         <div className="stats-content-left">
           <h2>THE PROBLEM</h2>
