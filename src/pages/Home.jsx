@@ -24,7 +24,7 @@ const Home = () => {
             Fundraiser Coming Soon
           </button>
           
-          {/* CHANGED: Instagram Link */}
+          {/* Instagram Link */}
           <a href="https://www.instagram.com/bridge_to_knowledge_/" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
             Follow on Instagram
           </a>
@@ -40,8 +40,14 @@ const Home = () => {
           <p style={{ marginTop: '1rem' }}>
             While Mumbai's literacy rate is high, many students in our Partnered Municipal School lack the digital skills and tools needed for modern employment. Our mission is to take direct action to help bridge this gap.
           </p>
-          <div style={{ width: '100%', height: '200px', background: 'var(--bg-body)', marginTop: '1.5rem', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', border: '1px dashed var(--primary)' }}>
-            {src: "/images/group.png"}
+          
+          {/* FIXED IMAGE TAG */}
+          <div style={{ width: '100%', height: '200px', marginTop: '1.5rem', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--border-color)' }}>
+             <img 
+               src="/images/group.png" 
+               alt="Students in Workshop" 
+               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} 
+             />
           </div>
         </div>
 
