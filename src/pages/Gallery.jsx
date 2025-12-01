@@ -3,7 +3,7 @@ import React from 'react';
 const Gallery = () => {
   // UPDATED: Removed 4.png, renamed others to "Student Visit"
   const galleryImages = [
-    { src: "BridgeToKnowledgetest/public/images/1.png", caption: "Student Visit" },
+    { src: "/images/1.png", caption: "Student Visit" },
     { src: "/images/2.png", caption: "Student Visit" },
     { src: "/images/3.png", caption: "Student Visit" },
     { src: "/images/group.png", caption: "The Bridge to Knowledge Team" },
