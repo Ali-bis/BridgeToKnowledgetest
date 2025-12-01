@@ -41,7 +41,7 @@ const Home = () => {
             While Mumbai's literacy rate is high, many students in our Partnered Municipal School lack the digital skills and tools needed for modern employment. Our mission is to take direct action to help bridge this gap.
           </p>
           <div style={{ width: '100%', height: '200px', background: 'var(--bg-body)', marginTop: '1.5rem', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', border: '1px dashed var(--primary)' }}>
-            <img src "/images/group.png">
+            {src: "/images/group.png"}
           </div>
         </div>
 
