@@ -21,7 +21,7 @@ const Timeline = () => {
       </div>
 
       <div className="timeline-container">
-        {/* The Vertical Center Line */}
+        {/* Vertical Line */}
         <div className="center-line"></div>
         
         {timelineEvents.map((event, index) => (
@@ -46,7 +46,6 @@ const Timeline = () => {
           flex-direction: column;
         }
 
-        /* The Fixed Center Line */
         .center-line {
           position: absolute;
           width: 4px;
@@ -59,7 +58,6 @@ const Timeline = () => {
           box-shadow: 0 0 15px var(--primary);
         }
 
-        /* Row Container (Holds the content and aligns it) */
         .timeline-row {
           display: flex;
           width: 100%;
@@ -67,28 +65,26 @@ const Timeline = () => {
           margin-bottom: 40px;
         }
 
-        /* Left Side Alignment */
         .timeline-row.left {
           justify-content: flex-start;
-          padding-right: 50%; /* Push content to left half */
+          padding-right: 50%; 
         }
         .timeline-row.left .timeline-content {
-          margin-left: auto; /* Push box towards center */
-          margin-right: 40px; /* Gap from line */
+          margin-left: auto; 
+          margin-right: 40px; 
           text-align: right;
         }
-        /* Right Side Alignment */
+
         .timeline-row.right {
           justify-content: flex-end;
-          padding-left: 50%; /* Push content to right half */
+          padding-left: 50%; 
         }
         .timeline-row.right .timeline-content {
-          margin-left: 40px; /* Gap from line */
-          margin-right: auto; /* Push box towards center */
+          margin-left: 40px; 
+          margin-right: auto; 
           text-align: left;
         }
 
-        /* The Dot (Absolute Centered) */
         .timeline-dot {
           position: absolute;
           left: 50%;
@@ -99,18 +95,17 @@ const Timeline = () => {
           border-radius: 50%;
           transform: translateX(-50%);
           z-index: 2;
-          top: 20px; /* Aligns with top of card */
+          top: 20px; 
           box-shadow: 0 0 10px var(--accent);
         }
 
-        /* Content Box */
         .timeline-content {
           background-color: var(--bg-card);
           padding: 25px;
           border-radius: 16px;
           border: 1px solid var(--border-color);
           box-shadow: var(--shadow);
-          width: 90%; /* Takes up most of the half-width */
+          width: 90%; 
           position: relative;
           transition: transform 0.3s ease;
         }
@@ -137,22 +132,23 @@ const Timeline = () => {
           font-size: 1rem;
         }
 
-        /* Mobile: Stack Everything */
+        /* MOBILE STACKING LOGIC */
         @media (max-width: 768px) {
           .center-line {
-            left: 30px; /* Move line to left */
+            left: 30px; 
             transform: none;
           }
           
           .timeline-row {
             width: 100%;
-            padding: 0 !important; /* Reset 50% paddings */
+            padding: 0 !important; 
             justify-content: flex-start !important;
-            padding-left: 60px !important; /* Space for line */
+            padding-left: 60px !important; 
+            margin-bottom: 30px;
           }
           
           .timeline-dot {
-            left: 30px; /* Align dot with new line pos */
+            left: 30px; 
             transform: translateX(-50%);
           }
           
@@ -160,6 +156,7 @@ const Timeline = () => {
             width: 100%;
             margin: 0 !important;
             text-align: left !important;
+            padding: 1.5rem;
           }
         }
       `}</style>
