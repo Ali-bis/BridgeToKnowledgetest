@@ -1,58 +1,84 @@
-import React, { useState } from 'react';
-
-// Smart Component: Only shows the image if it loads successfully
-const GalleryImage = ({ src, caption }) => {
-  const [isVisible, setIsVisible] = useState(true);
-
-  return isVisible ? (
-    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
-      <img 
-        src={src} 
-        alt="Gallery" 
-        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
-        onError={() => setIsVisible(false)} // Magically hides if file doesn't exist
-      />
-      {/* Only show caption box if text is provided */}
-      {caption && (
-        <div style={{ padding: '1rem', textAlign: 'center', borderTop: '1px solid var(--border-color)' }}>
-          <p style={{ margin: 0, color: 'var(--text-muted)' }}>{caption}</p>
-        </div>
-      )}
-    </div>
-  ) : null;
-};
+import React, { useState, useEffect } from 'react';
 
 const Gallery = () => {
-  // 1. AUTO-LOADER: Tries to find images numbered 1 to 20
-  // This will find 1.png, 2.png, 3.png, 5.png, etc. automatically
-  const numberedImages = Array.from({ length: 20 }, (_, i) => i + 1);
+  // Base images: 1-6. We assume these exist, so we render them immediately.
+  const baseImages = [
+    { id: 1, src: '/images/1.png', alt: 'Gallery Image 1', caption: '' },
+    { id: 2, src: '/images/2.png', alt: 'Gallery Image 2', caption: '' },
+    { id: 3, src: '/images/3.png', alt: 'Gallery Image 3', caption: '' },
+    { id: 4, src: '/images/4.png', alt: 'Gallery Image 4', caption: '' },
+    { id: 5, src: '/images/5.png', alt: 'Gallery Image 5', caption: '' },
+    { id: 6, src: '/images/group.png', alt: 'Team Picture', caption: 'The Bridge to Knowledge Team' },
+  ];
+
+  // Auto-generate a list for potential images 7 to 20
+  const autoImages = Array.from({ length: 14 }, (_, i) => {
+    const num = i + 7;
+    return {
+      id: num,
+      src: `/images/${num}.png`,
+      alt: `Gallery Image ${num}`,
+      caption: '' 
+    };
+  });
 
   return (
     <div className="container">
       <div className="hero-banner">
         <h1>GALLERY</h1>
-        <p>Moments from our journey.</p>
+        <p>A visual journey of our research and interactions.</p>
       </div>
 
-      {/* FIXED: Added alignItems: 'start' so cards don't stretch to match the tallest one */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', alignItems: 'start' }}>
-        
-        {/* 1. Numbered Images (No Caption) */}
-        {numberedImages.map((num) => (
-          <GalleryImage 
-            key={num} 
-            src={`/images/${num}.png`} 
-            caption="" 
-          />
+      <div className="gallery-grid">
+        {/* 1. Render Base Images Immediately (No waiting) */}
+        {baseImages.map((image) => (
+          <StaticGalleryItem key={image.id} image={image} />
         ))}
 
-        {/* 2. Team Photo (With Caption) */}
-        <GalleryImage 
-          src="/images/group.png" 
-          caption="The Bridge to Knowledge Team" 
-        />
-
+        {/* 2. Render Auto Images Only If They Exist (Prevents white boxes) */}
+        {autoImages.map((image) => (
+          <DynamicGalleryItem key={image.id} image={image} />
+        ))}
       </div>
+    </div>
+  );
+};
+
+// Component for known images (1-6) - Renders immediately
+const StaticGalleryItem = ({ image }) => {
+  return (
+    <div className="gallery-item">
+      <img 
+        src={image.src} 
+        alt={image.alt} 
+        loading="lazy" 
+      />
+      {/* Strict Caption Check: Only for group.png */}
+      {image.src.includes('group.png') && image.caption && (
+        <div className="caption">{image.caption}</div>
+      )}
+    </div>
+  );
+};
+
+// Component for auto-generated images (7-20) - Checks existence first
+const DynamicGalleryItem = ({ image }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = image.src;
+    img.onload = () => setIsVisible(true);
+    img.onerror = () => setIsVisible(false);
+  }, [image.src]);
+
+  // If image doesn't exist yet, render NOTHING (no white box)
+  if (!isVisible) return null;
+
+  return (
+    // FIXED: Added the wrapper div "gallery-item" to restore the box styling
+    <div className="gallery-item">
+      <img src={image.src} alt={image.alt} />
     </div>
   );
 };
