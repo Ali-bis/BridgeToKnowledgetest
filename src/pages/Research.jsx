@@ -107,19 +107,25 @@ const Research = () => {
 
       {/* CITATIONS */}
       <div className="page-section" style={{ padding: '1.5rem', backgroundColor: 'var(--bg-body)', border: '1px dashed var(--border-color)' }}>
-        <h4 style={{ marginTop: 0, fontSize: '1rem' }}>References & Data Sources</h4>
-        <ul style={{ fontSize: '0.85rem', color: 'var(--text-muted)', paddingLeft: '1.2rem', marginBottom: 0 }}>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <strong>UDISE+ 2023-24:</strong> Official Unified District Information System for Education Plus data on school dropout and enrollment rates.
+        <h4 style={{ marginTop: 0, fontSize: '1rem', marginBottom: '1rem' }}>Works Cited (MLA 9)</h4>
+        <ul style={{ fontSize: '0.85rem', color: 'var(--text-muted)', paddingLeft: '1.2rem', marginBottom: 0, lineHeight: '1.6' }}>
+          <li style={{ marginBottom: '0.8rem' }}>
+            ASER Centre. <em>Annual Status of Education Report (Rural) 2023: Beyond Basics</em>. ASER Centre, 2024, www.asercentre.org.
           </li>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <strong>Census 2011:</strong> Data regarding the total population of women who have never attended an educational institution.
+          <li style={{ marginBottom: '0.8rem' }}>
+            "Education: Out of School Children." <em>UDISE+ 2023-24</em>, Department of School Education and Literacy, Ministry of Education, Government of India, 2024.
           </li>
-          <li style={{ marginBottom: '0.5rem' }}>
-            <strong>BMC Education Survey (2020-21):</strong> Official survey conducted by the Brihanmumbai Municipal Corporation to identify out-of-school children.
+          <li style={{ marginBottom: '0.8rem' }}>
+            "Mumbai Records Highest Number of Out-of-School Children in the State." <em>EducationWorld</em>, 16 Feb. 2021, www.educationworld.in/mumbai-records-highest-number-of-out-of-school-children-in-the-state.
+          </li>
+          <li style={{ marginBottom: '0.8rem' }}>
+            Office of the Registrar General & Census Commissioner, India. "C-8: Educational Level by Age and Sex for Population Age 7 and Above." <em>Census of India 2011</em>, Ministry of Home Affairs, Government of India, 2011.
+          </li>
+          <li style={{ marginBottom: '0.8rem' }}>
+            "Teacher Absenteeism in Government Schools." <em>The Indian Express</em>, Indian Express Group, 8 Feb. 2025, www.indianexpress.com/article/cities/mumbai/maharashtra-steady-dip-seen-in-performance-of-govt-school-students-in-higher-classes-7954519.
           </li>
           <li>
-            <strong>ASER 2024:</strong> Annual Status of Education Report for learning outcome statistics (Reading/Math levels).
+            "All India Survey on Higher Education (AISHE) 2021-2022." <em>Ministry of Education</em>, Government of India, 2024, aishe.gov.in.
           </li>
         </ul>
       </div>
