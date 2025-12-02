@@ -1,6 +1,5 @@
 import React from 'react';
 
-// Data extracted strictly from the uploaded "Log Sheet & Docs.pdf"
 const timelineEvents = [
   { date: "Oct 10, 2025", title: "Team & Theme Formation", description: "Group formed (Ali, Sumer, Raghav, Shai, Ayush). Debated and chose themes: Poverty & Inequality and Education for All.", side: "left" },
   { date: "Oct 14, 2025", title: "Refining Focus", description: "Zoom call to narrow down ideas. Decided to focus on Poverty & Inequality, Education, Health, and Digital Literacy.", side: "right" },
@@ -31,7 +30,7 @@ const Timeline = () => {
       </div>
 
       <div className="timeline-container">
-        {/* Vertical Line */}
+        {/* Vertical Center Line */}
         <div className="center-line"></div>
         
         {timelineEvents.map((event, index) => (
