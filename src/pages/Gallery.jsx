@@ -47,17 +47,16 @@ const Gallery = () => {
 // Component for known images
 const StaticGalleryItem = ({ image }) => {
   return (
-    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column', height: '100%' }}>
+    <div className="gallery-card">
       <img 
         src={image.src} 
         alt={image.alt} 
         loading="lazy" 
-        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
       />
-      {/* Caption Box: Only for the team picture */}
-      {image.src.includes('group.png') && image.caption && (
-        <div style={{ padding: '1.5rem', textAlign: 'center', borderTop: '1px solid var(--border-color)', backgroundColor: 'var(--bg-card)', flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <p style={{ margin: 0, color: 'var(--text-main)', fontWeight: 'bold', fontSize: '1.1rem' }}>{image.caption}</p>
+      {/* Caption Box: Only render if a caption exists (like for the team photo) */}
+      {image.caption && (
+        <div className="gallery-caption">
+          {image.caption}
         </div>
       )}
     </div>
@@ -75,21 +74,19 @@ const DynamicGalleryItem = ({ image }) => {
     img.onerror = () => setStatus('error');
   }, [image.src]);
 
-  // If image fails to load, do not render ANYTHING (no empty box)
+  // If image fails to load, do not render ANYTHING
   if (status === 'error') return null;
 
   return (
-    // ALWAYS render the container box
-    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden', height: '100%' }}>
+    <div className="gallery-card">
       {status === 'loaded' ? (
         <img 
           src={image.src} 
           alt={image.alt} 
-          style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
         />
       ) : (
-        // Optional: Render a placeholder or skeleton while loading if desired
-        <div style={{ width: '100%', height: '250px', backgroundColor: 'var(--bg-body)', opacity: 0.5 }} />
+        // Placeholder skeleton while loading
+        <div style={{ width: '100%', height: '300px', backgroundColor: 'var(--bg-body)', opacity: 0.5 }} />
       )}
     </div>
   );
