@@ -1,6 +1,9 @@
 import React from 'react';
+import adminData from '../admin.json'; 
 
 const Contact = () => {
+  const data = adminData;
+
   return (
     <div className="container">
       <div className="hero-banner">
@@ -12,33 +15,38 @@ const Contact = () => {
         <h2>Contact & Socials</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem' }}>
           
-          <div className="highlight-card">
+          {/* INSTAGRAM CARD - FIXED ALIGNMENT */}
+          <div className="highlight-card" style={{ textAlign: 'center' }}>
             <h3>Follow Our Journey</h3>
             <p>We are documenting our process and sharing facts on Instagram.</p>
             <a 
-              href="https://www.instagram.com/bridge_to_knowledge_/" 
+              href={data.socialMedia.instagram} 
               className="btn btn-secondary" 
               target="_blank" 
               rel="noopener noreferrer"
-              style={{ marginTop: '2rem', display: 'inline-block' }}
+              // FIXED: Added width:fit-content and margin:auto to force centering
+              style={{ marginTop: '2rem', display: 'block', width: 'fit-content', margin: '2rem auto 0' }}
             >
               @bridge_to_knowledge_
             </a>
           </div>
 
-          <div className="highlight-card">
+          {/* FUNDRAISER CARD - FIXED ALIGNMENT */}
+          <div className="highlight-card" style={{ textAlign: 'center' }}>
             <h3>Support Us</h3>
             <p>The most direct way to help is by donating to our campaign.</p>
             <button 
               className="btn btn-disabled" 
               disabled 
-              style={{ marginTop: '2rem' }}
+              // FIXED: Added width:fit-content and margin:auto to force centering
+              style={{ marginTop: '2rem', display: 'block', width: 'fit-content', margin: '2rem auto 0' }}
             >
               Fundraiser Coming Soon
             </button>
           </div>
 
-          <div className="highlight-card">
+          {/* CONTACT CARD */}
+          <div className="highlight-card" style={{ textAlign: 'center' }}>
             <h3>School Contact</h3>
             <p>For official inquiries, please contact our project advisor.</p>
             <p style={{ marginTop: '1rem', fontWeight: 'bold' }}>Miss Samrajni</p>
@@ -54,7 +62,7 @@ const Contact = () => {
           This project would not have been possible without the guidance and support of our teachers and school advisors.
         </p>
         
-        {/* CHANGED TO 2 COLUMNS FOR BALANCED 2x2 GRID */}
+        {/* 2x2 Grid for Advisors */}
         <div className="team-grid-4col" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
           
           <div className="team-member">
@@ -72,7 +80,6 @@ const Contact = () => {
             <p style={{ color: 'var(--text-muted)' }}>Head of Student Life</p>
           </div>
 
-          {/* NEW ADDITION */}
           <div className="team-member">
             <h4>Miss Zeeba</h4>
             <p style={{ color: 'var(--text-muted)' }}>Permission for Action & Fundraiser</p>
