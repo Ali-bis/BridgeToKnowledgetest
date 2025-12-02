@@ -216,76 +216,87 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
   .team-icon { width: 150px; height: 150px; }
 }
 /* ... existing code ... */
-/* GALLERY SPECIFIC STYLES */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  margin-bottom: 3rem;
-  /* Ensure uniform height across the row */
-  align-items: stretch;
+/* ... existing code ... */
+
+/* UPDATE: Add cursor pointer to indicate clickability */
+.gallery-card {
+  /* ... previous styles ... */
+  cursor: pointer; 
 }
 
-.gallery-card {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  
-  border-radius: 20px;
-  overflow: hidden;
-  transition: var(--transition);
-  
-  /* FIXED HEIGHT is the key to making top and bottom rows match perfectly */
-  height: 350px; 
-  
+/* LIGHTBOX STYLES */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9); /* Dark background */
+  z-index: 9999; /* Sit on top of everything */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.2s ease-in-out;
+  padding: 1rem;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 1200px;
+  width: 100%;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.gallery-card:hover {
-  transform: translateY(-5px);
-}
-
-.gallery-card img {
-  width: 100%;
-  /* flex: 1 makes the image expand to fill any available space (e.g. if no caption) */
-  flex: 1; 
-  /* object-fit: cover ensures it fills the box without distortion */
-  object-fit: cover; 
-  /* Top center positioning often helps portrait images look better when cropped */
-  object-position: top center; 
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 85vh; /* Keep it within viewport */
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
   display: block;
-  
-  /* Remove min-height so it respects the card's fixed height */
-  height: 100%; 
 }
 
-.gallery-caption {
-  /* Prevent caption from resizing */
-  flex-shrink: 0; 
-  
-  padding: 1rem 0;
+.lightbox-caption {
+  color: white;
+  margin-top: 1rem;
+  font-size: 1.1rem;
   text-align: center;
-  font-weight: 600;
-  font-size: 1rem;
-  color: var(--text-main);
-  background: transparent;
+  font-family: 'Inter', sans-serif;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
   border: none;
+  color: white;
+  font-size: 3rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 0;
 }
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.lightbox-close:hover {
+  transform: scale(1.1);
+  color: var(--primary);
 }
 
-@media (max-width: 600px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-  .gallery-card {
-    /* On mobile, let height be auto or smaller if needed */
-    height: 300px; 
+/* Simple fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Mobile Adjustments for Lightbox */
+@media (max-width: 768px) {
+  .lightbox-close {
+    top: -40px;
+    right: 10px;
+    font-size: 2.5rem;
   }
 }
