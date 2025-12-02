@@ -216,34 +216,97 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
   .team-icon { width: 150px; height: 150px; }
 }
 /* ... existing code ... */
-/* ... existing code ... */
+/* =========================================
+   GALLERY SPECIFIC STYLES 
+   (Restored "Nice Boxes" + Fixed Dimensions)
+   ========================================= */
 
-/* UPDATE: Add cursor pointer to indicate clickability */
-.gallery-card {
-  /* ... previous styles ... */
-  cursor: pointer; 
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+  /* Ensures all cards in a row are the same height */
+  align-items: stretch;
 }
 
-/* LIGHTBOX STYLES */
+.gallery-card {
+  /* RESTORED: The "Nice Box" look */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  
+  /* Structure */
+  border-radius: 20px;
+  overflow: hidden;
+  transition: var(--transition);
+  
+  /* Layout: Forces exact height matching */
+  height: 350px; 
+  display: flex;
+  flex-direction: column;
+  
+  /* Interaction */
+  cursor: pointer;
+  position: relative;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2); /* Enhanced hover shadow */
+}
+
+.gallery-card img {
+  width: 100%;
+  /* flex: 1 allows the image to expand and fill empty space (e.g. if no caption) */
+  flex: 1;
+  /* object-fit: cover ensures image fills the area without stretching/distortion */
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  /* Resets min-height to allow flex to control sizing */
+  height: auto; 
+}
+
+.gallery-caption {
+  /* Prevent caption from squishing */
+  flex-shrink: 0;
+  
+  padding: 1rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-main);
+  
+  /* Visual separation for the caption area */
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+  z-index: 2;
+}
+
+/* =========================================
+   LIGHTBOX STYLES (Keep this section)
+   ========================================= */
 .lightbox-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.9); /* Dark background */
-  z-index: 9999; /* Sit on top of everything */
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.2s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
   padding: 1rem;
+  backdrop-filter: blur(5px);
 }
 
 .lightbox-content {
   position: relative;
-  max-width: 1200px;
-  width: 100%;
+  max-width: 90vw;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
@@ -252,10 +315,10 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
 
 .lightbox-content img {
   max-width: 100%;
-  max-height: 85vh; /* Keep it within viewport */
+  max-height: 80vh;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
   display: block;
 }
 
@@ -265,12 +328,15 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
   font-size: 1.1rem;
   text-align: center;
   font-family: 'Inter', sans-serif;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1.5rem;
+  border-radius: 20px;
 }
 
 .lightbox-close {
   position: absolute;
-  top: -40px;
-  right: 0;
+  top: -50px;
+  right: -10px;
   background: none;
   border: none;
   color: white;
@@ -279,6 +345,7 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
   cursor: pointer;
   transition: transform 0.2s ease;
   padding: 0;
+  z-index: 10000;
 }
 
 .lightbox-close:hover {
@@ -286,17 +353,28 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
   color: var(--primary);
 }
 
-/* Simple fade in animation */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* Mobile Adjustments for Lightbox */
-@media (max-width: 768px) {
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+  .gallery-card {
+    height: 300px;
+  }
   .lightbox-close {
-    top: -40px;
-    right: 10px;
+    top: -50px;
+    right: 0;
     font-size: 2.5rem;
   }
 }
