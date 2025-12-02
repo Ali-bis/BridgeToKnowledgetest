@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Gallery = () => {
   // Base images: 1-5 + Group Photo.
@@ -12,7 +12,6 @@ const Gallery = () => {
   ];
 
   // Auto-generate a list for potential images 6 to 20
-  // Starts from 6.png so you don't miss any files between 5 and 7
   const autoImages = Array.from({ length: 15 }, (_, i) => {
     const num = i + 6;
     return {
@@ -57,7 +56,7 @@ const StaticGalleryItem = ({ image }) => {
       />
       {/* Caption Box: Only for the team picture */}
       {image.src.includes('group.png') && image.caption && (
-        <div style={{ padding: '1.5rem', textAlign: 'center', borderTop: '1px solid var(--border-color)', backgroundColor: 'var(--bg-card)', flexGrow: 1 }}>
+        <div style={{ padding: '1.5rem', textAlign: 'center', borderTop: '1px solid var(--border-color)', backgroundColor: 'var(--bg-card)', flexGrow: 1, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <p style={{ margin: 0, color: 'var(--text-main)', fontWeight: 'bold', fontSize: '1.1rem' }}>{image.caption}</p>
         </div>
       )}
@@ -67,19 +66,31 @@ const StaticGalleryItem = ({ image }) => {
 
 // Component for auto-generated images
 const DynamicGalleryItem = ({ image }) => {
-  // Default to true (show the box). If image fails, set to false (hide the box).
-  const [isValid, setIsValid] = useState(true);
+  const [status, setStatus] = useState('loading'); // loading, loaded, error
 
-  if (!isValid) return null;
+  useEffect(() => {
+    const img = new Image();
+    img.src = image.src;
+    img.onload = () => setStatus('loaded');
+    img.onerror = () => setStatus('error');
+  }, [image.src]);
+
+  // If image fails to load, do not render ANYTHING (no empty box)
+  if (status === 'error') return null;
 
   return (
-    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
-      <img 
-        src={image.src} 
-        alt={image.alt} 
-        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
-        onError={() => setIsValid(false)} // Hides the component if image 404s
-      />
+    // ALWAYS render the container box
+    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden', height: '100%' }}>
+      {status === 'loaded' ? (
+        <img 
+          src={image.src} 
+          alt={image.alt} 
+          style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
+        />
+      ) : (
+        // Optional: Render a placeholder or skeleton while loading if desired
+        <div style={{ width: '100%', height: '250px', backgroundColor: 'var(--bg-body)', opacity: 0.5 }} />
+      )}
     </div>
   );
 };
