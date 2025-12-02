@@ -47,15 +47,18 @@ const Gallery = () => {
 // Component for known images (1-6) - Renders immediately
 const StaticGalleryItem = ({ image }) => {
   return (
-    <div className="gallery-item">
+    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
       <img 
         src={image.src} 
         alt={image.alt} 
         loading="lazy" 
+        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
       />
       {/* Strict Caption Check: Only for group.png */}
       {image.src.includes('group.png') && image.caption && (
-        <div className="caption">{image.caption}</div>
+        <div style={{ padding: '1rem', textAlign: 'center', borderTop: '1px solid var(--border-color)' }}>
+          <p style={{ margin: 0, color: 'var(--text-muted)' }}>{image.caption}</p>
+        </div>
       )}
     </div>
   );
@@ -76,9 +79,12 @@ const DynamicGalleryItem = ({ image }) => {
   if (!isVisible) return null;
 
   return (
-    // This wrapper div with className="gallery-item" is CRITICAL for the box styling
-    <div className="gallery-item">
-      <img src={image.src} alt={image.alt} />
+    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
+      <img 
+        src={image.src} 
+        alt={image.alt} 
+        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
+      />
     </div>
   );
 };
