@@ -16,7 +16,7 @@ const Contact = () => {
         <h2>Contact & Socials</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           
-          {/* INSTAGRAM CARD - FLEXBOX CENTERED */}
+          {/* INSTAGRAM CARD */}
           <div className="highlight-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <h3>Follow Our Journey</h3>
             <p>We are documenting our process and sharing facts on Instagram.</p>
@@ -25,13 +25,13 @@ const Contact = () => {
               className="btn btn-secondary" 
               target="_blank" 
               rel="noopener noreferrer"
-              style={{ marginTop: 'auto' }} // Pushes button to bottom if needed
+              style={{ marginTop: 'auto' }} 
             >
               @bridge_to_knowledge_
             </a>
           </div>
 
-          {/* FUNDRAISER CARD - FLEXBOX CENTERED */}
+          {/* FUNDRAISER CARD */}
           <div className="highlight-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <h3>Support Us</h3>
             <p>The most direct way to help is by donating to our campaign.</p>
@@ -44,7 +44,7 @@ const Contact = () => {
             </button>
           </div>
 
-          {/* CONTACT CARD - CENTERED */}
+          {/* CONTACT CARD */}
           <div className="highlight-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <h3>School Contact</h3>
             <p>For official inquiries, please contact our project advisor.</p>
@@ -57,18 +57,15 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* ADVISORS SECTION - FORCED 2x2 GRID */}
+      {/* ADVISORS SECTION - FIXED GRID */}
       <div className="page-section">
         <h2>Advisors & Mentors</h2>
         <p style={{ marginBottom: '2rem' }}>
           This project would not have been possible without the guidance and support of our teachers and school advisors.
         </p>
         
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', // Responsive Grid
-          gap: '2rem' 
-        }}>
+        {/* FIXED: Removed inline style that forced 3 columns */}
+        <div className="team-grid-4col" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
           
           <div className="team-member">
             <h4>Miss Samrajni</h4>
