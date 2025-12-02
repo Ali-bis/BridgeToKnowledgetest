@@ -1,6 +1,9 @@
 import React from 'react';
+import adminData from '../admin.json'; 
 
 const Contact = () => {
+  const data = adminData;
+
   return (
     <div className="container">
       <div className="hero-banner">
@@ -13,22 +16,22 @@ const Contact = () => {
         <h2>Contact & Socials</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
           
-          {/* INSTAGRAM - CENTERED */}
+          {/* INSTAGRAM CARD */}
           <div className="highlight-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <h3>Follow Our Journey</h3>
             <p>We are documenting our process and sharing facts on Instagram.</p>
             <a 
-              href="https://www.instagram.com/bridge_to_knowledge_/" 
+              href={data.socialMedia.instagram} 
               className="btn btn-secondary" 
               target="_blank" 
               rel="noopener noreferrer"
-              style={{ marginTop: 'auto' }}
+              style={{ marginTop: 'auto' }} 
             >
               @bridge_to_knowledge_
             </a>
           </div>
 
-          {/* FUNDRAISER - CENTERED */}
+          {/* FUNDRAISER CARD */}
           <div className="highlight-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <h3>Support Us</h3>
             <p>The most direct way to help is by donating to our campaign.</p>
@@ -41,7 +44,7 @@ const Contact = () => {
             </button>
           </div>
 
-          {/* SCHOOL CONTACT - CENTERED */}
+          {/* CONTACT CARD */}
           <div className="highlight-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <h3>School Contact</h3>
             <p>For official inquiries, please contact our project advisor.</p>
@@ -61,8 +64,8 @@ const Contact = () => {
           This project would not have been possible without the guidance and support of our teachers and school advisors.
         </p>
         
-        {/* Responsive Grid that handles 4 items perfectly */}
-        <div className="team-grid-4col" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+        {/* FIXED: 'repeat(2, 1fr)' forces exactly 2 columns, creating a balanced 2x2 square */}
+        <div className="team-grid-4col" style={{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
           
           <div className="team-member">
             <h4>Miss Samrajni</h4>
@@ -79,7 +82,6 @@ const Contact = () => {
             <p style={{ color: 'var(--text-muted)' }}>Head of Student Life</p>
           </div>
 
-          {/* ADDED MISS ZEEBA */}
           <div className="team-member">
             <h4>Miss Zeeba</h4>
             <p style={{ color: 'var(--text-muted)' }}>Permission for Action & Fundraiser</p>
