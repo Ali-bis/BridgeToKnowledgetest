@@ -33,7 +33,6 @@ const Header = ({ theme, toggleTheme }) => {
               <li><Link to="/action" className={isActive('/action')}>Action</Link></li>
               <li><Link to="/research" className={isActive('/research')}>Research</Link></li>
               <li><Link to="/gallery" className={isActive('/gallery')}>Gallery</Link></li>
-              <li><Link to="/analytics" className={isActive('/analytics')}>Analytics</Link></li>
               <li><Link to="/contact" className={isActive('/contact')}>Contact</Link></li>
             </ul>
           </nav>
@@ -67,7 +66,6 @@ const Header = ({ theme, toggleTheme }) => {
         <Link to="/action" onClick={closeMenu}>Action</Link>
         <Link to="/research" onClick={closeMenu}>Research</Link>
         <Link to="/gallery" onClick={closeMenu}>Gallery</Link>
-        <Link to="/analytics" onClick={closeMenu}>Analytics</Link>
         <Link to="/contact" onClick={closeMenu}>Contact</Link>
       </div>
     </header>
