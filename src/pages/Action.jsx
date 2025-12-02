@@ -4,7 +4,7 @@ import Carousel from '../components/Carousel';
 const Action = () => {
   const actionImages = [
     { src: "/images/4.png.jpg", caption: "Workshop 1: Newsletter Writing" },
-    { src: "/images/2.png", caption: "Workshop 2: Word Search & Vocab" },
+    { src: "/images/5.png", caption: "Workshop 2: Word Search & Vocab" },
     { src: "/images/3.png", caption: "Workshop 3: Comic Strip Creation" }
   ];
 
