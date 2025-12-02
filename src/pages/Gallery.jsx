@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 
 const Gallery = () => {
-  // Your base images with specific captions
+  // Base images: Removed captions for 1-5 as requested. Only keeping it for the group image.
   const baseImages = [
-    { id: 1, src: '/images/1.png', alt: 'Gallery Image 1', caption: 'Caption for image 1' },
-    { id: 2, src: '/images/2.png', alt: 'Gallery Image 2', caption: 'Caption for image 2' },
-    { id: 3, src: '/images/3.png', alt: 'Gallery Image 3', caption: 'Caption for image 3' },
-    { id: 4, src: '/images/4.png', alt: 'Gallery Image 4', caption: 'Caption for image 4' },
-    { id: 5, src: '/images/5.png', alt: 'Gallery Image 5', caption: 'Caption for image 5' },
+    { id: 1, src: '/images/1.png', alt: 'Gallery Image 1', caption: '' },
+    { id: 2, src: '/images/2.png', alt: 'Gallery Image 2', caption: '' },
+    { id: 3, src: '/images/3.png', alt: 'Gallery Image 3', caption: '' },
+    { id: 4, src: '/images/4.png', alt: 'Gallery Image 4', caption: '' },
+    { id: 5, src: '/images/5.png', alt: 'Gallery Image 5', caption: '' },
     { id: 6, src: '/images/group.png', alt: 'Team Picture', caption: 'Our team at the school visit.' },
   ];
 
   // Auto-generate a list for potential images 7 to 20
-  // If you upload 7.png, 8.png etc., they will be checked
   const autoImages = Array.from({ length: 14 }, (_, i) => {
     const num = i + 7;
     return {
@@ -43,20 +42,32 @@ const Gallery = () => {
 
 // Sub-component to handle image loading errors gracefully
 const GalleryItem = ({ image }) => {
-  const [isVisible, setIsVisible] = useState(true);
+  // 'loading' | 'loaded' | 'error'
+  const [status, setStatus] = useState('loading');
 
-  if (!isVisible) return null;
+  // If error, don't render anything (removes the box completely)
+  if (status === 'error') return null;
 
   return (
-    <div className="gallery-item">
+    <div 
+      className="gallery-item" 
+      // Hide the container while loading so empty white boxes don't show up.
+      style={status === 'loading' ? { display: 'none' } : {}}
+    >
       <img 
         src={image.src} 
         alt={image.alt} 
         loading="lazy" 
-        onError={() => setIsVisible(false)} // Hides the box if image fails to load
+        onLoad={() => setStatus('loaded')}
+        onError={() => setStatus('error')} 
       />
-      {/* Only show caption for the group image */}
-      {image.src === '/images/group.png' && (
+      
+      {/* Conditionally render the caption div ONLY if:
+         1. The image source is the group image (specific request)
+         OR
+         2. The caption is not an empty string (general safety)
+      */}
+      {image.src === '/images/group.png' && image.caption && (
         <div className="caption">{image.caption}</div>
       )}
     </div>
