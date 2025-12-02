@@ -1,86 +1,115 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-const Gallery = () => {
-  // Base images: 1-6. We assume these exist, so we render them immediately.
-  const baseImages = [
-    { id: 1, src: '/images/1.png', alt: 'Gallery Image 1', caption: '' },
-    { id: 2, src: '/images/2.png', alt: 'Gallery Image 2', caption: '' },
-    { id: 3, src: '/images/3.png', alt: 'Gallery Image 3', caption: '' },
-    { id: 4, src: '/images/4.png', alt: 'Gallery Image 4', caption: '' },
-    { id: 5, src: '/images/5.png', alt: 'Gallery Image 5', caption: '' },
-    { id: 6, src: '/images/group.png', alt: 'Team Picture', caption: 'The Bridge to Knowledge Team' },
-  ];
-
-  // Auto-generate a list for potential images 7 to 20
-  const autoImages = Array.from({ length: 14 }, (_, i) => {
-    const num = i + 7;
-    return {
-      id: num,
-      src: `/images/${num}.png`,
-      alt: `Gallery Image ${num}`,
-      caption: '' 
-    };
-  });
-
+const Research = () => {
   return (
     <div className="container">
+      
+      {/* HERO */}
       <div className="hero-banner">
-        <h1>GALLERY</h1>
-        <p>A visual journey of our research and interactions.</p>
+        <h1>RESEARCH & METHODS</h1>
+        <p>A foundation of secondary data and on-the-ground investigation.</p>
       </div>
 
-      <div className="gallery-grid">
-        {/* 1. Render Base Images Immediately (No waiting) */}
-        {baseImages.map((image) => (
-          <StaticGalleryItem key={image.id} image={image} />
-        ))}
-
-        {/* 2. Render Auto Images Only If They Exist (Prevents white boxes) */}
-        {autoImages.map((image) => (
-          <DynamicGalleryItem key={image.id} image={image} />
-        ))}
+      {/* PRIMARY RESEARCH */}
+      <div className="page-section">
+        <h2>PRIMARY RESEARCH</h2>
+        <p>
+          Our team conducted direct, on-the-ground research to gather qualitative and quantitative data.
+        </p>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginTop: '2rem' }}>
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>School Visits</h4>
+            <p style={{ fontSize: '0.9rem', margin: 0 }}>
+              We visited a representative sample of schools: public (BMC), private for-profit, and private non-profit.
+            </p>
+          </div>
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Student Interviews</h4>
+            <p style={{ fontSize: '0.9rem', margin: 0 }}>
+              Conducted structured interviews with students to understand their learning experiences and access to resources.
+            </p>
+          </div>
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>Evidence</h4>
+            <p style={{ fontSize: '0.9rem', margin: 0 }}>
+              Documented the state of facilities, classroom resources (libraries, computer labs), and infrastructure.
+            </p>
+          </div>
+        </div>
       </div>
+
+      {/* SECONDARY RESEARCH */}
+      <div className="page-section">
+        <h2>SECONDARY RESEARCH: KEY FINDINGS</h2>
+        <p>
+          Our research focused on the sheer scale of the education crisis. We moved beyond percentages to understand the <strong>actual number of lives affected</strong> by the lack of access and quality.
+        </p>
+
+        <h3 style={{ marginTop: '2rem' }}>National Context: The Scale of Exclusion</h3>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginTop: '1rem', marginBottom: '2rem' }}>
+          
+          {/* STAT 1: OUT OF SCHOOL */}
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Out of School (Ages 6-17)</h4>
+            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--accent)', margin: 0 }}>47.4 Million</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>UDISE 2023-24 Data</span>
+          </div>
+
+          {/* STAT 2: WOMEN EXCLUDED */}
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Women Left Behind</h4>
+            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>242 Million</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Women who never attended school</span>
+          </div>
+          
+          {/* STAT 3: COLLEGE DROPOUT */}
+          <div className="highlight-card">
+             <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Higher Ed Gap</h4>
+             <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--text-main)', margin: 0 }}>71.6%</p>
+             <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Students never reach college</span>
+          </div>
+        </div>
+
+        <h3>Mumbai Context: The Urban Gap</h3>
+        <p style={{ marginBottom: '1rem' }}>
+          Even in Mumbai, thousands of children remain excluded from the education system.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Out-of-School Children</h4>
+            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>10,820</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Official Mumbai Survey</span>
+          </div>
+          
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Never Enrolled</h4>
+            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>7,806</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Children in Mumbai</span>
+          </div>
+        </div>
+
+        <div style={{ marginTop: '2rem', fontStyle: 'italic', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+          <strong>Comment:</strong> The high "Never Enrolled" count (7,806) shows that despite infrastructure, many children in Mumbai are completely disconnected from the education system from birth.
+        </div>
+
+        {/* CITATIONS SECTION */}
+        <div style={{ marginTop: '3rem', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>
+          <h4>Sources</h4>
+          <ul style={{ fontSize: '0.85rem', color: 'var(--text-muted)', columns: 2, listStylePosition: 'inside' }}>
+            <li>UDISE+ 2023-24 Report</li>
+            <li>ASER 2024 National Findings</li>
+            <li>Periodic Labour Force Survey (PLFS) 2023-24</li>
+            <li>Mumbai Municipal Corporation Education Survey</li>
+            <li>MOSPI "Children in India" Report</li>
+            <li>Census 2011 Data (Baseline)</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   );
 };
 
-// Component for known images (1-6) - Renders immediately
-const StaticGalleryItem = ({ image }) => {
-  return (
-    <div className="gallery-item">
-      <img 
-        src={image.src} 
-        alt={image.alt} 
-        loading="lazy" 
-      />
-      {/* Strict Caption Check: Only for group.png */}
-      {image.src.includes('group.png') && image.caption && (
-        <div className="caption">{image.caption}</div>
-      )}
-    </div>
-  );
-};
-
-// Component for auto-generated images (7-20) - Checks existence first
-const DynamicGalleryItem = ({ image }) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = image.src;
-    img.onload = () => setIsVisible(true);
-    img.onerror = () => setIsVisible(false);
-  }, [image.src]);
-
-  // If image doesn't exist yet, render NOTHING (no white box)
-  if (!isVisible) return null;
-
-  return (
-    // FIXED: Added the wrapper div "gallery-item" to restore the box styling
-    <div className="gallery-item">
-      <img src={image.src} alt={image.alt} />
-    </div>
-  );
-};
-
-export default Gallery;
+export default Research;
