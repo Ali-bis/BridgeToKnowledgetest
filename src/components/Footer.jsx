@@ -33,7 +33,7 @@ const Footer = () => {
         <div>
           <h4>Contact</h4>
           <ul>
-            <li><a href="mailto:info@bridgetoknowledge.org">info@bridgetoknowledge.org</a></li>
+            <li><a href="mailto:samrajni.dasgupta@bis.edu.in">samrajni.dasgupta@bis.edu.in</a></li>
             <li style={{ color: 'var(--text-muted)' }}>Mumbai, India</li>
           </ul>
         </div>
