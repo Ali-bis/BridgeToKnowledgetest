@@ -216,29 +216,30 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
   .team-icon { width: 150px; height: 150px; }
 }
 /* ... existing code ... */
-
 /* GALLERY SPECIFIC STYLES */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 3rem;
-  /* Ensure all items in the row stretch to the height of the tallest item (the one with the caption) */
-  align-items: stretch; 
+  /* Ensure uniform height across the row */
+  align-items: stretch;
 }
 
 .gallery-card {
   background: transparent;
   border: none;
   box-shadow: none;
+  
   border-radius: 20px;
   overflow: hidden;
   transition: var(--transition);
   
-  /* Flex settings to make image fill the space */
+  /* FIXED HEIGHT is the key to making top and bottom rows match perfectly */
+  height: 350px; 
+  
   display: flex;
   flex-direction: column;
-  height: 100%; 
 }
 
 .gallery-card:hover {
@@ -247,15 +248,22 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
 
 .gallery-card img {
   width: 100%;
-  /* Use flex to fill remaining vertical space. 
-     This allows images without captions to grow down and match the height of images with captions. */
+  /* flex: 1 makes the image expand to fill any available space (e.g. if no caption) */
   flex: 1; 
-  min-height: 300px; /* Ensures a good base height */
-  object-fit: cover;
+  /* object-fit: cover ensures it fills the box without distortion */
+  object-fit: cover; 
+  /* Top center positioning often helps portrait images look better when cropped */
+  object-position: top center; 
   display: block;
+  
+  /* Remove min-height so it respects the card's fixed height */
+  height: 100%; 
 }
 
 .gallery-caption {
+  /* Prevent caption from resizing */
+  flex-shrink: 0; 
+  
   padding: 1rem 0;
   text-align: center;
   font-weight: 600;
@@ -263,8 +271,6 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
   color: var(--text-main);
   background: transparent;
   border: none;
-  /* Prevent caption from shrinking */
-  flex-shrink: 0; 
 }
 
 /* Responsive adjustments */
@@ -277,5 +283,9 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
 @media (max-width: 600px) {
   .gallery-grid {
     grid-template-columns: 1fr;
+  }
+  .gallery-card {
+    /* On mobile, let height be auto or smaller if needed */
+    height: 300px; 
   }
 }
