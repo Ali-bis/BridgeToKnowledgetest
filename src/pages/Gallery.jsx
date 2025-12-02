@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const Gallery = () => {
   // Base images: 1-5 + Group Photo.
@@ -48,16 +48,16 @@ const Gallery = () => {
 // Component for known images
 const StaticGalleryItem = ({ image }) => {
   return (
-    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column', height: '100%' }}>
       <img 
         src={image.src} 
         alt={image.alt} 
         loading="lazy" 
-        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block', flexGrow: 1 }}
+        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
       />
       {/* Caption Box: Only for the team picture */}
       {image.src.includes('group.png') && image.caption && (
-        <div style={{ padding: '1.5rem', textAlign: 'center', borderTop: '1px solid var(--border-color)', backgroundColor: 'var(--bg-card)' }}>
+        <div style={{ padding: '1.5rem', textAlign: 'center', borderTop: '1px solid var(--border-color)', backgroundColor: 'var(--bg-card)', flexGrow: 1 }}>
           <p style={{ margin: 0, color: 'var(--text-main)', fontWeight: 'bold', fontSize: '1.1rem' }}>{image.caption}</p>
         </div>
       )}
@@ -67,25 +67,18 @@ const StaticGalleryItem = ({ image }) => {
 
 // Component for auto-generated images
 const DynamicGalleryItem = ({ image }) => {
-  const [isVisible, setIsVisible] = useState(false);
+  // Default to true (show the box). If image fails, set to false (hide the box).
+  const [isValid, setIsValid] = useState(true);
 
-  useEffect(() => {
-    const img = new Image();
-    img.src = image.src;
-    img.onload = () => setIsVisible(true);
-    img.onerror = () => setIsVisible(false);
-  }, [image.src]);
-
-  // If image doesn't exist, render nothing (preserves grid layout)
-  if (!isVisible) return null;
+  if (!isValid) return null;
 
   return (
-    // This div with "highlight-card" is the CONTAINER BOX you were missing
     <div className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
       <img 
         src={image.src} 
         alt={image.alt} 
         style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
+        onError={() => setIsValid(false)} // Hides the component if image 404s
       />
     </div>
   );
