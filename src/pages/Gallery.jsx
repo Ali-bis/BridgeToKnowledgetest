@@ -80,6 +80,7 @@ const DynamicGalleryItem = ({ image }) => {
   if (!isVisible) return null;
 
   return (
+    // This div with "highlight-card" is the CONTAINER BOX you were missing
     <div className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
       <img 
         src={image.src} 
