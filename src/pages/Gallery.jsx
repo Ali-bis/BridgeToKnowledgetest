@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Gallery = () => {
-  // Base images: 1-5 have NO captions. 6 (Group) has a caption.
+  // Base images: 1-6. We assume these exist, so we render them immediately.
   const baseImages = [
     { id: 1, src: '/images/1.png', alt: 'Gallery Image 1', caption: '' },
     { id: 2, src: '/images/2.png', alt: 'Gallery Image 2', caption: '' },
@@ -22,8 +22,6 @@ const Gallery = () => {
     };
   });
 
-  const allPotentialImages = [...baseImages, ...autoImages];
-
   return (
     <div className="container">
       <div className="hero-banner">
@@ -32,51 +30,54 @@ const Gallery = () => {
       </div>
 
       <div className="gallery-grid">
-        {allPotentialImages.map((image) => (
-          <GalleryItem key={image.id} image={image} />
+        {/* 1. Render Base Images Immediately (No waiting) */}
+        {baseImages.map((image) => (
+          <StaticGalleryItem key={image.id} image={image} />
+        ))}
+
+        {/* 2. Render Auto Images Only If They Exist (Prevents white boxes) */}
+        {autoImages.map((image) => (
+          <DynamicGalleryItem key={image.id} image={image} />
         ))}
       </div>
     </div>
   );
 };
 
-// Sub-component to handle image loading errors gracefully
-const GalleryItem = ({ image }) => {
-  const [status, setStatus] = useState('loading');
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = image.src;
-    
-    img.onload = () => setStatus('loaded');
-    img.onerror = () => setStatus('error');
-    
-    // Cleanup to avoid memory leaks if component unmounts
-    return () => {
-      img.onload = null;
-      img.onerror = null;
-    };
-  }, [image.src]);
-
-  // If loading or error, render NOTHING.
-  // This prevents empty boxes for missing images.
-  if (status !== 'loaded') return null;
-
+// Component for known images (1-6) - Renders immediately
+const StaticGalleryItem = ({ image }) => {
   return (
     <div className="gallery-item">
       <img 
         src={image.src} 
         alt={image.alt} 
+        loading="lazy" 
       />
-      
-      {/* STRICT CAPTION LOGIC:
-          Only render this div if:
-          1. The image is specifically the group image
-          2. AND the caption text is not empty.
-      */}
+      {/* Strict Caption Check: Only for group.png */}
       {image.src.includes('group.png') && image.caption && (
         <div className="caption">{image.caption}</div>
       )}
+    </div>
+  );
+};
+
+// Component for auto-generated images (7-20) - Checks existence first
+const DynamicGalleryItem = ({ image }) => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = image.src;
+    img.onload = () => setIsVisible(true);
+    img.onerror = () => setIsVisible(false);
+  }, [image.src]);
+
+  // If image doesn't exist yet, render NOTHING (no white box)
+  if (!isVisible) return null;
+
+  return (
+    <div className="gallery-item">
+      <img src={image.src} alt={image.alt} />
     </div>
   );
 };
