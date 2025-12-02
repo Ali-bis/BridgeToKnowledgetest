@@ -1,57 +1,64 @@
 import React, { useState } from 'react';
 
-// Smart Component: Only shows the image if it loads successfully
-const GalleryImage = ({ src, caption }) => {
-  const [isVisible, setIsVisible] = useState(true);
-
-  return isVisible ? (
-    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
-      <img 
-        src={src} 
-        alt="Gallery" 
-        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
-        onError={() => setIsVisible(false)} // Magically hides if file doesn't exist
-      />
-      {/* Only show caption box if text is provided */}
-      {caption && (
-        <div style={{ padding: '1rem', textAlign: 'center', borderTop: '1px solid var(--border-color)' }}>
-          <p style={{ margin: 0, color: 'var(--text-muted)' }}>{caption}</p>
-        </div>
-      )}
-    </div>
-  ) : null;
-};
-
 const Gallery = () => {
-  // 1. AUTO-LOADER: Tries to find images numbered 1 to 20
-  // If you upload "6.png", it will automatically appear!
-  const numberedImages = Array.from({ length: 20 }, (_, i) => i + 1);
+  // Your base images with specific captions
+  const baseImages = [
+    { id: 1, src: '/images/1.png', alt: 'Gallery Image 1', caption: 'Caption for image 1' },
+    { id: 2, src: '/images/2.png', alt: 'Gallery Image 2', caption: 'Caption for image 2' },
+    { id: 3, src: '/images/3.png', alt: 'Gallery Image 3', caption: 'Caption for image 3' },
+    { id: 4, src: '/images/4.png', alt: 'Gallery Image 4', caption: 'Caption for image 4' },
+    { id: 5, src: '/images/5.png', alt: 'Gallery Image 5', caption: 'Caption for image 5' },
+    { id: 6, src: '/images/group.png', alt: 'Team Picture', caption: 'Our team at the school visit.' },
+  ];
+
+  // Auto-generate a list for potential images 7 to 20
+  // If you upload 7.png, 8.png etc., they will be checked
+  const autoImages = Array.from({ length: 14 }, (_, i) => {
+    const num = i + 7;
+    return {
+      id: num,
+      src: `/images/${num}.png`,
+      alt: `Gallery Image ${num}`,
+      caption: '' // No caption for auto-added images
+    };
+  });
+
+  const allPotentialImages = [...baseImages, ...autoImages];
 
   return (
     <div className="container">
       <div className="hero-banner">
         <h1>GALLERY</h1>
-        <p>Moments from our journey.</p>
+        <p>A visual journey of our research and interactions.</p>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-        
-        {/* 1. Numbered Images (No Caption) */}
-        {numberedImages.map((num) => (
-          <GalleryImage 
-            key={num} 
-            src={`/images/${num}.png`} 
-            caption="" 
-          />
+      <div className="gallery-grid">
+        {allPotentialImages.map((image) => (
+          <GalleryItem key={image.id} image={image} />
         ))}
-
-        {/* 2. Team Photo (With Caption) */}
-        <GalleryImage 
-          src="/images/group.png" 
-          caption="The Bridge to Knowledge Team" 
-        />
-
       </div>
+    </div>
+  );
+};
+
+// Sub-component to handle image loading errors gracefully
+const GalleryItem = ({ image }) => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="gallery-item">
+      <img 
+        src={image.src} 
+        alt={image.alt} 
+        loading="lazy" 
+        onError={() => setIsVisible(false)} // Hides the box if image fails to load
+      />
+      {/* Only show caption for the group image */}
+      {image.src === '/images/group.png' && (
+        <div className="caption">{image.caption}</div>
+      )}
     </div>
   );
 };
