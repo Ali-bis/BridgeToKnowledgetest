@@ -1,13 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Bar, Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+
+// Register ChartJS components
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
 
 const Research = () => {
+  const [chartKey, setChartKey] = useState(0);
+
+  // Force re-render of charts when theme changes
+  useEffect(() => {
+    const observer = new MutationObserver(() => setChartKey(prev => prev + 1));
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    return () => observer.disconnect();
+  }, []);
+
+  // Theme detection for chart colors
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  const textColor = isLight ? '#0f172a' : '#f8fafc';
+
+  const staticOptions = {
+    events: [], 
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: { color: textColor, font: { family: 'Inter' } },
+      },
+      tooltip: { enabled: false }
+    },
+    animation: { duration: 0 }
+  };
+
+  const barOptions = {
+    ...staticOptions,
+    scales: {
+      y: { 
+        ticks: { color: textColor }, 
+        grid: { color: isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.1)' } 
+      },
+      x: { 
+        ticks: { color: textColor }, 
+        grid: { display: false } 
+      },
+    }
+  };
+
+  // 1:60 in Public vs 1:25 in Private (Research PDF)
+  const classSizeData = {
+    labels: ['Private (~25)', 'Public (~60)'],
+    datasets: [{
+      data: [25, 60], 
+      backgroundColor: ['#38bdf8', '#ec4899'], 
+      borderColor: isLight ? '#ffffff' : '#1e293b',
+      borderWidth: 2,
+    }],
+  };
+
+  // Learning Outcomes: 50% Reading Gap, 72% Math Gap
+  const learningData = {
+    labels: ['Cannot Read (Gr 2)', 'Cannot Divide'],
+    datasets: [{
+      label: 'Grade 5 Deficit (%) - ASER 2024',
+      data: [50, 72.1], 
+      backgroundColor: ['#f43f5e', '#f59e0b'], 
+      borderRadius: 6,
+    }],
+  };
+
   return (
     <div className="container">
       
       {/* HERO */}
       <div className="hero-banner">
         <h1>RESEARCH & METHODS</h1>
-        <p>A foundation of secondary data and on-the-ground investigation.</p>
+        <p>A foundation of secondary data, on-the-ground investigation, and impact analytics.</p>
       </div>
 
       {/* PRIMARY RESEARCH */}
@@ -39,7 +105,39 @@ const Research = () => {
         </div>
       </div>
 
-      {/* SECONDARY RESEARCH */}
+      {/* VISUAL ANALYTICS SECTION (Transferred from Analytics) */}
+      <div className="page-section">
+        <h2>IMPACT ANALYTICS</h2>
+        <p style={{ marginBottom: '2rem' }}>Visualizing the disparity in quality and learning outcomes based on our primary and secondary findings.</p>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem' }}>
+          
+          <div className="highlight-card" style={{ textAlign: 'center' }}>
+            <h3 style={{ marginTop: 0 }}>Students Per Teacher</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
+              Public classrooms (1:60) vs Private (1:25) <br/> 
+              <span style={{ fontSize: '0.8rem' }}>(Source: Primary Research 2025)</span>
+            </p>
+            <div style={{ height: '300px', display: 'flex', justifyContent: 'center' }}>
+              <Doughnut key={chartKey} data={classSizeData} options={staticOptions} />
+            </div>
+          </div>
+
+          <div className="highlight-card" style={{ textAlign: 'center' }}>
+            <h3 style={{ marginTop: 0 }}>Learning Deficit (Grade 5)</h3>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', marginBottom: '1rem' }}>
+              % of students failing basic reading & math skills.<br/>
+              <span style={{ fontSize: '0.8rem' }}>(Source: ASER 2024)</span>
+            </p>
+            <div style={{ height: '300px' }}>
+              <Bar key={chartKey} data={learningData} options={barOptions} />
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* SECONDARY RESEARCH TEXT */}
       <div className="page-section">
         <h2>SECONDARY RESEARCH: KEY FINDINGS</h2>
         <p>
