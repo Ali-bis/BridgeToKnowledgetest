@@ -1,27 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+// A smart component that only renders if the image exists
+const GalleryImage = ({ src, caption }) => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  return isVisible ? (
+    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
+      <img 
+        src={src} 
+        alt={caption} 
+        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
+        onError={() => setIsVisible(false)} // Hides itself if image is missing
+      />
+      {/* Only show caption if it has text */}
+      {caption && (
+        <div style={{ padding: '1rem', textAlign: 'center' }}>
+          <p style={{ margin: 0, color: 'var(--text-muted)' }}>{caption}</p>
+        </div>
+      )}
+    </div>
+  ) : null;
+};
 
 const Gallery = () => {
-  // 1. AUTO-IMPORT MAGIC
-  // This searches the 'src/assets/images' folder for ANY image file
-  const imageModules = import.meta.glob('../assets/images/*.{png,jpg,jpeg,svg}', { eager: true });
-
-  // 2. Convert the messy import data into a clean list
-  const galleryImages = Object.keys(imageModules).map((path) => {
-    // 'path' looks like "../assets/images/1.png"
-    const src = imageModules[path].default;
-    
-    // Extract just the filename for a simple caption (optional)
-    // e.g., "1.png" -> "Image 1"
-    const fileName = path.split('/').pop();
-    
-    // Special check for the team photo
-    const isGroup = fileName.toLowerCase().includes('group');
-    
-    return {
-      src: src,
-      caption: isGroup ? "The Bridge to Knowledge Team" : "" // Only caption the group photo
-    };
-  });
+  // CONFIG: How many numbered images do you want to support? (e.g., 1 to 50)
+  const imageCount = 50; 
+  const numberedImages = Array.from({ length: imageCount }, (_, i) => i + 1);
 
   return (
     <div className="container">
@@ -31,27 +35,22 @@ const Gallery = () => {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-        {galleryImages.length > 0 ? (
-          galleryImages.map((item, index) => (
-            <div key={index} className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
-              <img 
-                src={item.src} 
-                alt="Gallery" 
-                style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }} 
-              />
-              {/* Only show caption if it exists */}
-              {item.caption && (
-                <div style={{ padding: '1rem', textAlign: 'center' }}>
-                  <p style={{ margin: 0, color: 'var(--text-muted)' }}>{item.caption}</p>
-                </div>
-              )}
-            </div>
-          ))
-        ) : (
-          <p style={{textAlign: 'center', color: 'var(--text-muted)'}}>
-            No images found in src/assets/images/
-          </p>
-        )}
+        
+        {/* 1. AUTO-LOADER for 1.png to 50.png */}
+        {numberedImages.map((num) => (
+          <GalleryImage 
+            key={num} 
+            src={`/images/${num}.png`} 
+            caption="" // No caption as requested
+          />
+        ))}
+
+        {/* 2. MANUAL ADDITIONS (Like the Group Photo) */}
+        <GalleryImage 
+          src="/images/group.png" 
+          caption="The Bridge to Knowledge Team" 
+        />
+
       </div>
     </div>
   );
