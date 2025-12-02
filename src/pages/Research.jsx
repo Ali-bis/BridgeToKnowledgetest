@@ -43,42 +43,61 @@ const Research = () => {
       <div className="page-section">
         <h2>SECONDARY RESEARCH: KEY FINDINGS</h2>
         <p>
-          Our research focused on literacy rates and digital access. We found that the problem isn't just <strong>enrolment</strong>, but <strong>quality of learning</strong> and the <strong>digital divide</strong>.
+          Our research focused on the sheer scale of the education crisis. We moved beyond percentages to understand the <strong>actual number of lives affected</strong> by the lack of access and quality.
         </p>
 
-        <h3 style={{ marginTop: '2rem' }}>National Context</h3>
+        <h3 style={{ marginTop: '2rem' }}>National Context: The Scale of Exclusion</h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginTop: '1rem', marginBottom: '2rem' }}>
+          
+          {/* STAT 1: NEVER ATTENDED */}
           <div className="highlight-card">
-            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>India Literacy (7+)</h4>
-            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--text-main)', margin: 0 }}>80.9%</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>PLFS 2023-24</span>
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Never Attended School</h4>
+            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--text-main)', margin: 0 }}>414 Million</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>People in India (Census 2011)</span>
           </div>
+
+          {/* STAT 2: OUT OF SCHOOL CHILDREN */}
           <div className="highlight-card">
-            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Gender Gap</h4>
-            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--accent)', margin: 0 }}>12.6%</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Male vs Female</span>
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Out of School (Ages 6-17)</h4>
+            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--accent)', margin: 0 }}>47.4 Million</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>UDISE 2023-24 Data</span>
           </div>
+
+          {/* STAT 3: WOMEN EXCLUDED */}
           <div className="highlight-card">
-            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Urban-Rural Gap</h4>
-            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>11.4%</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Urban vs Rural</span>
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Women Left Behind</h4>
+            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>242 Million</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Women who never attended school</span>
           </div>
         </div>
 
-        <h3>Maharashtra & Mumbai Context</h3>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginTop: '1rem' }}>
-          <div className="highlight-card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 0 }}>
-            <span>Maharashtra Literacy (2011)</span>
-            <strong style={{ color: 'var(--primary)', fontSize: '1.2rem' }}>82.34%</strong>
+        <h3>Mumbai Context: The Urban Gap</h3>
+        <p style={{ marginBottom: '1rem' }}>
+          Even in a developed city like Mumbai, thousands of children slip through the cracks.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Out-of-School Children</h4>
+            <p style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>10,820</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Official Mumbai Survey</span>
           </div>
-          <div className="highlight-card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 0 }}>
-            <span>Mumbai Suburban Literacy</span>
-            <strong style={{ color: 'var(--primary)', fontSize: '1.2rem' }}>89.91%</strong>
+          
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Never Enrolled</h4>
+            <p style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>7,806</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Children in Mumbai</span>
           </div>
-          <div className="highlight-card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 0 }}>
-            <span>Mumbai City Literacy</span>
-            <strong style={{ color: 'var(--primary)', fontSize: '1.2rem' }}>89.21%</strong>
+
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Child Labor</h4>
+            <p style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>288</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Identified cases in survey</span>
           </div>
+        </div>
+
+        <div style={{ marginTop: '2rem', fontStyle: 'italic', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
+          <strong>Comment:</strong> The high "Never Enrolled" count (7,806) shows that despite infrastructure, many children in Mumbai are completely disconnected from the education system from birth.
         </div>
       </div>
 
