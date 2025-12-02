@@ -1,76 +1,60 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const Footer = () => {
   return (
-    <div className="container">
-      
-      <section className="hero-banner">
-        <h1 style={{ marginBottom: '0.5rem' }}>BRIDGE TO KNOWLEDGE</h1>
-        
-        <h2 style={{ fontSize: '1.5rem', fontFamily: 'Inter', color: 'var(--primary)', fontWeight: '400', letterSpacing: '2px', border: 'none', margin: '0 auto', textAlign: 'center', display: 'block' }}>
-          BIS Global Perspectives Summit Project
-        </h2>
-
-        {/* LOGO MOVED HERE with Gap */}
-        <img 
-          src="/images/logo.png" 
-          alt="Logo" 
-          className="home-logo" 
-          style={{ marginTop: '2.5rem', marginBottom: '2rem' }} 
-        />
-        
-        <p style={{ maxWidth: '600px', margin: '0 auto 2rem auto', color: 'var(--text-muted)' }}>
-          Investigating and acting upon the disparity in the <strong>quality</strong> and <strong>accessibility</strong> of education for different backgrounds in Mumbai.
-        </p>
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-          <button className="btn btn-disabled" disabled>
-            Fundraiser Coming Soon
-          </button>
-          
-          <a href="https://www.instagram.com/bridge_to_knowledge_/" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
-            Follow on Instagram
-          </a>
-        </div>
-      </section>
-
-      <section className="stats-section-container">
-        <div className="stats-content-left">
-          <h2>THE PROBLEM</h2>
-          <p>
-            Our research confirmed that "access" to school isn't the only problem. The real issue is a deep gap in the <strong>quality</strong> of education and a growing <strong>digital divide</strong>.
-          </p>
-          <p style={{ marginTop: '1rem' }}>
-            While Mumbai's literacy rate is high, many students in our Partnered Municipal School lack the digital skills and tools needed for modern employment. Our mission is to take direct action to help bridge this gap.
+    <footer className="footer">
+      <div className="footer-container">
+        {/* Column 1: Brand & Logo */}
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <h4 style={{ margin: '0 0 0.5rem 0' }}>Bridge To Knowledge</h4>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', margin: 0 }}>
+            Bridging the gap between potential and opportunity in Mumbai's educational landscape.
           </p>
           
-          <div style={{ width: '100%', height: '200px', marginTop: '1.5rem', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--border-color)' }}>
-             <img 
-               src="/images/group.png" 
-               alt="Students in Workshop" 
-               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', border: 'none', marginTop: 0 }} 
-             />
-          </div>
+          {/* LOGO MOVED BELOW TEXT with Gap */}
+          <img 
+            src="/images/logo.png" 
+            alt="Logo" 
+            style={{ width: '80px', marginTop: '1.5rem', display: 'block' }} 
+          />
         </div>
 
-        <div className="stats-bar-right">
-          <div className="stat-item">
-            <span className="stat-item-number">19.1%</span>
-            <span className="stat-item-label">of India’s population is illiterate (~280M adults)</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-item-number">14.1%</span>
-            <span className="stat-item-label">of students drop out by secondary levels</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-item-number">12.5%</span>
-            <span className="stat-item-label">gap in education between economic classes</span>
-          </div>
+        {/* Column 2: Links */}
+        <div>
+          <h4>Navigate</h4>
+          <ul style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', listStyle: 'none', padding: 0 }}>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/timeline">Timeline</Link></li>
+            <li><Link to="/action">Action</Link></li>
+            <li><Link to="/research">Research</Link></li>
+            <li><Link to="/gallery">Gallery</Link></li>
+            <li><Link to="/analytics">Analytics</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
+          </ul>
         </div>
-      </section>
 
-    </div>
+        {/* Column 3: Contact */}
+        <div>
+          <h4>Contact</h4>
+          <ul style={{ listStyle: 'none', padding: 0 }}>
+            <li>
+              <a href="mailto:info@bridgetoknowledge.org" style={{ textDecoration: 'none', color: 'var(--primary)' }}>
+                info@bridgetoknowledge.org
+              </a>
+            </li>
+            <li style={{ color: 'var(--text-muted)' }}>Mumbai, India</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* COPYRIGHT LEFT ALIGNED */}
+      <div className="footer-bottom" style={{ textAlign: 'left', marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--border-color)' }}>
+        &copy; {new Date().getFullYear()} Project Bridge to Knowledge. All Rights Reserved.
+      </div>
+    </footer>
   );
 };
 
-export default Home;
+export default Footer;
