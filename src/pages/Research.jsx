@@ -43,27 +43,20 @@ const Research = () => {
       <div className="page-section">
         <h2>SECONDARY RESEARCH: KEY FINDINGS</h2>
         <p>
-          Our research focused on the sheer scale of the education crisis. We moved beyond percentages to understand the <strong>actual number of lives affected</strong> by the lack of access and quality.
+          Our research focused on the sheer scale of the education crisis. We moved beyond percentages to understand the <strong>actual number of lives affected</strong>.
         </p>
 
-        <h3 style={{ marginTop: '2rem' }}>National Context: The Scale of Exclusion</h3>
+        <h3 style={{ marginTop: '2rem' }}>National Context</h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginTop: '1rem', marginBottom: '2rem' }}>
           
-          {/* STAT 1: NEVER ATTENDED */}
-          <div className="highlight-card">
-            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Never Attended School</h4>
-            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--text-main)', margin: 0 }}>414 Million</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>People in India (Census 2011)</span>
-          </div>
-
-          {/* STAT 2: OUT OF SCHOOL CHILDREN */}
+          {/* STAT 1: OUT OF SCHOOL */}
           <div className="highlight-card">
             <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Out of School (Ages 6-17)</h4>
             <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--accent)', margin: 0 }}>47.4 Million</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>UDISE 2023-24 Data</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Source: UDISE+ 2023-24</span>
           </div>
 
-          {/* STAT 3: WOMEN EXCLUDED */}
+          {/* STAT 2: WOMEN EXCLUDED */}
           <div className="highlight-card">
             <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Women Left Behind</h4>
             <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>242 Million</p>
@@ -80,7 +73,7 @@ const Research = () => {
           <div className="highlight-card">
             <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Out-of-School Children</h4>
             <p style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>10,820</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Official Mumbai Survey</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Official Mumbai Survey (2020-21)</span>
           </div>
           
           <div className="highlight-card">
@@ -88,17 +81,30 @@ const Research = () => {
             <p style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>7,806</p>
             <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Children in Mumbai</span>
           </div>
-
-          <div className="highlight-card">
-            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Child Labor</h4>
-            <p style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>288</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Identified cases in survey</span>
-          </div>
         </div>
 
         <div style={{ marginTop: '2rem', fontStyle: 'italic', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
           <strong>Comment:</strong> The high "Never Enrolled" count (7,806) shows that despite infrastructure, many children in Mumbai are completely disconnected from the education system from birth.
         </div>
+      </div>
+
+      {/* CITATIONS */}
+      <div className="page-section" style={{ padding: '1.5rem', backgroundColor: 'var(--bg-body)', border: '1px dashed var(--border-color)' }}>
+        <h4 style={{ marginTop: 0, fontSize: '1rem' }}>References & Data Sources</h4>
+        <ul style={{ fontSize: '0.85rem', color: 'var(--text-muted)', paddingLeft: '1.2rem', marginBottom: 0 }}>
+          <li style={{ marginBottom: '0.5rem' }}>
+            <strong>UDISE+ 2023-24:</strong> Official Unified District Information System for Education Plus data on school dropout and enrollment rates.
+          </li>
+          <li style={{ marginBottom: '0.5rem' }}>
+            <strong>Census 2011:</strong> Data regarding the total population of women who have never attended an educational institution.
+          </li>
+          <li style={{ marginBottom: '0.5rem' }}>
+            <strong>BMC Education Survey (2020-21):</strong> Official survey conducted by the Brihanmumbai Municipal Corporation to identify out-of-school children.
+          </li>
+          <li>
+            <strong>ASER 2024:</strong> Annual Status of Education Report for learning outcome statistics (Reading/Math levels).
+          </li>
+        </ul>
       </div>
 
     </div>
