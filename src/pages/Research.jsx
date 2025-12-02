@@ -73,7 +73,7 @@ const Research = () => {
 
         <h3>Local Context: Mumbai & Maharashtra</h3>
         <p style={{ marginBottom: '1rem' }}>
-          Even in a developed city like Mumbai, thousands of children slip through the cracks.
+          Even though Mumbai is a developed city, thousands of children do not get an education.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
