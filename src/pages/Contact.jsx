@@ -1,11 +1,6 @@
 import React from 'react';
-// Import data directly to prevent "undefined" errors
-import adminData from '../admin.json'; 
 
 const Contact = () => {
-  // Use local variable for easier reading
-  const data = adminData;
-
   return (
     <div className="container">
       <div className="hero-banner">
@@ -21,7 +16,7 @@ const Contact = () => {
             <h3>Follow Our Journey</h3>
             <p>We are documenting our process and sharing facts on Instagram.</p>
             <a 
-              href={data.socialMedia.instagram} 
+              href="https://www.instagram.com/bridge_to_knowledge_/" 
               className="btn btn-secondary" 
               target="_blank" 
               rel="noopener noreferrer"
@@ -59,13 +54,30 @@ const Contact = () => {
           This project would not have been possible without the guidance and support of our teachers and school advisors.
         </p>
         
-        <div className="team-grid-4col" style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}>
-          {data.advisors.map((advisor, index) => (
-            <div key={index} className="team-member">
-              <h4 style={{ color: 'var(--primary)', marginBottom: '0.5rem' }}>{advisor.name}</h4>
-              <p style={{ color: 'var(--text-muted)' }}>{advisor.role}</p>
-            </div>
-          ))}
+        {/* CHANGED TO 2 COLUMNS FOR BALANCED 2x2 GRID */}
+        <div className="team-grid-4col" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+          
+          <div className="team-member">
+            <h4>Miss Samrajni</h4>
+            <p style={{ color: 'var(--text-muted)' }}>GP Summit Project Advisor</p>
+          </div>
+          
+          <div className="team-member">
+            <h4>Ms. Deepti</h4>
+            <p style={{ color: 'var(--text-muted)' }}>NGO & BMC School Liaison</p>
+          </div>
+          
+          <div className="team-member">
+            <h4>Miss Azmin</h4>
+            <p style={{ color: 'var(--text-muted)' }}>Head of Student Life</p>
+          </div>
+
+          {/* NEW ADDITION */}
+          <div className="team-member">
+            <h4>Miss Zeeba</h4>
+            <p style={{ color: 'var(--text-muted)' }}>Permission for Action & Fundraiser</p>
+          </div>
+
         </div>
       </div>
 
