@@ -33,10 +33,10 @@ const Home = () => {
         <div className="stats-content-left">
           <h2>THE PROBLEM</h2>
           <p>
-            Our secondary research revealed a staggering reality: <strong>47.4 million children</strong> in India are out of school. But access is only half the battle.
+            Our research reveals a staggering reality: <strong>47.4 million children</strong> in India are out of school (UDISE 2023-24). But access is only half the battle.
           </p>
           <p style={{ marginTop: '1rem' }}>
-            The quality of learning is in crisis. Research shows that <strong>50% of Grade 5 students</strong> cannot read a Grade 2 level text, and <strong>72%</strong> cannot perform simple division. This "learning poverty" disproportionately affects students in under-resourced municipal schools compared to their private counterparts.
+            The quality of learning is in crisis. <strong>50% of Grade 5 students</strong> cannot read a Grade 2 text. Even in a developed city like Mumbai, thousands of children slip through the cracks, disconnected from the education system entirely.
           </p>
           
           <div style={{ width: '100%', height: '200px', marginTop: '1.5rem', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--border-color)' }}>
@@ -50,16 +50,16 @@ const Home = () => {
 
         <div className="stats-bar-right">
           <div className="stat-item">
-            <span className="stat-item-number">50%</span>
-            <span className="stat-item-label">of Grade 5 students cannot read at a Grade 2 level.</span>
+            <span className="stat-item-number">47.4 M</span>
+            <span className="stat-item-label">Children (ages 6-17) are out of school in India.</span>
           </div>
           <div className="stat-item">
             <span className="stat-item-number">71.6%</span>
-            <span className="stat-item-label">of students never make it to higher education/college.</span>
+            <span className="stat-item-label">Students never make it to higher education (College).</span>
           </div>
           <div className="stat-item">
             <span className="stat-item-number">12x</span>
-            <span className="stat-item-label">spending gap between urban private and rural government schools.</span>
+            <span className="stat-item-label">Spending gap between Urban Private & Rural Govt schools.</span>
           </div>
         </div>
       </section>
