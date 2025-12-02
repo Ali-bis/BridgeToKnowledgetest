@@ -40,8 +40,8 @@ const Footer = () => {
           <h4>Contact</h4>
           <ul style={{ listStyle: 'none', padding: 0 }}>
             <li>
-              <a href="mailto:info@bridgetoknowledge.org" style={{ textDecoration: 'none', color: 'var(--primary)' }}>
-                info@bridgetoknowledge.org
+              <a href="mailto:samrajni.dasgupta@bis.edu.in" style={{ textDecoration: 'none', color: 'var(--primary)' }}>
+                samrajni.dasgupta@bis.edu.in
               </a>
             </li>
             <li style={{ color: 'var(--text-muted)' }}>Mumbai, India</li>
