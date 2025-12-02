@@ -46,40 +46,57 @@ const Research = () => {
           Our research focused on the sheer scale of the education crisis. We moved beyond percentages to understand the <strong>actual number of lives affected</strong>.
         </p>
 
-        <h3 style={{ marginTop: '2rem' }}>National Context</h3>
+        <h3 style={{ marginTop: '2rem' }}>National Context (India)</h3>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem', marginTop: '1rem', marginBottom: '2rem' }}>
           
           {/* STAT 1: OUT OF SCHOOL */}
           <div className="highlight-card">
             <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Out of School (Ages 6-17)</h4>
             <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--accent)', margin: 0 }}>47.4 Million</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Source: UDISE+ 2023-24</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Source: UDISE+ (2023-24)</span>
           </div>
 
           {/* STAT 2: WOMEN EXCLUDED */}
           <div className="highlight-card">
             <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Women Left Behind</h4>
             <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>242 Million</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Women who never attended school</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Women never attended school (Census 2011)</span>
+          </div>
+
+           {/* STAT 3: HIGHER ED */}
+           <div className="highlight-card">
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Higher Ed Access</h4>
+            <p style={{ fontSize: '2.5rem', fontWeight: 'bold', color: 'var(--text-main)', margin: 0 }}>71.6%</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Students never reach college (AISHE 2021-22)</span>
           </div>
         </div>
 
-        <h3>Mumbai Context: The Urban Gap</h3>
+        <h3>Local Context: Mumbai & Maharashtra</h3>
         <p style={{ marginBottom: '1rem' }}>
           Even in a developed city like Mumbai, thousands of children slip through the cracks.
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+          
+          {/* STAT 1: OOSC MUMBAI */}
           <div className="highlight-card">
-            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Out-of-School Children</h4>
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Out-of-School (Mumbai)</h4>
             <p style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>10,820</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Official Mumbai Survey (2020-21)</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>BMC Survey (2020-21)</span>
           </div>
           
+          {/* STAT 2: NEVER ENROLLED */}
           <div className="highlight-card">
             <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Never Enrolled</h4>
             <p style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>7,806</p>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Children in Mumbai</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Children in Mumbai (2020-21)</span>
+          </div>
+
+          {/* STAT 3: TEACHER ABSENTEEISM */}
+          <div className="highlight-card">
+            <h4 style={{ color: 'var(--text-muted)', fontSize: '0.9rem', textTransform: 'uppercase' }}>Teacher Absenteeism</h4>
+            <p style={{ fontSize: '2rem', fontWeight: 'bold', color: 'var(--primary)', margin: 0 }}>24%</p>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>In Public Schools (vs 7% Private)</span>
           </div>
         </div>
 
