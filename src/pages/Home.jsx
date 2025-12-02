@@ -5,8 +5,8 @@ const Home = () => {
   return (
     <div className="container">
       
-      {/* Hero Banner - Gap is controlled by CSS margin-bottom: 6rem */}
       <section className="hero-banner">
+        {/* Logo */}
         <img src="/images/logo.png" alt="Logo" className="home-logo" />
         
         <h1 style={{ marginBottom: '0.5rem' }}>BRIDGE TO KNOWLEDGE</h1>
@@ -29,16 +29,16 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
       <section className="stats-section-container">
         <div className="stats-content-left">
           <h2>THE PROBLEM</h2>
           <p>
-            Our research confirmed that "access" to school isn't the only problem. The real issue is a deep gap in the <strong>quality</strong> of education and a growing <strong>digital divide</strong>.
+            Our secondary research revealed a staggering reality: <strong>47.4 million children</strong> in India are out of school. But access is only half the battle.
           </p>
           <p style={{ marginTop: '1rem' }}>
-            While Mumbai's literacy rate is high, many students in our Partnered Municipal School lack the digital skills and tools needed for modern employment. Our mission is to take direct action to help bridge this gap.
+            The quality of learning is in crisis. Research shows that <strong>50% of Grade 5 students</strong> cannot read a Grade 2 level text, and <strong>72%</strong> cannot perform simple division. This "learning poverty" disproportionately affects students in under-resourced municipal schools compared to their private counterparts.
           </p>
+          
           <div style={{ width: '100%', height: '200px', marginTop: '1.5rem', borderRadius: '8px', overflow: 'hidden', border: '1px solid var(--border-color)' }}>
              <img 
                src="/images/group.png" 
@@ -50,16 +50,16 @@ const Home = () => {
 
         <div className="stats-bar-right">
           <div className="stat-item">
-            <span className="stat-item-number">19.1%</span>
-            <span className="stat-item-label">of India’s population is illiterate (~280M adults)</span>
+            <span className="stat-item-number">50%</span>
+            <span className="stat-item-label">of Grade 5 students cannot read at a Grade 2 level.</span>
           </div>
           <div className="stat-item">
-            <span className="stat-item-number">14.1%</span>
-            <span className="stat-item-label">of students drop out by secondary levels</span>
+            <span className="stat-item-number">71.6%</span>
+            <span className="stat-item-label">of students never make it to higher education/college.</span>
           </div>
           <div className="stat-item">
-            <span className="stat-item-number">12.5%</span>
-            <span className="stat-item-label">gap in education between economic classes</span>
+            <span className="stat-item-number">12x</span>
+            <span className="stat-item-label">spending gap between urban private and rural government schools.</span>
           </div>
         </div>
       </section>
