@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Gallery = () => {
-  // Base images: 1-6. We assume these exist, so we render them immediately.
+  // Base images: 1-5 + Group Photo.
   const baseImages = [
     { id: 1, src: '/images/1.png', alt: 'Gallery Image 1', caption: '' },
     { id: 2, src: '/images/2.png', alt: 'Gallery Image 2', caption: '' },
@@ -11,11 +11,12 @@ const Gallery = () => {
     { id: 6, src: '/images/group.png', alt: 'Team Picture', caption: 'The Bridge to Knowledge Team' },
   ];
 
-  // Auto-generate a list for potential images 7 to 20
-  const autoImages = Array.from({ length: 14 }, (_, i) => {
-    const num = i + 7;
+  // Auto-generate a list for potential images 6 to 20
+  // Starts from 6.png so you don't miss any files between 5 and 7
+  const autoImages = Array.from({ length: 15 }, (_, i) => {
+    const num = i + 6;
     return {
-      id: num,
+      id: `auto-${num}`,
       src: `/images/${num}.png`,
       alt: `Gallery Image ${num}`,
       caption: '' 
@@ -30,12 +31,12 @@ const Gallery = () => {
       </div>
 
       <div className="gallery-grid">
-        {/* 1. Render Base Images Immediately (No waiting) */}
+        {/* 1. Render Base Images */}
         {baseImages.map((image) => (
           <StaticGalleryItem key={image.id} image={image} />
         ))}
 
-        {/* 2. Render Auto Images Only If They Exist (Prevents white boxes) */}
+        {/* 2. Render Auto Images (Only if they exist) */}
         {autoImages.map((image) => (
           <DynamicGalleryItem key={image.id} image={image} />
         ))}
@@ -44,27 +45,27 @@ const Gallery = () => {
   );
 };
 
-// Component for known images (1-6) - Renders immediately
+// Component for known images
 const StaticGalleryItem = ({ image }) => {
   return (
-    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
+    <div className="highlight-card" style={{ padding: '0', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <img 
         src={image.src} 
         alt={image.alt} 
         loading="lazy" 
-        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }}
+        style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block', flexGrow: 1 }}
       />
-      {/* Strict Caption Check: Only for group.png */}
+      {/* Caption Box: Only for the team picture */}
       {image.src.includes('group.png') && image.caption && (
-        <div style={{ padding: '1rem', textAlign: 'center', borderTop: '1px solid var(--border-color)' }}>
-          <p style={{ margin: 0, color: 'var(--text-muted)' }}>{image.caption}</p>
+        <div style={{ padding: '1.5rem', textAlign: 'center', borderTop: '1px solid var(--border-color)', backgroundColor: 'var(--bg-card)' }}>
+          <p style={{ margin: 0, color: 'var(--text-main)', fontWeight: 'bold', fontSize: '1.1rem' }}>{image.caption}</p>
         </div>
       )}
     </div>
   );
 };
 
-// Component for auto-generated images (7-20) - Checks existence first
+// Component for auto-generated images
 const DynamicGalleryItem = ({ image }) => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -75,7 +76,7 @@ const DynamicGalleryItem = ({ image }) => {
     img.onerror = () => setIsVisible(false);
   }, [image.src]);
 
-  // If image doesn't exist yet, render NOTHING (no white box)
+  // If image doesn't exist, render nothing (preserves grid layout)
   if (!isVisible) return null;
 
   return (
