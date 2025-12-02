@@ -36,7 +36,7 @@ const Action = () => {
           PART 1: WORKSHOPS
         </h2>
         
-        {/* CAROUSEL IS BACK */}
+        {/* CAROUSEL */}
         <div style={{ marginBottom: '2rem' }}>
           <Carousel images={actionImages} />
         </div>
@@ -46,12 +46,23 @@ const Action = () => {
             <h3 style={{ color: 'var(--primary)', marginTop: 0 }}>Objective</h3>
             <p>To teach essential digital skills to students in our Partnered Municipal School to help solve the problem of access to quality digital education.</p>
           </div>
+          
+          {/* UPDATED LESSON PLAN FROM LOG SHEET */}
           <div className="highlight-card">
-            <h3 style={{ color: 'var(--primary)', marginTop: 0 }}>Lesson Plan</h3>
+            <h3 style={{ color: 'var(--primary)', marginTop: 0 }}>Curriculum Delivered</h3>
             <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
-              <li style={{ marginBottom: '0.5rem' }}><strong>Canva:</strong> Graphic design basics.</li>
-              <li style={{ marginBottom: '0.5rem' }}><strong>PowerPoint:</strong> Presentation skills.</li>
-              <li><strong>E-Skills:</strong> Safe searching & email.</li>
+              <li style={{ marginBottom: '0.8rem' }}>
+                <strong>Session 1: Newsletter Writing</strong><br/>
+                <span style={{fontSize:'0.9rem', color:'var(--text-muted)'}}>Focus on Environment/Pollution. Taught article structure and formatting.</span>
+              </li>
+              <li style={{ marginBottom: '0.8rem' }}>
+                <strong>Session 2: Vocabulary & Word Search</strong><br/>
+                <span style={{fontSize:'0.9rem', color:'var(--text-muted)'}}>Interactive puzzles to build English vocabulary. Conducted a quiz.</span>
+              </li>
+              <li>
+                <strong>Session 3: Creative Expression</strong><br/>
+                <span style={{fontSize:'0.9rem', color:'var(--text-muted)'}}>Comic-strip writing and drawing skills to foster creativity and storytelling.</span>
+              </li>
             </ul>
           </div>
         </div>
