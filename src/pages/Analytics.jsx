@@ -69,19 +69,8 @@ const Analytics = () => {
       <div className="hero-banner">
         <h1>IMPACT ANALYTICS</h1>
         <p style={{ maxWidth: '600px', margin: '1rem auto' }}>
-          Data-driven insights from UDISE+, ASER 2024, and our primary research.
+          Visualizing the disparity in quality and learning outcomes.
         </p>
-      </div>
-
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
-        <div className="highlight-card" style={{borderColor: 'var(--primary)', textAlign: 'left'}}>
-          <h3 style={{color: 'var(--primary)'}}>National Crisis</h3>
-          <p><strong>47.4 Million</strong> children are out of school. <br/><strong>242 Million</strong> women have never attended school.</p>
-        </div>
-        <div className="highlight-card" style={{borderColor: 'var(--accent)', textAlign: 'left'}}>
-          <h3 style={{ color: 'var(--accent)' }}>Mumbai Context</h3>
-          <p><strong>10,820</strong> children identified as out-of-school in Mumbai.<br/><strong>7,806</strong> have never been enrolled at all.</p>
-        </div>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '2rem', marginBottom: '4rem' }}>
