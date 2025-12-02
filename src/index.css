@@ -218,56 +218,64 @@ a { text-decoration: none; color: var(--primary); transition: var(--transition);
 /* ... existing code ... */
 
 /* GALLERY SPECIFIC STYLES */
-/* ... keep .gallery-grid as it is ... */
-
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin-bottom: 3rem;
+  /* Ensure all items in the row stretch to the height of the tallest item (the one with the caption) */
+  align-items: stretch; 
 }
 
-/*UPDATED CARD STYLES*/
 .gallery-card {
-  /* background: var(--bg-card);  REMOVED BACKGROUND */
   background: transparent;
-  /* border: 1px solid var(--border-color); REMOVED BORDER */
   border: none;
-  /* box-shadow: var(--shadow); REMOVED SHADOW */
   box-shadow: none;
-  
-  border-radius: 20px; /* Kept rounded corners for the image itself */
+  border-radius: 20px;
   overflow: hidden;
   transition: var(--transition);
+  
+  /* Flex settings to make image fill the space */
   display: flex;
   flex-direction: column;
+  height: 100%; 
 }
 
 .gallery-card:hover {
   transform: translateY(-5px);
-  /* border-color: var(--primary); REMOVED HOVER BORDER */
 }
 
-/* ... keep .gallery-card img as it is ... */
 .gallery-card img {
   width: 100%;
-  height: 300px;
+  /* Use flex to fill remaining vertical space. 
+     This allows images without captions to grow down and match the height of images with captions. */
+  flex: 1; 
+  min-height: 300px; /* Ensures a good base height */
   object-fit: cover;
   display: block;
 }
 
-/*UPDATED CAPTION STYLES*/
 .gallery-caption {
-  padding: 1rem 0; /* Reduced side padding since there is no box */
+  padding: 1rem 0;
   text-align: center;
   font-weight: 600;
   font-size: 1rem;
   color: var(--text-main);
-  
-  /* background: var(--bg-card); REMOVED CAPTION BACKGROUND */
   background: transparent;
-  /* border-top: 1px solid var(--border-color); REMOVED CAPTION BORDER */
   border: none;
+  /* Prevent caption from shrinking */
+  flex-shrink: 0; 
 }
 
-/* ... rest of CSS ... */
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
