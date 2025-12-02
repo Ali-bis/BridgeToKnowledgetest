@@ -1,12 +1,11 @@
 import React from 'react';
 
 const Gallery = () => {
-  // UPDATED: Removed 4.png, renamed others to "Student Visit"
   const galleryImages = [
-    { src: "/images/1.png", caption: "Student Visit" },
-    { src: "/images/2.png", caption: "Student Visit" },
-    { src: "/images/3.png", caption: "Student Visit" },
-    { src: "/images/group.png", caption: "The Bridge to Knowledge Team" },
+    { src: "/images/1.png", caption: "" }, // Caption removed
+    { src: "/images/2.png", caption: "" }, // Caption removed
+    { src: "/images/3.png", caption: "" }, // Caption removed
+    { src: "/images/group.png", caption: "The Bridge to Knowledge Team" }, // Kept
   ];
 
   return (
@@ -19,15 +18,17 @@ const Gallery = () => {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
         {galleryImages.map((item, index) => (
           <div key={index} className="highlight-card" style={{ padding: '0', overflow: 'hidden' }}>
-            {/* 'objectFit: cover' ensures they all look uniform regardless of size */}
             <img 
               src={item.src} 
-              alt={item.caption} 
+              alt="Gallery Image" 
               style={{ width: '100%', height: '250px', objectFit: 'cover', display: 'block' }} 
             />
-            <div style={{ padding: '1rem', textAlign: 'center' }}>
-              <p style={{ margin: 0, color: 'var(--text-muted)' }}>{item.caption}</p>
-            </div>
+            {/* Only show this box if a caption exists */}
+            {item.caption && (
+              <div style={{ padding: '1rem', textAlign: 'center' }}>
+                <p style={{ margin: 0, color: 'var(--text-muted)' }}>{item.caption}</p>
+              </div>
+            )}
           </div>
         ))}
       </div>
