@@ -8,7 +8,6 @@ import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import Research from './pages/Research';
 import Timeline from './pages/Timeline';
-import Analytics from './pages/Analytics';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -40,7 +39,6 @@ function App() {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/research" element={<Research />} />
           <Route path="/timeline" element={<Timeline />} />
-          <Route path="/analytics" element={<Analytics />} />
         </Routes>
       </div>
       
