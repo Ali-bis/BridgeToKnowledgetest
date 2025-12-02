@@ -18,7 +18,7 @@ const Contact = () => {
           
           {/* INSTAGRAM CARD */}
           <div className="highlight-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-            <h3>Follow Our Journey</h3>
+            <h3>Follow Us</h3>
             <p>We are documenting our process and sharing facts on Instagram.</p>
             <a 
               href={data.socialMedia.instagram} 
