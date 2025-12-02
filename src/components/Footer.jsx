@@ -8,15 +8,16 @@ const Footer = () => {
         {/* Column 1: Logo & Brand */}
         <div>
           {/* ADDED LOGO */}
+
+          <h4 style={{ margin: '0 0 0.5rem 0' }}>Bridge To Knowledge</h4>
+          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+            Bridging the gap between potential and opportunity in Mumbai's educational landscape.
+          </p>
           <img 
             src="/images/logo.png" 
             alt="Logo" 
             style={{ width: '80px', marginBottom: '1rem', display: 'block' }} 
           />
-          <h4 style={{ margin: '0 0 0.5rem 0' }}>Bridge To Knowledge</h4>
-          <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-            Bridging the gap between potential and opportunity in Mumbai's educational landscape.
-          </p>
         </div>
 
         {/* Column 2: Links */}
