@@ -12,11 +12,11 @@ const Footer = () => {
             Bridging the gap between potential and opportunity in Mumbai's educational landscape.
           </p>
           
-          {/* LOGO MOVED BELOW TEXT with Gap */}
+          {/* BIGGER FOOTER LOGO */}
           <img 
             src="/images/logo.png" 
             alt="Logo" 
-            style={{ width: '80px', marginTop: '1.5rem', display: 'block' }} 
+            style={{ width: '120px', marginTop: '1.5rem', display: 'block' }} 
           />
         </div>
 
@@ -49,7 +49,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* COPYRIGHT LEFT ALIGNED */}
+      {/* COPYRIGHT */}
       <div className="footer-bottom" style={{ textAlign: 'left', marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--border-color)' }}>
         &copy; {new Date().getFullYear()} Project Bridge to Knowledge. All Rights Reserved.
       </div>
