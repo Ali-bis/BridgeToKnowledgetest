@@ -13,7 +13,7 @@ const Action = () => {
     <div className="container">
       <div className="hero-banner">
         <h1>OUR ACTION PLAN</h1>
-        <p>From research to real-world impact. Deadline: November 27, 2025.</p>
+        <p>From research to real-world impact.</p>
       </div>
 
       <div className="page-section">
